@@ -9,18 +9,18 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0f3d1e] to-[#1a5c2e] flex items-center justify-center p-6">
+    <div className="min-h-screen bg-gradient-to-br from-[#1a332b] to-[#2a5245] flex items-center justify-center p-6">
       <div className="text-center max-w-lg">
         {/* Logo */}
-        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#c9a84c] to-[#e8c96a] flex items-center justify-center mx-auto mb-8 shadow-xl">
-          <span className="text-[#0f3d1e] font-bold text-3xl font-serif">G</span>
+        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#c6a94c] to-[#dcc875] flex items-center justify-center mx-auto mb-8 shadow-xl">
+          <span className="text-[#1a332b] font-bold text-3xl font-serif">G</span>
         </div>
 
         {/* 404 */}
         <div
           className="text-8xl font-serif font-bold mb-4"
           style={{
-            background: "linear-gradient(135deg, #c9a84c 0%, #e8c96a 50%, #c9a84c 100%)",
+            background: "linear-gradient(135deg, #c6a94c 0%, #dcc875 50%, #c6a94c 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
@@ -40,7 +40,7 @@ export default function NotFound() {
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
             href="/"
-            className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#c9a84c] to-[#e8c96a] text-[#0f3d1e] font-semibold hover:shadow-lg transition-shadow"
+            className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#c6a94c] to-[#dcc875] text-[#1a332b] font-semibold hover:shadow-lg transition-shadow"
           >
             Go to Homepage
           </Link>
@@ -63,7 +63,7 @@ export default function NotFound() {
             <Link
               key={link.href}
               href={link.href}
-              className="hover:text-[#c9a84c] transition-colors"
+              className="hover:text-[#c6a94c] transition-colors"
             >
               {link.label}
             </Link>

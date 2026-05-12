@@ -44,7 +44,11 @@ export default function AdminGalleryPage() {
     }
   };
 
-  useEffect(() => { fetchImages(); }, []);
+  useEffect(() => {
+    queueMicrotask(() => {
+      void fetchImages();
+    });
+  }, []);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -131,7 +135,7 @@ export default function AdminGalleryPage() {
           <div className="flex justify-end mb-6">
             <button
               onClick={() => setShowUpload(true)}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#1a5c2e] to-[#2d8a4e] text-white font-semibold text-sm shadow-md hover:shadow-lg transition-shadow"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#2a5245] to-[#4d8b73] text-white font-semibold text-sm shadow-md hover:shadow-lg transition-shadow"
             >
               <Plus size={18} />
               Upload Image
@@ -155,7 +159,7 @@ export default function AdminGalleryPage() {
 
                 {/* Drop zone */}
                 <div
-                  className="border-2 border-dashed border-gray-200 rounded-xl p-6 text-center mb-4 cursor-pointer hover:border-[#1a5c2e] transition-colors"
+                  className="border-2 border-dashed border-gray-200 rounded-xl p-6 text-center mb-4 cursor-pointer hover:border-[#2a5245] transition-colors"
                   onClick={() => fileRef.current?.click()}
                 >
                   {preview ? (
@@ -217,7 +221,7 @@ export default function AdminGalleryPage() {
                   <button
                     onClick={handleUpload}
                     disabled={uploading || !preview}
-                    className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#1a5c2e] text-white font-semibold text-sm hover:bg-[#0f3d1e] transition-colors disabled:opacity-50"
+                    className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#2a5245] text-white font-semibold text-sm hover:bg-[#1a332b] transition-colors disabled:opacity-50"
                   >
                     {uploading ? <><Loader2 size={16} className="animate-spin" />Uploading...</> : <><Upload size={16} />Upload</>}
                   </button>

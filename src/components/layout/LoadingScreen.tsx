@@ -19,19 +19,19 @@ export default function LoadingScreen() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.05 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-gradient-to-br from-[#0f3d1e] via-[#1a5c2e] to-[#0f3d1e]"
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-gradient-to-br from-[#1a332b] via-[#2a5245] to-[#1a332b]"
         >
           {/* Decorative rings */}
           <div className="relative flex items-center justify-center mb-8">
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-              className="absolute w-24 h-24 rounded-full border-2 border-[#c9a84c]/20 border-t-[#c9a84c]"
+              className="absolute w-24 h-24 rounded-full border-2 border-[#c6a94c]/20 border-t-[#c6a94c]"
             />
             <motion.div
               animate={{ rotate: -360 }}
               transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-              className="absolute w-16 h-16 rounded-full border border-[#c9a84c]/30 border-b-[#c9a84c]/60"
+              className="absolute w-16 h-16 rounded-full border border-[#c6a94c]/30 border-b-[#c6a94c]/60"
             />
 
             {/* Center logo */}
@@ -39,9 +39,9 @@ export default function LoadingScreen() {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="w-12 h-12 rounded-full bg-gradient-to-br from-[#c9a84c] to-[#e8c96a] flex items-center justify-center shadow-[0_0_30px_rgba(201,168,76,0.4)]"
+              className="w-12 h-12 rounded-full bg-gradient-to-br from-[#c6a94c] to-[#dcc875] flex items-center justify-center shadow-[0_0_30px_rgba(198,169,76,0.4)]"
             >
-              <span className="text-[#0f3d1e] font-bold text-xl font-serif">G</span>
+              <span className="text-[#1a332b] font-bold text-xl font-serif">G</span>
             </motion.div>
           </div>
 
@@ -55,7 +55,7 @@ export default function LoadingScreen() {
             <h1 className="text-white font-serif text-2xl font-bold mb-1">
               Green Land Farm
             </h1>
-            <p className="text-[#c9a84c] text-xs tracking-[0.3em] uppercase">
+            <p className="text-[#c6a94c] text-xs tracking-[0.3em] uppercase">
               Luxury Wedding Venue
             </p>
           </motion.div>
@@ -71,7 +71,7 @@ export default function LoadingScreen() {
               initial={{ width: "0%" }}
               animate={{ width: "100%" }}
               transition={{ duration: 1.2, delay: 0.6, ease: "easeInOut" }}
-              className="h-full bg-gradient-to-r from-[#c9a84c] to-[#e8c96a] rounded-full"
+              className="h-full bg-gradient-to-r from-[#c6a94c] to-[#dcc875] rounded-full"
             />
           </motion.div>
 

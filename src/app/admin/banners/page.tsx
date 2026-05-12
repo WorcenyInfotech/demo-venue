@@ -44,7 +44,11 @@ export default function AdminBannersPage() {
     }
   };
 
-  useEffect(() => { fetchBanners(); }, []);
+  useEffect(() => {
+    queueMicrotask(() => {
+      void fetchBanners();
+    });
+  }, []);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -130,7 +134,7 @@ export default function AdminBannersPage() {
           <div className="flex justify-end mb-6">
             <button
               onClick={() => setShowForm(true)}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#1a5c2e] to-[#2d8a4e] text-white font-semibold text-sm shadow-md hover:shadow-lg transition-shadow"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#2a5245] to-[#4d8b73] text-white font-semibold text-sm shadow-md hover:shadow-lg transition-shadow"
             >
               <Plus size={18} />
               Add Banner
@@ -154,7 +158,7 @@ export default function AdminBannersPage() {
 
                 {/* Image upload */}
                 <div
-                  className="border-2 border-dashed border-gray-200 rounded-xl p-4 text-center mb-4 cursor-pointer hover:border-[#1a5c2e] transition-colors"
+                  className="border-2 border-dashed border-gray-200 rounded-xl p-4 text-center mb-4 cursor-pointer hover:border-[#2a5245] transition-colors"
                   onClick={() => fileRef.current?.click()}
                 >
                   {preview ? (
@@ -194,7 +198,7 @@ export default function AdminBannersPage() {
 
                 <div className="flex gap-3">
                   <button onClick={() => { setShowForm(false); setPreview(null); }} className="flex-1 py-2.5 rounded-xl border border-gray-200 text-gray-600 font-semibold text-sm hover:bg-gray-50 transition-colors">Cancel</button>
-                  <button onClick={handleUpload} disabled={uploading || !preview} className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#1a5c2e] text-white font-semibold text-sm hover:bg-[#0f3d1e] transition-colors disabled:opacity-50">
+                  <button onClick={handleUpload} disabled={uploading || !preview} className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#2a5245] text-white font-semibold text-sm hover:bg-[#1a332b] transition-colors disabled:opacity-50">
                     {uploading ? <><Loader2 size={16} className="animate-spin" />Uploading...</> : <><Upload size={16} />Upload</>}
                   </button>
                 </div>
@@ -250,7 +254,7 @@ export default function AdminBannersPage() {
                           <p className="text-gray-500 text-xs mt-0.5 line-clamp-1">{banner.subtitle}</p>
                         )}
                         {banner.ctaText && (
-                          <div className="mt-1.5 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#c9a84c]/10 text-[#c9a84c] text-xs font-medium">
+                          <div className="mt-1.5 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#c6a94c]/10 text-[#c6a94c] text-xs font-medium">
                             CTA: {banner.ctaText}
                           </div>
                         )}

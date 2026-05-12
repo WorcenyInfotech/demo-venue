@@ -22,9 +22,9 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#0a2e14] text-white relative overflow-hidden">
+    <footer className="bg-[var(--brand-forest,#0f1814)] text-white relative overflow-hidden">
       {/* Decorative top border */}
-      <div className="h-1 w-full bg-gradient-to-r from-[#c9a84c] via-[#e8c96a] to-[#c9a84c]" />
+      <div className="h-1 w-full bg-gradient-to-r from-[#c6a94c] via-[#dcc875] to-[#c6a94c]" />
 
       {/* Decorative background pattern */}
       <div
@@ -41,14 +41,14 @@ export default function Footer() {
           <div className="lg:col-span-1">
             {/* Logo */}
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#1a5c2e] to-[#2d8a4e] flex items-center justify-center border-2 border-[#c9a84c]/30">
-                <span className="text-[#c9a84c] font-bold text-xl font-serif">G</span>
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#2a5245] to-[#4d8b73] flex items-center justify-center border-2 border-[#c6a94c]/30">
+                <span className="text-[#c6a94c] font-bold text-xl font-serif">G</span>
               </div>
               <div>
                 <div className="font-serif font-bold text-xl text-white">
                   Green Land Farm
                 </div>
-                <div className="text-[#c9a84c] text-xs tracking-widest uppercase">
+                <div className="text-[#c6a94c] text-xs tracking-widest uppercase">
                   Luxury Wedding Venue
                 </div>
               </div>
@@ -74,7 +74,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={title}
-                  className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-[#c9a84c] hover:border-[#c9a84c]/40 hover:bg-[#c9a84c]/10 transition-all duration-200 text-xs font-bold"
+                  className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-[#c6a94c] hover:border-[#c6a94c]/40 hover:bg-[#c6a94c]/10 transition-all duration-200 text-xs font-bold"
                 >
                   {label}
                 </a>
@@ -85,7 +85,7 @@ export default function Footer() {
           {/* Quick Links */}
           <div>
             <h3 className="font-serif font-semibold text-lg text-white mb-5 flex items-center gap-2">
-              <span className="w-6 h-0.5 bg-[#c9a84c]" />
+              <span className="w-6 h-0.5 bg-[#c6a94c]" />
               Quick Links
             </h3>
             <ul className="space-y-3">
@@ -93,11 +93,11 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="flex items-center gap-2 text-white/60 hover:text-[#c9a84c] transition-colors text-sm group"
+                    className="flex items-center gap-2 text-white/60 hover:text-[#c6a94c] transition-colors text-sm group"
                   >
                     <ArrowRight
                       size={14}
-                      className="text-[#c9a84c]/50 group-hover:translate-x-1 transition-transform"
+                      className="text-[#c6a94c]/50 group-hover:translate-x-1 transition-transform"
                     />
                     {link.label}
                   </Link>
@@ -106,11 +106,11 @@ export default function Footer() {
               <li>
                 <Link
                   href="/contact#inquiry"
-                  className="flex items-center gap-2 text-white/60 hover:text-[#c9a84c] transition-colors text-sm group"
+                  className="flex items-center gap-2 text-white/60 hover:text-[#c6a94c] transition-colors text-sm group"
                 >
                   <ArrowRight
                     size={14}
-                    className="text-[#c9a84c]/50 group-hover:translate-x-1 transition-transform"
+                    className="text-[#c6a94c]/50 group-hover:translate-x-1 transition-transform"
                   />
                   Book Inquiry
                 </Link>
@@ -121,7 +121,7 @@ export default function Footer() {
           {/* Services */}
           <div>
             <h3 className="font-serif font-semibold text-lg text-white mb-5 flex items-center gap-2">
-              <span className="w-6 h-0.5 bg-[#c9a84c]" />
+              <span className="w-6 h-0.5 bg-[#c6a94c]" />
               Our Services
             </h3>
             <ul className="space-y-3">
@@ -129,11 +129,11 @@ export default function Footer() {
                 <li key={service}>
                   <Link
                     href="/services"
-                    className="flex items-center gap-2 text-white/60 hover:text-[#c9a84c] transition-colors text-sm group"
+                    className="flex items-center gap-2 text-white/60 hover:text-[#c6a94c] transition-colors text-sm group"
                   >
                     <ArrowRight
                       size={14}
-                      className="text-[#c9a84c]/50 group-hover:translate-x-1 transition-transform"
+                      className="text-[#c6a94c]/50 group-hover:translate-x-1 transition-transform"
                     />
                     {service}
                   </Link>
@@ -145,17 +145,17 @@ export default function Footer() {
           {/* Contact Info */}
           <div>
             <h3 className="font-serif font-semibold text-lg text-white mb-5 flex items-center gap-2">
-              <span className="w-6 h-0.5 bg-[#c9a84c]" />
+              <span className="w-6 h-0.5 bg-[#c6a94c]" />
               Contact Us
             </h3>
             <ul className="space-y-4">
               <li>
                 <a
                   href={`tel:${SITE_CONFIG.phone}`}
-                  className="flex items-start gap-3 text-white/60 hover:text-[#c9a84c] transition-colors group"
+                  className="flex items-start gap-3 text-white/60 hover:text-[#c6a94c] transition-colors group"
                 >
-                  <div className="w-8 h-8 rounded-lg bg-[#c9a84c]/10 border border-[#c9a84c]/20 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-[#c9a84c]/20 transition-colors">
-                    <Phone size={14} className="text-[#c9a84c]" />
+                  <div className="w-8 h-8 rounded-lg bg-[#c6a94c]/10 border border-[#c6a94c]/20 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-[#c6a94c]/20 transition-colors">
+                    <Phone size={14} className="text-[#c6a94c]" />
                   </div>
                   <div>
                     <div className="text-xs text-white/40 mb-0.5">Call Us</div>
@@ -168,10 +168,10 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${SITE_CONFIG.email}`}
-                  className="flex items-start gap-3 text-white/60 hover:text-[#c9a84c] transition-colors group"
+                  className="flex items-start gap-3 text-white/60 hover:text-[#c6a94c] transition-colors group"
                 >
-                  <div className="w-8 h-8 rounded-lg bg-[#c9a84c]/10 border border-[#c9a84c]/20 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-[#c9a84c]/20 transition-colors">
-                    <Mail size={14} className="text-[#c9a84c]" />
+                  <div className="w-8 h-8 rounded-lg bg-[#c6a94c]/10 border border-[#c6a94c]/20 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-[#c6a94c]/20 transition-colors">
+                    <Mail size={14} className="text-[#c6a94c]" />
                   </div>
                   <div>
                     <div className="text-xs text-white/40 mb-0.5">Email Us</div>
@@ -182,8 +182,8 @@ export default function Footer() {
 
               <li>
                 <div className="flex items-start gap-3 text-white/60">
-                  <div className="w-8 h-8 rounded-lg bg-[#c9a84c]/10 border border-[#c9a84c]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <MapPin size={14} className="text-[#c9a84c]" />
+                  <div className="w-8 h-8 rounded-lg bg-[#c6a94c]/10 border border-[#c6a94c]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <MapPin size={14} className="text-[#c6a94c]" />
                   </div>
                   <div>
                     <div className="text-xs text-white/40 mb-0.5">Address</div>
@@ -196,8 +196,8 @@ export default function Footer() {
 
               <li>
                 <div className="flex items-start gap-3 text-white/60">
-                  <div className="w-8 h-8 rounded-lg bg-[#c9a84c]/10 border border-[#c9a84c]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Clock size={14} className="text-[#c9a84c]" />
+                  <div className="w-8 h-8 rounded-lg bg-[#c6a94c]/10 border border-[#c6a94c]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Clock size={14} className="text-[#c6a94c]" />
                   </div>
                   <div>
                     <div className="text-xs text-white/40 mb-0.5">Hours</div>
@@ -215,14 +215,14 @@ export default function Footer() {
             © {currentYear} Green Land Farm. All rights reserved.
           </p>
           <p className="text-white/40 text-sm flex items-center gap-1">
-            Made with <Heart size={12} className="text-[#c9a84c] fill-[#c9a84c]" /> in Surat, Gujarat
+            Made with <Heart size={12} className="text-[#c6a94c] fill-[#c6a94c]" /> in Surat, Gujarat
           </p>
           <div className="flex items-center gap-4 text-xs text-white/40">
-            <Link href="/privacy-policy" className="hover:text-[#c9a84c] transition-colors">
+            <Link href="/privacy-policy" className="hover:text-[#c6a94c] transition-colors">
               Privacy Policy
             </Link>
             <span>·</span>
-            <Link href="/terms" className="hover:text-[#c9a84c] transition-colors">
+            <Link href="/terms" className="hover:text-[#c6a94c] transition-colors">
               Terms of Service
             </Link>
           </div>

@@ -21,7 +21,7 @@ const HIGHLIGHTS = [
     title: "1000+ Guest Capacity",
     description:
       "Multiple indoor and outdoor spaces that can be configured to host intimate gatherings or grand celebrations.",
-    color: "from-[#c9a84c] to-[#a07830]",
+    color: "from-[#c6a94c] to-[#8b6914]",
     bg: "bg-amber-50",
     border: "border-amber-100",
   },
@@ -81,7 +81,7 @@ const cardVariants = {
 
 export default function HighlightsSection() {
   return (
-    <section id="highlights" className="section-padding bg-[#fdf6e3]">
+    <section id="highlights" className="section-padding bg-[#f7f3ec]">
       <div className="container-custom">
         <SectionHeader
           badge="Why Choose Us"
@@ -101,9 +101,9 @@ export default function HighlightsSection() {
           {VENUE_STATS.map((stat) => (
             <div
               key={stat.label}
-              className="text-center p-6 rounded-2xl bg-white border border-[#c9a84c]/15 shadow-sm hover:shadow-md hover:border-[#c9a84c]/30 transition-all duration-300"
+              className="text-center p-6 rounded-2xl bg-white border border-[#c6a94c]/15 shadow-sm hover:shadow-md hover:border-[#c6a94c]/30 transition-all duration-300"
             >
-              <div className="font-serif text-3xl md:text-4xl font-bold text-[#1a5c2e] mb-1">
+              <div className="font-serif text-3xl md:text-4xl font-bold text-[#2a5245] mb-1">
                 <AnimatedCounter value={stat.value} suffix={stat.suffix} />
               </div>
               <div className="text-gray-500 text-sm font-medium">{stat.label}</div>
@@ -134,7 +134,7 @@ export default function HighlightsSection() {
                   <Icon size={22} className="text-white" />
                 </div>
 
-                <h3 className="font-serif font-semibold text-lg text-[#0f3d1e] mb-2">
+                <h3 className="font-serif font-semibold text-lg text-[#1a332b] mb-2">
                   {item.title}
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">

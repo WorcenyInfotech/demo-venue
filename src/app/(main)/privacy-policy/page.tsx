@@ -17,7 +17,7 @@ export default function PrivacyPolicyPage() {
       />
       <section className="section-padding bg-white">
         <div className="container-custom max-w-3xl">
-          <div className="prose prose-green max-w-none">
+          <div className="max-w-none text-gray-600">
             <p className="text-gray-500 text-sm mb-8">Last updated: January 2025</p>
 
             {[
@@ -43,7 +43,7 @@ export default function PrivacyPolicyPage() {
               },
             ].map((section) => (
               <div key={section.title} className="mb-8">
-                <h2 className="font-serif text-xl font-bold text-[#0f3d1e] mb-3">{section.title}</h2>
+                <h2 className="font-serif text-xl font-bold text-[#1a332b] mb-3">{section.title}</h2>
                 <p className="text-gray-600 leading-relaxed">{section.content}</p>
               </div>
             ))}

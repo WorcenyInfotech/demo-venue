@@ -32,6 +32,7 @@ export default function ContactForm() {
   });
 
   const onSubmit = async (data: ContactInput) => {
+    void data; // will be sent to API when endpoint is connected
     try {
       // For now, simulate API call — will be wired to API in Part 7
       await new Promise((r) => setTimeout(r, 1200));
@@ -50,16 +51,16 @@ export default function ContactForm() {
         animate={{ opacity: 1, scale: 1 }}
         className="text-center py-10"
       >
-        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#1a5c2e] to-[#2d8a4e] flex items-center justify-center mx-auto mb-4 shadow-lg">
-          <CheckCircle2 size={28} className="text-[#c9a84c]" />
+        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#2a5245] to-[#4d8b73] flex items-center justify-center mx-auto mb-4 shadow-lg">
+          <CheckCircle2 size={28} className="text-[#c6a94c]" />
         </div>
-        <h3 className="font-serif text-xl font-bold text-[#0f3d1e] mb-2">Message Sent!</h3>
+        <h3 className="font-serif text-xl font-bold text-[#1a332b] mb-2">Message Sent!</h3>
         <p className="text-gray-500 text-sm mb-6">
           We&apos;ll get back to you within 24 hours.
         </p>
         <button
           onClick={() => setIsSuccess(false)}
-          className="text-[#1a5c2e] font-semibold text-sm hover:text-[#c9a84c] transition-colors"
+          className="text-[#2a5245] font-semibold text-sm hover:text-[#c6a94c] transition-colors"
         >
           Send another message
         </button>

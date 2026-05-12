@@ -96,10 +96,10 @@ export default function ServicesPage() {
                         className="object-cover"
                         sizes="(max-width: 1024px) 100vw, 50vw"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0f3d1e]/60 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#1a332b]/60 via-transparent to-transparent" />
                       <div className="absolute bottom-4 left-4">
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#c9a84c] to-[#e8c96a] flex items-center justify-center shadow-lg">
-                          <Icon size={22} className="text-[#0f3d1e]" />
+                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#c6a94c] to-[#dcc875] flex items-center justify-center shadow-lg">
+                          <Icon size={22} className="text-[#1a332b]" />
                         </div>
                       </div>
                     </div>
@@ -107,22 +107,22 @@ export default function ServicesPage() {
 
                   {/* Content */}
                   <div className={!isEven ? "lg:order-1" : ""}>
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#c9a84c]/10 border border-[#c9a84c]/30 mb-4">
-                      <span className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#c6a94c]/10 border border-[#c6a94c]/30 mb-4">
+                      <span className="text-[#c6a94c] text-xs font-semibold tracking-widest uppercase">
                         Service {String(i + 1).padStart(2, "0")}
                       </span>
                     </div>
 
-                    <h2 className="font-serif text-2xl md:text-3xl font-bold text-[#0f3d1e] mb-3">
+                    <h2 className="font-serif text-2xl md:text-3xl font-bold text-[#1a332b] mb-3">
                       {service.title}
                     </h2>
-                    <div className="w-12 h-0.5 bg-gradient-to-r from-[#c9a84c] to-[#e8c96a] rounded-full mb-4" />
+                    <div className="w-12 h-0.5 bg-gradient-to-r from-[#c6a94c] to-[#dcc875] rounded-full mb-4" />
                     <p className="text-gray-600 leading-relaxed mb-6">{service.description}</p>
 
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-8">
                       {service.features.map((f) => (
                         <li key={f} className="flex items-center gap-2 text-sm text-gray-700">
-                          <CheckCircle2 size={16} className="text-[#1a5c2e] flex-shrink-0" />
+                          <CheckCircle2 size={16} className="text-[#2a5245] flex-shrink-0" />
                           {f}
                         </li>
                       ))}
@@ -133,7 +133,7 @@ export default function ServicesPage() {
                         Book This Service
                         <ArrowRight size={16} />
                       </Link>
-                      <a href="tel:+919876543210" className="flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-[#1a5c2e] text-[#1a5c2e] font-semibold text-sm hover:bg-[#1a5c2e] hover:text-white transition-all">
+                      <a href="tel:+919876543210" className="flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-[#2a5245] text-[#2a5245] font-semibold text-sm hover:bg-[#2a5245] hover:text-white transition-all">
                         <Phone size={16} />
                         Call for Details
                       </a>
@@ -147,7 +147,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Amenities */}
-      <section className="section-padding bg-gradient-to-br from-[#0f3d1e] to-[#1a5c2e]">
+      <section className="section-padding bg-gradient-to-br from-[#1a332b] to-[#2a5245]">
         <div className="container-custom">
           <SectionHeader
             badge="Amenities"
@@ -160,9 +160,9 @@ export default function ServicesPage() {
             {AMENITIES.map((amenity) => (
               <div
                 key={amenity}
-                className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 rounded-xl px-3 py-3 text-white/90 text-sm hover:bg-white/15 hover:border-[#c9a84c]/40 transition-all duration-200"
+                className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 rounded-xl px-3 py-3 text-white/90 text-sm hover:bg-white/15 hover:border-[#c6a94c]/40 transition-all duration-200"
               >
-                <CheckCircle2 size={14} className="text-[#c9a84c] flex-shrink-0" />
+                <CheckCircle2 size={14} className="text-[#c6a94c] flex-shrink-0" />
                 <span className="text-xs leading-tight">{amenity}</span>
               </div>
             ))}
@@ -171,7 +171,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Process */}
-      <section className="section-padding bg-[#fdf6e3]">
+      <section className="section-padding bg-[#f7f3ec]">
         <div className="container-custom">
           <SectionHeader
             badge="How It Works"
@@ -186,11 +186,11 @@ export default function ServicesPage() {
               { step: "03", title: "Customize Package", desc: "Work with our team to customize a package that fits your vision and budget." },
               { step: "04", title: "Celebrate!", desc: "Relax and enjoy your perfect day while our team handles every detail." },
             ].map((step) => (
-              <div key={step.step} className="relative text-center p-6 bg-white rounded-2xl border border-[#c9a84c]/15 shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#1a5c2e] to-[#2d8a4e] flex items-center justify-center mx-auto mb-4 shadow-lg">
-                  <span className="text-[#c9a84c] font-bold text-lg font-serif">{step.step}</span>
+              <div key={step.step} className="relative text-center p-6 bg-white rounded-2xl border border-[#c6a94c]/15 shadow-sm hover:shadow-md transition-shadow">
+                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#2a5245] to-[#4d8b73] flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <span className="text-[#c6a94c] font-bold text-lg font-serif">{step.step}</span>
                 </div>
-                <h3 className="font-serif font-bold text-[#0f3d1e] text-lg mb-2">{step.title}</h3>
+                <h3 className="font-serif font-bold text-[#1a332b] text-lg mb-2">{step.title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{step.desc}</p>
               </div>
             ))}

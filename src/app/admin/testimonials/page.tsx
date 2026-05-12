@@ -44,7 +44,11 @@ export default function AdminTestimonialsPage() {
     }
   };
 
-  useEffect(() => { fetchTestimonials(); }, []);
+  useEffect(() => {
+    queueMicrotask(() => {
+      void fetchTestimonials();
+    });
+  }, []);
 
   const handleSave = async () => {
     if (!form.name || !form.review) {
@@ -116,7 +120,7 @@ export default function AdminTestimonialsPage() {
           <div className="flex justify-end mb-6">
             <button
               onClick={() => setShowForm(true)}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#1a5c2e] to-[#2d8a4e] text-white font-semibold text-sm shadow-md hover:shadow-lg transition-shadow"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#2a5245] to-[#4d8b73] text-white font-semibold text-sm shadow-md hover:shadow-lg transition-shadow"
             >
               <Plus size={18} />
               Add Testimonial
@@ -171,7 +175,7 @@ export default function AdminTestimonialsPage() {
                         >
                           <Star
                             size={24}
-                            className={r <= form.rating ? "text-[#c9a84c] fill-[#c9a84c]" : "text-gray-300"}
+                            className={r <= form.rating ? "text-[#c6a94c] fill-[#c6a94c]" : "text-gray-300"}
                           />
                         </button>
                       ))}
@@ -201,7 +205,7 @@ export default function AdminTestimonialsPage() {
                   <button
                     onClick={handleSave}
                     disabled={saving}
-                    className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#1a5c2e] text-white font-semibold text-sm hover:bg-[#0f3d1e] transition-colors disabled:opacity-50"
+                    className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#2a5245] text-white font-semibold text-sm hover:bg-[#1a332b] transition-colors disabled:opacity-50"
                   >
                     {saving ? <><Loader2 size={16} className="animate-spin" />Saving...</> : "Save Testimonial"}
                   </button>
@@ -244,12 +248,12 @@ export default function AdminTestimonialsPage() {
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#1a5c2e] to-[#2d8a4e] flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#2a5245] to-[#4d8b73] flex items-center justify-center flex-shrink-0">
                         <span className="text-white font-bold text-sm">{t.name.charAt(0)}</span>
                       </div>
                       <div>
                         <div className="font-semibold text-gray-900 text-sm">{t.name}</div>
-                        <div className="text-[#c9a84c] text-xs">{t.eventType}</div>
+                        <div className="text-[#c6a94c] text-xs">{t.eventType}</div>
                       </div>
                     </div>
                     <div className="flex items-center gap-1.5">
@@ -275,7 +279,7 @@ export default function AdminTestimonialsPage() {
                       <Star
                         key={i}
                         size={14}
-                        className={i < t.rating ? "text-[#c9a84c] fill-[#c9a84c]" : "text-gray-200"}
+                        className={i < t.rating ? "text-[#c6a94c] fill-[#c6a94c]" : "text-gray-200"}
                       />
                     ))}
                   </div>

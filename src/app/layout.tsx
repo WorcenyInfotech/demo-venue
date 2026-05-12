@@ -149,8 +149,8 @@ export const viewport: Viewport = {
   maximumScale: 5,
   userScalable: true,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#1a5c2e" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f3d1e" },
+    { media: "(prefers-color-scheme: light)", color: "#2a5245" },
+    { media: "(prefers-color-scheme: dark)", color: "#1a332b" },
   ],
 };
 
@@ -207,16 +207,16 @@ export default function RootLayout({
           toastOptions={{
             duration: 4000,
             style: {
-              background: "#1a5c2e",
+              background: "#2a5245",
               color: "#fff",
-              borderRadius: "0.5rem",
+              borderRadius: "0.75rem",
               padding: "0.875rem 1.25rem",
               fontSize: "0.9375rem",
               fontWeight: "500",
-              boxShadow: "0 8px 30px rgba(0,0,0,0.15)",
+              boxShadow: "0 10px 36px rgba(28,24,20,0.12)",
             },
             success: {
-              iconTheme: { primary: "#c9a84c", secondary: "#fff" },
+              iconTheme: { primary: "#c6a94c", secondary: "#fff" },
             },
             error: {
               style: { background: "#dc2626" },

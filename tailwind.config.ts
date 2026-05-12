@@ -36,25 +36,25 @@ const config: Config = {
           900: "#78350f",
           950: "#451a03",
         },
-        cream: {
-          50: "#fefdf8",
-          100: "#fdf9ed",
-          200: "#faf0d0",
-          300: "#f5e4a8",
-          400: "#eed47a",
-          500: "#e5c04e",
-          600: "#d4a832",
+          cream: {
+          50: "#fdfcfa",
+          100: "#f7f3ec",
+          200: "#ebe4d7",
+          300: "#ddd4c4",
+          400: "#c9bba8",
+          500: "#b5a892",
+          600: "#9d8f7a",
         },
-        // Brand specific
+        // Brand specific (Verdant Pearl)
         brand: {
-          green: "#1a5c2e",
-          "green-light": "#2d8a4e",
-          "green-dark": "#0f3d1e",
-          gold: "#c9a84c",
-          "gold-light": "#e8c96a",
-          "gold-dark": "#a07830",
-          cream: "#fdf6e3",
-          white: "#ffffff",
+          green: "#2a5245",
+          "green-light": "#4d8b73",
+          "green-dark": "#1a332b",
+          gold: "#c6a94c",
+          "gold-light": "#dcc875",
+          "gold-dark": "#8b6914",
+          cream: "#f7f3ec",
+          white: "#fafaf9",
         },
       },
       fontFamily: {
@@ -67,11 +67,11 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "hero-gradient":
-          "linear-gradient(135deg, rgba(15,61,30,0.85) 0%, rgba(26,92,46,0.7) 50%, rgba(201,168,76,0.4) 100%)",
+          "linear-gradient(135deg, rgba(26,50,43,0.9) 0%, rgba(42,82,69,0.78) 50%, rgba(198,169,76,0.28) 100%)",
         "gold-gradient":
-          "linear-gradient(135deg, #c9a84c 0%, #e8c96a 50%, #c9a84c 100%)",
+          "linear-gradient(135deg, #8b6914 0%, #c6a94c 45%, #dcc875 100%)",
         "green-gradient":
-          "linear-gradient(135deg, #0f3d1e 0%, #1a5c2e 50%, #2d8a4e 100%)",
+          "linear-gradient(135deg, #1a332b 0%, #2a5245 50%, #4d8b73 100%)",
       },
       animation: {
         "fade-in": "fadeIn 0.6s ease-in-out",
@@ -109,11 +109,11 @@ const config: Config = {
         },
       },
       boxShadow: {
-        luxury: "0 20px 60px rgba(0,0,0,0.15), 0 4px 20px rgba(0,0,0,0.1)",
-        gold: "0 4px 20px rgba(201,168,76,0.3)",
-        "gold-lg": "0 8px 40px rgba(201,168,76,0.4)",
-        green: "0 4px 20px rgba(26,92,46,0.3)",
-        glass: "0 8px 32px rgba(0,0,0,0.1)",
+        luxury: "0 20px 60px rgba(28,24,20,0.12), 0 4px 16px rgba(28,24,20,0.08)",
+        gold: "0 4px 22px rgba(198,169,76,0.32)",
+        "gold-lg": "0 10px 42px rgba(198,169,76,0.42)",
+        green: "0 4px 22px rgba(42,82,69,0.32)",
+        glass: "0 10px 36px rgba(28,24,20,0.1)",
       },
       backdropBlur: {
         xs: "2px",

@@ -31,9 +31,9 @@ export default function FAQSection() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-8 p-6 rounded-2xl bg-gradient-to-br from-[#0f3d1e] to-[#1a5c2e] text-white"
+              className="mt-8 p-6 rounded-2xl bg-gradient-to-br from-[#1a332b] to-[#2a5245] text-white"
             >
-              <div className="text-[#c9a84c] font-serif text-4xl font-bold mb-2">
+              <div className="text-[#c6a94c] font-serif text-4xl font-bold mb-2">
                 Still have questions?
               </div>
               <p className="text-white/70 text-sm mb-5">
@@ -43,7 +43,7 @@ export default function FAQSection() {
               <div className="flex flex-col sm:flex-row gap-3">
                 <a
                   href="tel:+919876543210"
-                  className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-[#c9a84c] text-[#0f3d1e] font-semibold text-sm hover:bg-[#e8c96a] transition-colors"
+                  className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-[#c6a94c] text-[#1a332b] font-semibold text-sm hover:bg-[#dcc875] transition-colors"
                 >
                   Call Us Now
                 </a>
@@ -68,7 +68,7 @@ export default function FAQSection() {
                 transition={{ duration: 0.4, delay: i * 0.05 }}
                 className={`rounded-xl border transition-all duration-300 overflow-hidden ${
                   openIndex === i
-                    ? "border-[#c9a84c]/40 shadow-md"
+                    ? "border-[#c6a94c]/40 shadow-md"
                     : "border-gray-100 hover:border-gray-200"
                 }`}
               >
@@ -78,7 +78,7 @@ export default function FAQSection() {
                 >
                   <span
                     className={`font-semibold text-sm md:text-base transition-colors ${
-                      openIndex === i ? "text-[#1a5c2e]" : "text-gray-800"
+                      openIndex === i ? "text-[#2a5245]" : "text-gray-800"
                     }`}
                   >
                     {faq.question}
@@ -86,7 +86,7 @@ export default function FAQSection() {
                   <span
                     className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 ${
                       openIndex === i
-                        ? "bg-[#c9a84c] text-[#0f3d1e]"
+                        ? "bg-[#c6a94c] text-[#1a332b]"
                         : "bg-gray-100 text-gray-500"
                     }`}
                   >

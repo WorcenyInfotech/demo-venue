@@ -43,8 +43,8 @@ export default function GalleryGrid({ images }: GalleryGridProps) {
             onClick={() => setActiveCategory(cat.id)}
             className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
               activeCategory === cat.id
-                ? "bg-gradient-to-r from-[#1a5c2e] to-[#2d8a4e] text-white shadow-md"
-                : "bg-white border border-gray-200 text-gray-600 hover:border-[#1a5c2e] hover:text-[#1a5c2e]"
+                ? "bg-gradient-to-r from-[#2a5245] to-[#4d8b73] text-white shadow-md"
+                : "bg-white border border-gray-200 text-gray-600 hover:border-[#2a5245] hover:text-[#2a5245]"
             }`}
           >
             {cat.label}
@@ -79,7 +79,7 @@ export default function GalleryGrid({ images }: GalleryGridProps) {
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
               />
               {/* Hover overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0f3d1e]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1a332b]/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
                   <ZoomIn size={18} className="text-white" />

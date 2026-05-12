@@ -58,17 +58,17 @@ export default function ServicesSection() {
               <motion.div
                 key={service.id}
                 variants={cardVariants}
-                className="group relative overflow-hidden rounded-2xl border border-gray-100 bg-white hover:border-[#c9a84c]/30 hover:shadow-xl transition-all duration-400 p-6"
+                className="group relative overflow-hidden rounded-2xl border border-gray-100 bg-white hover:border-[#c6a94c]/30 hover:shadow-xl transition-all duration-400 p-6"
               >
                 {/* Top accent line */}
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#1a5c2e] to-[#c9a84c] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-400 origin-left" />
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#2a5245] to-[#c6a94c] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-400 origin-left" />
 
                 {/* Icon */}
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#1a5c2e] to-[#2d8a4e] flex items-center justify-center mb-5 shadow-lg group-hover:shadow-[0_8px_25px_rgba(26,92,46,0.3)] transition-shadow duration-300">
-                  <Icon size={24} className="text-[#c9a84c]" />
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#2a5245] to-[#4d8b73] flex items-center justify-center mb-5 shadow-lg group-hover:shadow-[0_8px_25px_rgba(42,82,69,0.3)] transition-shadow duration-300">
+                  <Icon size={24} className="text-[#c6a94c]" />
                 </div>
 
-                <h3 className="font-serif font-bold text-xl text-[#0f3d1e] mb-3 group-hover:text-[#1a5c2e] transition-colors">
+                <h3 className="font-serif font-bold text-xl text-[#1a332b] mb-3 group-hover:text-[#2a5245] transition-colors">
                   {service.title}
                 </h3>
 
@@ -83,12 +83,12 @@ export default function ServicesSection() {
                       key={feature}
                       className="flex items-center gap-2 text-sm text-gray-600"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] flex-shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#c6a94c] flex-shrink-0" />
                       {feature}
                     </li>
                   ))}
                   {service.features.length > 3 && (
-                    <li className="text-xs text-[#c9a84c] font-medium pl-3.5">
+                    <li className="text-xs text-[#c6a94c] font-medium pl-3.5">
                       +{service.features.length - 3} more features
                     </li>
                   )}
@@ -96,7 +96,7 @@ export default function ServicesSection() {
 
                 <Link
                   href="/services"
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1a5c2e] hover:text-[#c9a84c] transition-colors group/link"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#2a5245] hover:text-[#c6a94c] transition-colors group/link"
                 >
                   Learn More
                   <ArrowRight

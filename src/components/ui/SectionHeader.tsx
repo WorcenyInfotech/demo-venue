@@ -40,20 +40,20 @@ export default function SectionHeader({
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.1 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#c9a84c]/40 bg-[#c9a84c]/10 mb-4"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#c6a94c]/40 bg-[#c6a94c]/10 mb-4"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c]" />
-          <span className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#c6a94c]" />
+          <span className="text-[#c6a94c] text-xs font-semibold tracking-widest uppercase">
             {badge}
           </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c]" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#c6a94c]" />
         </motion.div>
       )}
 
       {/* Title */}
       <h2
-        className={`font-serif text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4 ${
-          light ? "text-white" : "text-[#0f3d1e]"
+        className={`font-serif text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4 text-balance px-1 sm:px-0 ${
+          light ? "text-white" : "text-[#1a332b]"
         }`}
       >
         {title}{" "}
@@ -64,7 +64,7 @@ export default function SectionHeader({
 
       {/* Gold divider */}
       <div
-        className={`h-0.5 w-16 bg-gradient-to-r from-[#c9a84c] to-[#e8c96a] rounded-full mb-4 ${
+        className={`h-0.5 w-16 bg-gradient-to-r from-[#c6a94c] to-[#dcc875] rounded-full mb-4 ${
           align === "center" ? "mx-auto" : ""
         }`}
       />

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { NAV_LINKS, SITE_CONFIG } from "@/utils/constants";
 
 export default function Navbar() {
@@ -26,9 +26,9 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  // Close menu on route change
+  // Close menu on route change (defer setState to satisfy cascading-render lint)
   useEffect(() => {
-    setIsOpen(false);
+    queueMicrotask(() => setIsOpen(false));
   }, [pathname]);
 
   // Prevent body scroll when menu open
@@ -58,15 +58,15 @@ export default function Navbar() {
             isScrolled ? "max-h-0 opacity-0" : "max-h-10 opacity-100"
           }`}
         >
-          <div className="bg-[#0f3d1e] text-white/80 text-xs py-1.5">
-            <div className="container-custom flex items-center justify-between">
-              <span className="hidden sm:block">
+          <div className="bg-[#1a332b] text-white/80 text-[11px] sm:text-xs py-1.5">
+            <div className="container-custom flex flex-wrap items-center justify-end sm:justify-between gap-x-4 gap-y-1">
+              <span className="hidden sm:inline order-2 sm:order-none">
                 ✨ Surat&apos;s Most Luxurious Wedding Venue &amp; Event Farm
               </span>
-              <div className="flex items-center gap-4 ml-auto">
+              <div className="flex flex-wrap items-center justify-end gap-x-3 gap-y-1 sm:gap-4 w-full sm:w-auto sm:ml-auto">
                 <a
                   href={`tel:${SITE_CONFIG.phone}`}
-                  className="flex items-center gap-1 hover:text-[#c9a84c] transition-colors"
+                  className="flex items-center gap-1 hover:text-[#c6a94c] transition-colors"
                 >
                   <Phone size={11} />
                   <span>{SITE_CONFIG.phone}</span>
@@ -84,22 +84,22 @@ export default function Navbar() {
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group">
               <div className="relative">
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#1a5c2e] to-[#2d8a4e] flex items-center justify-center shadow-lg group-hover:shadow-[0_4px_20px_rgba(26,92,46,0.4)] transition-shadow">
-                  <span className="text-[#c9a84c] font-bold text-lg md:text-xl font-serif">G</span>
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#2a5245] to-[#4d8b73] flex items-center justify-center shadow-lg group-hover:shadow-[0_4px_20px_rgba(42,82,69,0.4)] transition-shadow">
+                  <span className="text-[#c6a94c] font-bold text-lg md:text-xl font-serif">G</span>
                 </div>
-                <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-[#c9a84c]" />
+                <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-[#c6a94c]" />
               </div>
               <div>
                 <div
                   className={`font-serif font-bold text-lg md:text-xl leading-tight transition-colors duration-300 ${
-                    isScrolled ? "text-[#1a5c2e]" : "text-white"
+                    isScrolled ? "text-[#2a5245]" : "text-white"
                   }`}
                 >
                   Green Land Farm
                 </div>
                 <div
                   className={`text-[10px] md:text-xs tracking-widest uppercase transition-colors duration-300 ${
-                    isScrolled ? "text-[#c9a84c]" : "text-[#c9a84c]/90"
+                    isScrolled ? "text-[#c6a94c]" : "text-[#c6a94c]/90"
                   }`}
                 >
                   Luxury Wedding Venue
@@ -116,17 +116,17 @@ export default function Navbar() {
                   className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 group ${
                     isActive(link.href)
                       ? isScrolled
-                        ? "text-[#1a5c2e]"
-                        : "text-[#c9a84c]"
+                        ? "text-[#2a5245]"
+                        : "text-[#c6a94c]"
                       : isScrolled
-                      ? "text-gray-700 hover:text-[#1a5c2e]"
+                      ? "text-gray-700 hover:text-[#2a5245]"
                       : "text-white/90 hover:text-white"
                   }`}
                 >
                   {link.label}
                   {/* Active indicator */}
                   <span
-                    className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-[#c9a84c] rounded-full transition-all duration-300 ${
+                    className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-[#c6a94c] rounded-full transition-all duration-300 ${
                       isActive(link.href) ? "w-6" : "w-0 group-hover:w-4"
                     }`}
                   />
@@ -138,7 +138,7 @@ export default function Navbar() {
             <div className="flex items-center gap-3">
               <Link
                 href="/contact#inquiry"
-                className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 bg-gradient-to-r from-[#c9a84c] to-[#e8c96a] text-[#0f3d1e] hover:shadow-[0_4px_20px_rgba(201,168,76,0.5)] hover:-translate-y-0.5"
+                className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 bg-gradient-to-r from-[#c6a94c] to-[#dcc875] text-[#1a332b] hover:shadow-[0_4px_20px_rgba(198,169,76,0.5)] hover:-translate-y-0.5"
               >
                 Book Inquiry
               </Link>
@@ -180,15 +180,15 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-[300px] bg-white z-50 lg:hidden shadow-2xl flex flex-col"
+              className="fixed top-0 right-0 bottom-0 w-[min(100vw-1rem,320px)] max-w-full bg-white z-50 lg:hidden shadow-2xl flex flex-col"
             >
               {/* Drawer header */}
-              <div className="flex items-center justify-between p-5 border-b border-gray-100 bg-gradient-to-r from-[#0f3d1e] to-[#1a5c2e]">
+              <div className="flex items-center justify-between p-5 border-b border-gray-100 bg-gradient-to-r from-[#1a332b] to-[#2a5245]">
                 <div>
                   <div className="text-white font-serif font-bold text-lg">
                     Green Land Farm
                   </div>
-                  <div className="text-[#c9a84c] text-xs tracking-widest uppercase">
+                  <div className="text-[#c6a94c] text-xs tracking-widest uppercase">
                     Luxury Wedding Venue
                   </div>
                 </div>
@@ -213,13 +213,13 @@ export default function Navbar() {
                       href={link.href}
                       className={`flex items-center justify-between px-6 py-4 text-base font-medium border-b border-gray-50 transition-colors ${
                         isActive(link.href)
-                          ? "text-[#1a5c2e] bg-green-50"
-                          : "text-gray-700 hover:text-[#1a5c2e] hover:bg-gray-50"
+                          ? "text-[#2a5245] bg-green-50"
+                          : "text-gray-700 hover:text-[#2a5245] hover:bg-gray-50"
                       }`}
                     >
                       <span>{link.label}</span>
                       {isActive(link.href) && (
-                        <span className="w-2 h-2 rounded-full bg-[#c9a84c]" />
+                        <span className="w-2 h-2 rounded-full bg-[#c6a94c]" />
                       )}
                     </Link>
                   </motion.div>
@@ -236,7 +236,7 @@ export default function Navbar() {
                 </Link>
                 <a
                   href={`tel:${SITE_CONFIG.phone}`}
-                  className="flex items-center justify-center gap-2 w-full py-3 rounded-lg border-2 border-[#1a5c2e] text-[#1a5c2e] font-semibold text-sm hover:bg-green-50 transition-colors"
+                  className="flex items-center justify-center gap-2 w-full py-3 rounded-lg border-2 border-[#2a5245] text-[#2a5245] font-semibold text-sm hover:bg-green-50 transition-colors"
                 >
                   <Phone size={16} />
                   {SITE_CONFIG.phone}

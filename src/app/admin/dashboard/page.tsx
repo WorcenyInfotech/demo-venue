@@ -61,7 +61,7 @@ export default function DashboardPage() {
           title: "New Inquiries",
           value: stats.newInquiries,
           icon: TrendingUp,
-          color: "text-[#c9a84c]",
+          color: "text-[#c6a94c]",
           bgColor: "bg-amber-50",
           trend: { value: 8, label: "awaiting response" },
         },
@@ -76,7 +76,7 @@ export default function DashboardPage() {
           title: "Confirmed",
           value: stats.confirmedInquiries,
           icon: CheckCircle2,
-          color: "text-[#1a5c2e]",
+          color: "text-[#2a5245]",
           bgColor: "bg-green-50",
           trend: { value: 5, label: "bookings secured" },
         },
@@ -145,7 +145,7 @@ export default function DashboardPage() {
               { label: "View All Inquiries", href: "/admin/inquiries", icon: MessageSquare, color: "bg-blue-500" },
               { label: "Manage Gallery", href: "/admin/gallery", icon: Images, color: "bg-pink-500" },
               { label: "Testimonials", href: "/admin/testimonials", icon: Star, color: "bg-amber-500" },
-              { label: "Manage Banners", href: "/admin/banners", icon: Calendar, color: "bg-[#1a5c2e]" },
+              { label: "Manage Banners", href: "/admin/banners", icon: Calendar, color: "bg-[#2a5245]" },
             ].map((action) => {
               const Icon = action.icon;
               return (
@@ -173,7 +173,7 @@ export default function DashboardPage() {
               </div>
               <Link
                 href="/admin/inquiries"
-                className="flex items-center gap-1.5 text-sm font-semibold text-[#1a5c2e] hover:text-[#c9a84c] transition-colors"
+                className="flex items-center gap-1.5 text-sm font-semibold text-[#2a5245] hover:text-[#c6a94c] transition-colors"
               >
                 View All
                 <ArrowRight size={14} />
@@ -203,7 +203,7 @@ export default function DashboardPage() {
                 {stats?.recentInquiries.map((inquiry) => (
                   <div key={inquiry._id} className="flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors">
                     {/* Avatar */}
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#1a5c2e] to-[#2d8a4e] flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#2a5245] to-[#4d8b73] flex items-center justify-center flex-shrink-0">
                       <span className="text-white font-bold text-sm">
                         {inquiry.name?.charAt(0)?.toUpperCase() || "?"}
                       </span>

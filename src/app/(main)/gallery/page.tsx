@@ -63,7 +63,7 @@ export default function GalleryPage() {
       </section>
 
       {/* Video section placeholder */}
-      <section className="section-padding bg-[#fdf6e3]">
+      <section className="section-padding bg-[#f7f3ec]">
         <div className="container-custom">
           <SectionHeader
             badge="Video Gallery"
@@ -75,22 +75,22 @@ export default function GalleryPage() {
             {[1, 2, 3].map((i) => (
               <div
                 key={i}
-                className="relative aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-[#0f3d1e] to-[#1a5c2e] flex items-center justify-center group cursor-pointer hover:shadow-xl transition-shadow"
+                className="relative aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-[#1a332b] to-[#2a5245] flex items-center justify-center group cursor-pointer hover:shadow-xl transition-shadow"
               >
                 <div className="text-center text-white">
                   <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/40 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
                     <div className="w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-l-[18px] border-l-white ml-1" />
                   </div>
                   <p className="text-white/80 text-sm font-medium">Wedding Film {i}</p>
-                  <p className="text-[#c9a84c] text-xs mt-1">Green Land Farm</p>
+                  <p className="text-[#c6a94c] text-xs mt-1">Green Land Farm</p>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0f3d1e]/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1a332b]/40 to-transparent" />
               </div>
             ))}
           </div>
           <p className="text-center text-gray-400 text-sm mt-6">
             Full video gallery available on our{" "}
-            <a href="https://youtube.com/@greenlandfarm" target="_blank" rel="noopener noreferrer" className="text-[#1a5c2e] font-semibold hover:text-[#c9a84c] transition-colors">
+            <a href="https://youtube.com/@greenlandfarm" target="_blank" rel="noopener noreferrer" className="text-[#2a5245] font-semibold hover:text-[#c6a94c] transition-colors">
               YouTube Channel
             </a>
           </p>

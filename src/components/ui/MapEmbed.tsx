@@ -32,7 +32,7 @@ export default function MapEmbed({
   return (
     <div className={`relative ${className}`}>
       {/* Map container */}
-      <div className={`relative ${height} rounded-2xl overflow-hidden border border-[#c9a84c]/20 shadow-xl bg-gray-100`}>
+      <div className={`relative ${height} rounded-2xl overflow-hidden border border-[#c6a94c]/20 shadow-xl bg-gray-100`}>
         {/* OpenStreetMap embed — completely free, no API key */}
         <iframe
           src={VENUE.staticMapUrl}
@@ -47,13 +47,13 @@ export default function MapEmbed({
 
         {/* Overlay pin card */}
         <div className="absolute bottom-4 left-4 right-4 sm:left-auto sm:right-4 sm:w-72">
-          <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-[#c9a84c]/20">
+          <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-[#c6a94c]/20">
             <div className="flex items-start gap-3">
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#1a5c2e] to-[#2d8a4e] flex items-center justify-center flex-shrink-0">
-                <MapPin size={16} className="text-[#c9a84c]" />
+              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#2a5245] to-[#4d8b73] flex items-center justify-center flex-shrink-0">
+                <MapPin size={16} className="text-[#c6a94c]" />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="font-serif font-bold text-[#0f3d1e] text-sm">{VENUE.name}</div>
+                <div className="font-serif font-bold text-[#1a332b] text-sm">{VENUE.name}</div>
                 <div className="text-gray-500 text-xs mt-0.5 leading-relaxed">{VENUE.address}</div>
               </div>
             </div>
@@ -63,7 +63,7 @@ export default function MapEmbed({
                 href={VENUE.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-gradient-to-r from-[#1a5c2e] to-[#2d8a4e] text-white text-xs font-semibold hover:shadow-md transition-shadow"
+                className="mt-3 flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-gradient-to-r from-[#2a5245] to-[#4d8b73] text-white text-xs font-semibold hover:shadow-md transition-shadow"
               >
                 <Navigation size={13} />
                 Open in Google Maps
@@ -95,11 +95,11 @@ export function GetDirectionsButton({
 
   const variantClasses = {
     primary:
-      "bg-gradient-to-r from-[#1a5c2e] to-[#2d8a4e] text-white hover:shadow-[0_4px_20px_rgba(26,92,46,0.4)] hover:-translate-y-0.5",
+      "bg-gradient-to-r from-[#2a5245] to-[#4d8b73] text-white hover:shadow-[0_4px_20px_rgba(42,82,69,0.4)] hover:-translate-y-0.5",
     outline:
-      "border-2 border-[#1a5c2e] text-[#1a5c2e] hover:bg-[#1a5c2e] hover:text-white",
+      "border-2 border-[#2a5245] text-[#2a5245] hover:bg-[#2a5245] hover:text-white",
     ghost:
-      "text-[#1a5c2e] hover:text-[#c9a84c] underline-offset-2 hover:underline",
+      "text-[#2a5245] hover:text-[#c6a94c] underline-offset-2 hover:underline",
   };
 
   return (

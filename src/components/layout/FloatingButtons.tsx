@@ -26,7 +26,13 @@ export default function FloatingButtons() {
   );
 
   return (
-    <div className="fixed bottom-6 right-4 z-50 flex flex-col items-end gap-3 no-print">
+    <div
+      className="fixed z-50 flex flex-col items-end gap-3 no-print"
+      style={{
+        bottom: "max(1.25rem, env(safe-area-inset-bottom))",
+        right: "max(1rem, env(safe-area-inset-right))",
+      }}
+    >
       {/* Scroll to top */}
       <AnimatePresence>
         {showScrollTop && (
@@ -35,7 +41,7 @@ export default function FloatingButtons() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.5 }}
             onClick={scrollToTop}
-            className="w-10 h-10 rounded-full bg-white border border-gray-200 shadow-lg flex items-center justify-center text-[#1a5c2e] hover:bg-[#1a5c2e] hover:text-white hover:border-[#1a5c2e] transition-all duration-200"
+            className="w-10 h-10 rounded-full bg-white border border-gray-200 shadow-lg flex items-center justify-center text-[#2a5245] hover:bg-[#2a5245] hover:text-white hover:border-[#2a5245] transition-all duration-200"
             aria-label="Scroll to top"
           >
             <ArrowUp size={18} />
@@ -54,7 +60,7 @@ export default function FloatingButtons() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.8 }}
               transition={{ delay: 0.05 }}
-              className="flex items-center gap-2 bg-[#1a5c2e] text-white px-4 py-2.5 rounded-full shadow-lg hover:bg-[#0f3d1e] transition-colors text-sm font-medium"
+              className="flex items-center gap-2 bg-[#2a5245] text-white px-4 py-2.5 rounded-full shadow-lg hover:bg-[#1a332b] transition-colors text-sm font-medium"
               aria-label="Call us"
             >
               <Phone size={16} />
@@ -85,7 +91,7 @@ export default function FloatingButtons() {
         onClick={() => setIsExpanded(!isExpanded)}
         animate={{ rotate: isExpanded ? 45 : 0 }}
         transition={{ duration: 0.2 }}
-        className="w-14 h-14 rounded-full bg-gradient-to-br from-[#c9a84c] to-[#e8c96a] text-[#0f3d1e] shadow-[0_4px_20px_rgba(201,168,76,0.5)] flex items-center justify-center hover:shadow-[0_6px_30px_rgba(201,168,76,0.6)] transition-shadow animate-pulse-gold"
+        className="w-14 h-14 rounded-full bg-gradient-to-br from-[#c6a94c] to-[#dcc875] text-[#1a332b] shadow-[0_4px_20px_rgba(198,169,76,0.5)] flex items-center justify-center hover:shadow-[0_6px_30px_rgba(198,169,76,0.6)] transition-shadow animate-pulse-gold"
         aria-label="Contact options"
       >
         {isExpanded ? (

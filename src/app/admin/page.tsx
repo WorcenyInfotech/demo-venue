@@ -49,7 +49,7 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0f3d1e] via-[#1a5c2e] to-[#0f3d1e] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#1a332b] via-[#2a5245] to-[#1a332b] flex items-center justify-center p-4">
       {/* Background pattern */}
       <div
         className="absolute inset-0 opacity-[0.04]"
@@ -67,14 +67,14 @@ export default function AdminLoginPage() {
         {/* Card */}
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-br from-[#0f3d1e] to-[#1a5c2e] p-8 text-center">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#c9a84c] to-[#e8c96a] flex items-center justify-center mx-auto mb-4 shadow-lg">
-              <span className="text-[#0f3d1e] font-bold text-2xl font-serif">G</span>
+          <div className="bg-gradient-to-br from-[#1a332b] to-[#2a5245] p-8 text-center">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#c6a94c] to-[#dcc875] flex items-center justify-center mx-auto mb-4 shadow-lg">
+              <span className="text-[#1a332b] font-bold text-2xl font-serif">G</span>
             </div>
             <h1 className="text-white font-serif font-bold text-2xl mb-1">
               Green Land Farm
             </h1>
-            <p className="text-[#c9a84c] text-xs tracking-widest uppercase">
+            <p className="text-[#c6a94c] text-xs tracking-widest uppercase">
               Admin Panel
             </p>
           </div>
@@ -82,7 +82,7 @@ export default function AdminLoginPage() {
           {/* Form */}
           <div className="p-8">
             <div className="flex items-center gap-2 mb-6">
-              <Shield size={18} className="text-[#1a5c2e]" />
+              <Shield size={18} className="text-[#2a5245]" />
               <h2 className="font-semibold text-gray-800">Secure Admin Login</h2>
             </div>
 

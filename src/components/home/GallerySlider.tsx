@@ -67,7 +67,7 @@ export default function GallerySlider() {
 
   return (
     <>
-      <section className="section-padding bg-gradient-to-b from-[#0f3d1e] to-[#1a5c2e] overflow-hidden">
+      <section className="section-padding bg-gradient-to-b from-[#1a332b] to-[#2a5245] overflow-hidden">
         <div className="container-custom">
           <SectionHeader
             badge="Our Gallery"
@@ -83,8 +83,8 @@ export default function GallerySlider() {
             onMouseEnter={() => setIsAutoPlaying(false)}
             onMouseLeave={() => setIsAutoPlaying(true)}
           >
-            {/* Desktop: 3-card slider */}
-            <div className="hidden md:flex items-center justify-center gap-4 h-[420px]">
+            {/* Desktop / tablet: 3-card slider — fluid widths to avoid horizontal overflow */}
+            <div className="hidden md:flex items-center justify-center gap-2 lg:gap-4 w-full max-w-6xl mx-auto min-h-[280px] lg:min-h-[420px] px-1">
               {getVisibleSlides().map(({ id, url, title, category, offset }) => (
                 <motion.div
                   key={id}
@@ -94,8 +94,10 @@ export default function GallerySlider() {
                     zIndex: offset === 0 ? 10 : 5,
                   }}
                   transition={{ duration: 0.4 }}
-                  className={`relative rounded-2xl overflow-hidden cursor-pointer flex-shrink-0 ${
-                    offset === 0 ? "w-[480px] h-[400px]" : "w-[320px] h-[340px]"
+                  className={`group relative rounded-2xl overflow-hidden cursor-pointer min-w-0 ${
+                    offset === 0
+                      ? "w-[38%] max-w-[480px] aspect-[6/5] max-h-[400px]"
+                      : "w-[26%] max-w-[320px] aspect-[16/17] max-h-[340px]"
                   }`}
                   onClick={() => {
                     if (offset === 0) setLightbox(id);
@@ -120,7 +122,7 @@ export default function GallerySlider() {
                   {offset === 0 && (
                     <>
                       <div className="absolute bottom-4 left-4 right-4">
-                        <span className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase">
+                        <span className="text-[#c6a94c] text-xs font-semibold tracking-widest uppercase">
                           {category}
                         </span>
                         <h3 className="text-white font-serif font-semibold text-lg mt-1">
@@ -157,7 +159,7 @@ export default function GallerySlider() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <div className="absolute bottom-4 left-4">
-                    <span className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase">
+                    <span className="text-[#c6a94c] text-xs font-semibold tracking-widest uppercase">
                       {GALLERY_ITEMS[current].category}
                     </span>
                     <h3 className="text-white font-serif font-semibold text-lg mt-1">
@@ -171,14 +173,14 @@ export default function GallerySlider() {
             {/* Navigation arrows */}
             <button
               onClick={prev}
-              className="absolute left-0 md:-left-5 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-[#c9a84c] hover:border-[#c9a84c] transition-all duration-200 z-20"
+              className="absolute left-0 md:-left-5 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-[#c6a94c] hover:border-[#c6a94c] transition-all duration-200 z-20"
               aria-label="Previous"
             >
               <ChevronLeft size={20} />
             </button>
             <button
               onClick={next}
-              className="absolute right-0 md:-right-5 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-[#c9a84c] hover:border-[#c9a84c] transition-all duration-200 z-20"
+              className="absolute right-0 md:-right-5 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-[#c6a94c] hover:border-[#c6a94c] transition-all duration-200 z-20"
               aria-label="Next"
             >
               <ChevronRight size={20} />
@@ -193,7 +195,7 @@ export default function GallerySlider() {
                 onClick={() => setCurrent(i)}
                 className={`transition-all duration-300 rounded-full ${
                   i === current
-                    ? "w-6 h-2 bg-[#c9a84c]"
+                    ? "w-6 h-2 bg-[#c6a94c]"
                     : "w-2 h-2 bg-white/30 hover:bg-white/60"
                 }`}
                 aria-label={`Go to image ${i + 1}`}
@@ -205,7 +207,7 @@ export default function GallerySlider() {
           <div className="text-center">
             <Link
               href="/gallery"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold hover:bg-[#c9a84c] hover:border-[#c9a84c] hover:text-[#0f3d1e] transition-all duration-300"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold hover:bg-[#c6a94c] hover:border-[#c6a94c] hover:text-[#1a332b] transition-all duration-300"
             >
               View Full Gallery
               <ArrowRight size={18} />

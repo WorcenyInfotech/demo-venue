@@ -50,7 +50,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative h-screen min-h-[600px] max-h-[900px] overflow-hidden">
+    <section className="relative h-[min(100svh,900px)] min-h-[600px] overflow-hidden">
       {/* Background slides */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -73,8 +73,8 @@ export default function HeroSection() {
       </AnimatePresence>
 
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0f3d1e]/90 via-[#1a5c2e]/70 to-[#0f3d1e]/50" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0f3d1e]/80 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#1a332b]/90 via-[#2a5245]/70 to-[#1a332b]/50" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#1a332b]/80 via-transparent to-transparent" />
 
       {/* Decorative pattern overlay */}
       <div
@@ -93,13 +93,13 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#c9a84c]/20 border border-[#c9a84c]/40 backdrop-blur-sm mb-6"
+              className="inline-flex items-center gap-2 px-3 py-2 sm:px-4 rounded-full bg-[#c6a94c]/20 border border-[#c6a94c]/40 backdrop-blur-sm mb-6 max-w-full"
             >
-              <Star size={12} className="text-[#c9a84c] fill-[#c9a84c]" />
-              <span className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase">
+              <Star size={12} className="text-[#c6a94c] fill-[#c6a94c] shrink-0" />
+              <span className="text-[#c6a94c] text-[10px] sm:text-xs font-semibold tracking-wider sm:tracking-widest uppercase leading-snug">
                 Surat&apos;s #1 Luxury Wedding Venue
               </span>
-              <Star size={12} className="text-[#c9a84c] fill-[#c9a84c]" />
+              <Star size={12} className="text-[#c6a94c] fill-[#c6a94c] shrink-0 hidden xs:inline" />
             </motion.div>
 
             {/* Heading */}
@@ -116,7 +116,7 @@ export default function HeroSection() {
                   <span
                     style={{
                       background:
-                        "linear-gradient(135deg, #c9a84c 0%, #e8c96a 50%, #c9a84c 100%)",
+                        "linear-gradient(135deg, #c6a94c 0%, #dcc875 50%, #c6a94c 100%)",
                       WebkitBackgroundClip: "text",
                       WebkitTextFillColor: "transparent",
                       backgroundClip: "text",
@@ -172,7 +172,7 @@ export default function HeroSection() {
                 { value: "5★", label: "Rating" },
               ].map((stat) => (
                 <div key={stat.label} className="flex items-center gap-2">
-                  <span className="text-[#c9a84c] font-bold text-xl font-serif">
+                  <span className="text-[#c6a94c] font-bold text-xl font-serif">
                     {stat.value}
                   </span>
                   <span className="text-white/60 text-sm">{stat.label}</span>
@@ -194,7 +194,7 @@ export default function HeroSection() {
             }}
             className={`transition-all duration-300 rounded-full ${
               i === currentSlide
-                ? "w-8 h-2 bg-[#c9a84c]"
+                ? "w-8 h-2 bg-[#c6a94c]"
                 : "w-2 h-2 bg-white/40 hover:bg-white/70"
             }`}
             aria-label={`Go to slide ${i + 1}`}

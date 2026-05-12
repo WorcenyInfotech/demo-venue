@@ -80,10 +80,10 @@ export default function InquiryForm() {
         animate={{ opacity: 1, scale: 1 }}
         className="text-center py-12 px-6"
       >
-        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#1a5c2e] to-[#2d8a4e] flex items-center justify-center mx-auto mb-6 shadow-lg">
-          <CheckCircle2 size={36} className="text-[#c9a84c]" />
+        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#2a5245] to-[#4d8b73] flex items-center justify-center mx-auto mb-6 shadow-lg">
+          <CheckCircle2 size={36} className="text-[#c6a94c]" />
         </div>
-        <h3 className="font-serif text-2xl font-bold text-[#0f3d1e] mb-3">
+        <h3 className="font-serif text-2xl font-bold text-[#1a332b] mb-3">
           Inquiry Submitted!
         </h3>
         <p className="text-gray-600 mb-2">
@@ -104,7 +104,7 @@ export default function InquiryForm() {
               step2Form.reset();
               setStep1Data(null);
             }}
-            className="px-6 py-3 rounded-lg border-2 border-[#1a5c2e] text-[#1a5c2e] font-semibold text-sm hover:bg-[#1a5c2e] hover:text-white transition-all"
+            className="px-6 py-3 rounded-lg border-2 border-[#2a5245] text-[#2a5245] font-semibold text-sm hover:bg-[#2a5245] hover:text-white transition-all"
           >
             Submit Another Inquiry
           </button>
@@ -122,18 +122,18 @@ export default function InquiryForm() {
             <div
               className={`w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ${
                 s === step
-                  ? "bg-gradient-to-br from-[#1a5c2e] to-[#2d8a4e] text-white shadow-md"
+                  ? "bg-gradient-to-br from-[#2a5245] to-[#4d8b73] text-white shadow-md"
                   : s < step
-                  ? "bg-[#c9a84c] text-[#0f3d1e]"
+                  ? "bg-[#c6a94c] text-[#1a332b]"
                   : "bg-gray-100 text-gray-400"
               }`}
             >
               {s < step ? <CheckCircle2 size={18} /> : s}
             </div>
-            <span className={`text-sm font-medium hidden sm:block ${s === step ? "text-[#1a5c2e]" : "text-gray-400"}`}>
+            <span className={`text-sm font-medium hidden sm:block ${s === step ? "text-[#2a5245]" : "text-gray-400"}`}>
               {s === 1 ? "Contact Info" : "Event Details"}
             </span>
-            {s < 2 && <div className={`w-12 h-0.5 ${step > 1 ? "bg-[#c9a84c]" : "bg-gray-200"} transition-colors`} />}
+            {s < 2 && <div className={`w-12 h-0.5 ${step > 1 ? "bg-[#c6a94c]" : "bg-gray-200"} transition-colors`} />}
           </div>
         ))}
       </div>
@@ -305,7 +305,7 @@ export default function InquiryForm() {
               <button
                 type="button"
                 onClick={() => setStep(1)}
-                className="flex items-center gap-2 px-5 py-3 rounded-lg border-2 border-gray-200 text-gray-600 font-semibold text-sm hover:border-[#1a5c2e] hover:text-[#1a5c2e] transition-all"
+                className="flex items-center gap-2 px-5 py-3 rounded-lg border-2 border-gray-200 text-gray-600 font-semibold text-sm hover:border-[#2a5245] hover:text-[#2a5245] transition-all"
               >
                 <ArrowLeft size={16} />
                 Back

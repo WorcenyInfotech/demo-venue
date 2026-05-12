@@ -27,7 +27,7 @@ export default function TestimonialsSection() {
   }, [isAutoPlaying, next]);
 
   return (
-    <section className="section-padding bg-[#fdf6e3] overflow-hidden">
+    <section className="section-padding bg-[#f7f3ec] overflow-hidden">
       <div className="container-custom">
         <SectionHeader
           badge="Testimonials"
@@ -42,8 +42,8 @@ export default function TestimonialsSection() {
           onMouseLeave={() => setIsAutoPlaying(true)}
         >
           {/* Large quote icon */}
-          <div className="absolute -top-4 left-8 text-[#c9a84c]/20">
-            <Quote size={80} className="fill-[#c9a84c]/20" />
+          <div className="absolute -top-4 left-8 text-[#c6a94c]/20">
+            <Quote size={80} className="fill-[#c6a94c]/20" />
           </div>
 
           {/* Testimonial card */}
@@ -54,7 +54,7 @@ export default function TestimonialsSection() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="relative bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-[#c9a84c]/15"
+              className="relative bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-[#c6a94c]/15"
             >
               {/* Stars */}
               <div className="flex items-center gap-1 mb-6">
@@ -63,7 +63,7 @@ export default function TestimonialsSection() {
                     <Star
                       key={i}
                       size={20}
-                      className="text-[#c9a84c] fill-[#c9a84c]"
+                      className="text-[#c6a94c] fill-[#c6a94c]"
                     />
                   )
                 )}
@@ -77,24 +77,24 @@ export default function TestimonialsSection() {
               {/* Author */}
               <div className="flex items-center gap-4">
                 {/* Avatar placeholder */}
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#1a5c2e] to-[#2d8a4e] flex items-center justify-center flex-shrink-0 shadow-md">
+                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#2a5245] to-[#4d8b73] flex items-center justify-center flex-shrink-0 shadow-md">
                   <span className="text-white font-bold text-xl font-serif">
                     {DEFAULT_TESTIMONIALS[current].name.charAt(0)}
                   </span>
                 </div>
                 <div>
-                  <div className="font-serif font-bold text-[#0f3d1e] text-lg">
+                  <div className="font-serif font-bold text-[#1a332b] text-lg">
                     {DEFAULT_TESTIMONIALS[current].name}
                   </div>
-                  <div className="text-[#c9a84c] text-sm font-medium">
+                  <div className="text-[#c6a94c] text-sm font-medium">
                     {DEFAULT_TESTIMONIALS[current].eventType}
                   </div>
                 </div>
 
                 {/* Decorative gold accent */}
                 <div className="ml-auto hidden sm:block">
-                  <div className="w-12 h-12 rounded-full bg-[#c9a84c]/10 border border-[#c9a84c]/20 flex items-center justify-center">
-                    <Quote size={20} className="text-[#c9a84c]" />
+                  <div className="w-12 h-12 rounded-full bg-[#c6a94c]/10 border border-[#c6a94c]/20 flex items-center justify-center">
+                    <Quote size={20} className="text-[#c6a94c]" />
                   </div>
                 </div>
               </div>
@@ -105,7 +105,7 @@ export default function TestimonialsSection() {
           <div className="flex items-center justify-between mt-8">
             <button
               onClick={prev}
-              className="w-11 h-11 rounded-full border-2 border-[#1a5c2e]/20 flex items-center justify-center text-[#1a5c2e] hover:bg-[#1a5c2e] hover:text-white hover:border-[#1a5c2e] transition-all duration-200"
+              className="w-11 h-11 rounded-full border-2 border-[#2a5245]/20 flex items-center justify-center text-[#2a5245] hover:bg-[#2a5245] hover:text-white hover:border-[#2a5245] transition-all duration-200"
               aria-label="Previous testimonial"
             >
               <ChevronLeft size={20} />
@@ -119,7 +119,7 @@ export default function TestimonialsSection() {
                   onClick={() => setCurrent(i)}
                   className={`transition-all duration-300 rounded-full ${
                     i === current
-                      ? "w-8 h-2.5 bg-[#c9a84c]"
+                      ? "w-8 h-2.5 bg-[#c6a94c]"
                       : "w-2.5 h-2.5 bg-gray-300 hover:bg-gray-400"
                   }`}
                   aria-label={`Go to testimonial ${i + 1}`}
@@ -129,7 +129,7 @@ export default function TestimonialsSection() {
 
             <button
               onClick={next}
-              className="w-11 h-11 rounded-full border-2 border-[#1a5c2e]/20 flex items-center justify-center text-[#1a5c2e] hover:bg-[#1a5c2e] hover:text-white hover:border-[#1a5c2e] transition-all duration-200"
+              className="w-11 h-11 rounded-full border-2 border-[#2a5245]/20 flex items-center justify-center text-[#2a5245] hover:bg-[#2a5245] hover:text-white hover:border-[#2a5245] transition-all duration-200"
               aria-label="Next testimonial"
             >
               <ChevronRight size={20} />
@@ -151,8 +151,8 @@ export default function TestimonialsSection() {
               onClick={() => setCurrent(i)}
               className={`p-4 rounded-xl text-left transition-all duration-200 border ${
                 i === current
-                  ? "bg-[#1a5c2e] border-[#1a5c2e] text-white shadow-lg"
-                  : "bg-white border-gray-100 hover:border-[#c9a84c]/30 hover:shadow-md"
+                  ? "bg-[#2a5245] border-[#2a5245] text-white shadow-lg"
+                  : "bg-white border-gray-100 hover:border-[#c6a94c]/30 hover:shadow-md"
               }`}
             >
               <div className="flex items-center gap-1 mb-2">
@@ -160,13 +160,13 @@ export default function TestimonialsSection() {
                   <Star
                     key={j}
                     size={12}
-                    className={i === current ? "text-[#c9a84c] fill-[#c9a84c]" : "text-[#c9a84c] fill-[#c9a84c]"}
+                    className={i === current ? "text-[#c6a94c] fill-[#c6a94c]" : "text-[#c6a94c] fill-[#c6a94c]"}
                   />
                 ))}
               </div>
               <div
                 className={`font-semibold text-sm mb-0.5 ${
-                  i === current ? "text-white" : "text-[#0f3d1e]"
+                  i === current ? "text-white" : "text-[#1a332b]"
                 }`}
               >
                 {t.name.split(" & ")[0]}

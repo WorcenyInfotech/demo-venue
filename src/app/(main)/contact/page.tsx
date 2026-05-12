@@ -28,7 +28,7 @@ const CONTACT_DETAILS = [
     title: "Call Us",
     lines: [SITE_CONFIG.phone, SITE_CONFIG.phone2],
     action: { label: "Call Now", href: `tel:${SITE_CONFIG.phone}` },
-    color: "from-[#1a5c2e] to-[#2d8a4e]",
+    color: "from-[#2a5245] to-[#4d8b73]",
   },
   {
     icon: MessageCircle,
@@ -45,7 +45,7 @@ const CONTACT_DETAILS = [
     title: "Email Us",
     lines: [SITE_CONFIG.email, SITE_CONFIG.email2],
     action: { label: "Send Email", href: `mailto:${SITE_CONFIG.email}` },
-    color: "from-[#c9a84c] to-[#a07830]",
+    color: "from-[#c6a94c] to-[#8b6914]",
   },
   {
     icon: MapPin,
@@ -55,7 +55,7 @@ const CONTACT_DETAILS = [
       label: "Get Directions",
       href: "https://maps.google.com/?q=Green+Land+Farm+Surat",
     },
-    color: "from-[#0f3d1e] to-[#1a5c2e]",
+    color: "from-[#1a332b] to-[#2a5245]",
   },
 ];
 
@@ -80,12 +80,12 @@ export default function ContactPage() {
               return (
                 <div
                   key={item.title}
-                  className="group p-6 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-lg hover:border-[#c9a84c]/30 transition-all duration-300 hover:-translate-y-1"
+                  className="group p-6 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-lg hover:border-[#c6a94c]/30 transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-4 shadow-md group-hover:scale-110 transition-transform`}>
                     <Icon size={22} className="text-white" />
                   </div>
-                  <h3 className="font-serif font-bold text-[#0f3d1e] text-lg mb-2">{item.title}</h3>
+                  <h3 className="font-serif font-bold text-[#1a332b] text-lg mb-2">{item.title}</h3>
                   {item.lines.map((line, i) => (
                     <p key={i} className="text-gray-600 text-sm">{line}</p>
                   ))}
@@ -93,7 +93,7 @@ export default function ContactPage() {
                     href={item.action.href}
                     target={item.action.href.startsWith("http") ? "_blank" : undefined}
                     rel={item.action.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="inline-flex items-center gap-1.5 mt-3 text-sm font-semibold text-[#1a5c2e] hover:text-[#c9a84c] transition-colors"
+                    className="inline-flex items-center gap-1.5 mt-3 text-sm font-semibold text-[#2a5245] hover:text-[#c6a94c] transition-colors"
                   >
                     <ExternalLink size={13} />
                     {item.action.label}
@@ -106,38 +106,38 @@ export default function ContactPage() {
       </section>
 
       {/* Main content: Inquiry + Contact forms */}
-      <section id="inquiry" className="section-padding bg-[#fdf6e3]">
+      <section id="inquiry" className="section-padding bg-[#f7f3ec]">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
             {/* Inquiry Form */}
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c9a84c]/10 border border-[#c9a84c]/30 mb-5">
-                <Calendar size={14} className="text-[#c9a84c]" />
-                <span className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase">Book Your Date</span>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c6a94c]/10 border border-[#c6a94c]/30 mb-5">
+                <Calendar size={14} className="text-[#c6a94c]" />
+                <span className="text-[#c6a94c] text-xs font-semibold tracking-widest uppercase">Book Your Date</span>
               </div>
-              <h2 className="font-serif text-2xl md:text-3xl font-bold text-[#0f3d1e] mb-2">
+              <h2 className="font-serif text-2xl md:text-3xl font-bold text-[#1a332b] mb-2">
                 Send an Inquiry
               </h2>
-              <div className="w-12 h-0.5 bg-gradient-to-r from-[#c9a84c] to-[#e8c96a] rounded-full mb-4" />
+              <div className="w-12 h-0.5 bg-gradient-to-r from-[#c6a94c] to-[#dcc875] rounded-full mb-4" />
               <p className="text-gray-500 text-sm mb-8 leading-relaxed">
                 Fill out our 2-step inquiry form and our team will get back to you within 24 hours with availability and package details.
               </p>
 
-              <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-[#c9a84c]/15">
+              <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-[#c6a94c]/15">
                 <InquiryForm />
               </div>
             </div>
 
             {/* Contact Form + Info */}
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1a5c2e]/10 border border-[#1a5c2e]/20 mb-5">
-                <MessageCircle size={14} className="text-[#1a5c2e]" />
-                <span className="text-[#1a5c2e] text-xs font-semibold tracking-widest uppercase">General Enquiry</span>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#2a5245]/10 border border-[#2a5245]/20 mb-5">
+                <MessageCircle size={14} className="text-[#2a5245]" />
+                <span className="text-[#2a5245] text-xs font-semibold tracking-widest uppercase">General Enquiry</span>
               </div>
-              <h2 className="font-serif text-2xl md:text-3xl font-bold text-[#0f3d1e] mb-2">
+              <h2 className="font-serif text-2xl md:text-3xl font-bold text-[#1a332b] mb-2">
                 Send a Message
               </h2>
-              <div className="w-12 h-0.5 bg-gradient-to-r from-[#1a5c2e] to-[#2d8a4e] rounded-full mb-4" />
+              <div className="w-12 h-0.5 bg-gradient-to-r from-[#2a5245] to-[#4d8b73] rounded-full mb-4" />
               <p className="text-gray-500 text-sm mb-8 leading-relaxed">
                 Have a general question? Send us a message and we&apos;ll respond promptly.
               </p>
@@ -147,9 +147,9 @@ export default function ContactPage() {
               </div>
 
               {/* Working hours */}
-              <div className="mt-6 p-5 rounded-xl bg-gradient-to-br from-[#0f3d1e] to-[#1a5c2e] text-white">
+              <div className="mt-6 p-5 rounded-xl bg-gradient-to-br from-[#1a332b] to-[#2a5245] text-white">
                 <div className="flex items-center gap-3 mb-3">
-                  <Clock size={18} className="text-[#c9a84c]" />
+                  <Clock size={18} className="text-[#c6a94c]" />
                   <span className="font-semibold">Working Hours</span>
                 </div>
                 <div className="grid grid-cols-2 gap-2 text-sm text-white/70">
@@ -180,7 +180,7 @@ export default function ContactPage() {
               href="https://www.google.com/maps/search/Green+Land+Farm+Surat+Gujarat"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-[#1a5c2e] text-[#1a5c2e] font-semibold text-sm hover:bg-[#1a5c2e] hover:text-white transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-[#2a5245] text-[#2a5245] font-semibold text-sm hover:bg-[#2a5245] hover:text-white transition-all"
             >
               <MapPin size={15} />
               View on Google Maps

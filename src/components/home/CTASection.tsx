@@ -15,11 +15,11 @@ export default function CTASection() {
   return (
     <section className="relative py-20 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0f3d1e] via-[#1a5c2e] to-[#0f3d1e]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#1a332b] via-[#2a5245] to-[#1a332b]" />
 
       {/* Decorative circles */}
-      <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-[#c9a84c]/5 -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-[#c9a84c]/5 translate-y-1/2 -translate-x-1/2" />
+      <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-[#c6a94c]/5 -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-[#c6a94c]/5 translate-y-1/2 -translate-x-1/2" />
 
       {/* Pattern overlay */}
       <div
@@ -38,9 +38,9 @@ export default function CTASection() {
           className="text-center max-w-3xl mx-auto"
         >
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c9a84c]/20 border border-[#c9a84c]/40 mb-6">
-            <Calendar size={14} className="text-[#c9a84c]" />
-            <span className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c6a94c]/20 border border-[#c6a94c]/40 mb-6">
+            <Calendar size={14} className="text-[#c6a94c]" />
+            <span className="text-[#c6a94c] text-xs font-semibold tracking-widest uppercase">
               Limited Dates Available
             </span>
           </div>
@@ -49,7 +49,7 @@ export default function CTASection() {
             Ready to Plan Your{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #c9a84c 0%, #e8c96a 50%, #c9a84c 100%)",
+                background: "linear-gradient(135deg, #c6a94c 0%, #dcc875 50%, #c6a94c 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",

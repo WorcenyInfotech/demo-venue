@@ -28,7 +28,7 @@ export default function PageHero({
   badge,
 }: PageHeroProps) {
   return (
-    <section className="relative h-[380px] md:h-[460px] overflow-hidden flex items-end">
+    <section className="relative h-[300px] sm:h-[380px] md:h-[460px] overflow-hidden flex items-end">
       {/* Background image */}
       <Image
         src={image}
@@ -40,8 +40,8 @@ export default function PageHero({
       />
 
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0f3d1e]/92 via-[#1a5c2e]/80 to-[#0f3d1e]/60" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0f3d1e]/80 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#1a332b]/92 via-[#2a5245]/80 to-[#1a332b]/60" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#1a332b]/80 via-transparent to-transparent" />
 
       {/* Content */}
       <div className="relative z-10 container-custom w-full pb-12 md:pb-16">
@@ -54,7 +54,7 @@ export default function PageHero({
             className="flex items-center gap-1.5 text-white/60 text-sm mb-4"
             aria-label="Breadcrumb"
           >
-            <Link href="/" className="hover:text-[#c9a84c] transition-colors flex items-center gap-1">
+            <Link href="/" className="hover:text-[#c6a94c] transition-colors flex items-center gap-1">
               <Home size={13} />
               <span>Home</span>
             </Link>
@@ -62,11 +62,11 @@ export default function PageHero({
               <span key={i} className="flex items-center gap-1.5">
                 <ChevronRight size={13} className="text-white/30" />
                 {crumb.href ? (
-                  <Link href={crumb.href} className="hover:text-[#c9a84c] transition-colors">
+                  <Link href={crumb.href} className="hover:text-[#c6a94c] transition-colors">
                     {crumb.label}
                   </Link>
                 ) : (
-                  <span className="text-[#c9a84c]">{crumb.label}</span>
+                  <span className="text-[#c6a94c]">{crumb.label}</span>
                 )}
               </span>
             ))}
@@ -79,10 +79,10 @@ export default function PageHero({
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c9a84c]/20 border border-[#c9a84c]/40 mb-4"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c6a94c]/20 border border-[#c6a94c]/40 mb-4"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c]" />
-            <span className="text-[#c9a84c] text-xs font-semibold tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#c6a94c]" />
+            <span className="text-[#c6a94c] text-xs font-semibold tracking-widest uppercase">
               {badge}
             </span>
           </motion.div>
@@ -99,7 +99,7 @@ export default function PageHero({
           {titleHighlight && (
             <span
               style={{
-                background: "linear-gradient(135deg, #c9a84c 0%, #e8c96a 50%, #c9a84c 100%)",
+                background: "linear-gradient(135deg, #c6a94c 0%, #dcc875 50%, #c6a94c 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -115,7 +115,7 @@ export default function PageHero({
           initial={{ width: 0 }}
           animate={{ width: 64 }}
           transition={{ delay: 0.6, duration: 0.5 }}
-          className="h-0.5 bg-gradient-to-r from-[#c9a84c] to-[#e8c96a] rounded-full mb-3"
+          className="h-0.5 bg-gradient-to-r from-[#c6a94c] to-[#dcc875] rounded-full mb-3"
         />
 
         {/* Subtitle */}

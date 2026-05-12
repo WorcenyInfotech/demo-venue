@@ -190,11 +190,11 @@ export default function InquiriesPage() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         className={`flex items-center gap-3 p-4 cursor-pointer hover:bg-gray-50 transition-colors ${
-                          selectedInquiry?._id === inquiry._id ? "bg-green-50 border-l-2 border-[#1a5c2e]" : ""
+                          selectedInquiry?._id === inquiry._id ? "bg-green-50 border-l-2 border-[#2a5245]" : ""
                         }`}
                         onClick={() => setSelectedInquiry(inquiry)}
                       >
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#1a5c2e] to-[#2d8a4e] flex items-center justify-center flex-shrink-0">
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#2a5245] to-[#4d8b73] flex items-center justify-center flex-shrink-0">
                           <span className="text-white font-bold text-sm">
                             {inquiry.name?.charAt(0)?.toUpperCase() || "?"}
                           </span>
@@ -255,7 +255,7 @@ export default function InquiriesPage() {
                   {/* Header */}
                   <div className="flex items-start justify-between mb-5">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#1a5c2e] to-[#2d8a4e] flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#2a5245] to-[#4d8b73] flex items-center justify-center">
                         <span className="text-white font-bold text-lg">
                           {selectedInquiry.name?.charAt(0)?.toUpperCase()}
                         </span>
@@ -316,8 +316,8 @@ export default function InquiriesPage() {
                           disabled={selectedInquiry.status === s || updatingId === selectedInquiry._id}
                           className={`py-2 px-3 rounded-lg text-xs font-semibold capitalize transition-all border ${
                             selectedInquiry.status === s
-                              ? "bg-[#1a5c2e] text-white border-[#1a5c2e]"
-                              : "bg-white text-gray-600 border-gray-200 hover:border-[#1a5c2e] hover:text-[#1a5c2e]"
+                              ? "bg-[#2a5245] text-white border-[#2a5245]"
+                              : "bg-white text-gray-600 border-gray-200 hover:border-[#2a5245] hover:text-[#2a5245]"
                           } disabled:opacity-50 disabled:cursor-not-allowed`}
                         >
                           {s}
@@ -330,14 +330,14 @@ export default function InquiriesPage() {
                   <div className="mt-4 flex gap-2">
                     <a
                       href={`tel:${selectedInquiry.mobile}`}
-                      className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-lg bg-[#1a5c2e] text-white text-xs font-semibold hover:bg-[#0f3d1e] transition-colors"
+                      className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-lg bg-[#2a5245] text-white text-xs font-semibold hover:bg-[#1a332b] transition-colors"
                     >
                       <Phone size={13} />
                       Call
                     </a>
                     <a
                       href={`mailto:${selectedInquiry.email}`}
-                      className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-lg bg-[#c9a84c] text-[#0f3d1e] text-xs font-semibold hover:bg-[#e8c96a] transition-colors"
+                      className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-lg bg-[#c6a94c] text-[#1a332b] text-xs font-semibold hover:bg-[#dcc875] transition-colors"
                     >
                       <Mail size={13} />
                       Email
