@@ -166,7 +166,7 @@ export default function RootLayout({
     <html
       lang="en"
       dir="ltr"
-      className={`${inter.variable} ${playfair.variable} ${cormorant.variable}`}
+      className={`${inter.variable} ${playfair.variable} ${cormorant.variable} bg-[#fffef9]`}
     >
       <head>
         {/* DNS prefetch for performance */}

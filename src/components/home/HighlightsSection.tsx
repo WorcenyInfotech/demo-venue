@@ -9,105 +9,123 @@ import { VENUE_STATS } from "@/utils/constants";
 const HIGHLIGHTS = [
   {
     icon: Trees,
-    title: "5-Acre Green Farm",
+    title: "5-Acre Paradise",
     description:
-      "Sprawling lush green lawns and manicured gardens perfect for outdoor ceremonies and photo sessions.",
-    color: "from-green-500 to-green-700",
-    bg: "bg-green-50",
-    border: "border-green-100",
+      "Sprawling manicured gardens and lush green lawns creating the perfect backdrop for your dream celebration.",
+    accent: "#2a5245",
   },
   {
     icon: Users,
-    title: "1000+ Guest Capacity",
+    title: "1000+ Guests",
     description:
-      "Multiple indoor and outdoor spaces that can be configured to host intimate gatherings or grand celebrations.",
-    color: "from-[#c6a94c] to-[#8b6914]",
-    bg: "bg-amber-50",
-    border: "border-amber-100",
+      "Versatile indoor and outdoor spaces designed to host intimate gatherings or grand royal celebrations.",
+    accent: "#d4af37",
   },
   {
     icon: Utensils,
     title: "Premium Catering",
     description:
-      "World-class in-house catering with multi-cuisine menus crafted by experienced chefs for every palate.",
-    color: "from-orange-500 to-orange-700",
-    bg: "bg-orange-50",
-    border: "border-orange-100",
+      "World-class multi-cuisine culinary experiences crafted by master chefs to delight every palate.",
+    accent: "#c77b4a",
   },
   {
     icon: Award,
-    title: "Award-Winning Venue",
+    title: "Award-Winning",
     description:
-      "Recognized as Surat's best wedding venue with multiple awards for excellence in hospitality and events.",
-    color: "from-purple-500 to-purple-700",
-    bg: "bg-purple-50",
-    border: "border-purple-100",
+      "Recognized as Gujarat's finest wedding venue with multiple accolades for hospitality excellence.",
+    accent: "#8b6914",
   },
   {
     icon: MapPin,
     title: "Prime Location",
     description:
-      "Conveniently located on the Surat-Navsari Highway with easy access and ample parking for all guests.",
-    color: "from-blue-500 to-blue-700",
-    bg: "bg-blue-50",
-    border: "border-blue-100",
+      "Strategically located on Surat-Navsari Highway with convenient access and ample parking facilities.",
+    accent: "#4a7c9b",
   },
   {
     icon: Clock,
-    title: "24/7 Event Support",
+    title: "24/7 Support",
     description:
-      "Dedicated event coordinators available round the clock to ensure every detail of your event is perfect.",
-    color: "from-rose-500 to-rose-700",
-    bg: "bg-rose-50",
-    border: "border-rose-100",
+      "Dedicated event coordinators available round the clock ensuring every detail is perfectly executed.",
+    accent: "#9b4a6a",
   },
 ];
 
 const containerVariants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.1 },
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5 },
+    transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] },
   },
 };
 
 export default function HighlightsSection() {
   return (
-    <section id="highlights" className="section-padding bg-[#f7f3ec]">
-      <div className="container-custom">
+    <section id="highlights" className="section-padding relative overflow-hidden">
+      {/* Background with gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#faf8f5] via-white to-[#faf8f5]" />
+
+      {/* Decorative pattern */}
+      <div className="absolute inset-0 pattern-overlay" />
+
+      {/* Decorative circles */}
+      <div className="absolute top-20 -left-32 w-64 h-64 rounded-full bg-[#d4af37]/5 blur-3xl" />
+      <div className="absolute bottom-20 -right-32 w-96 h-96 rounded-full bg-[#2a5245]/5 blur-3xl" />
+
+      <div className="container-custom relative z-10">
         <SectionHeader
           badge="Why Choose Us"
-          title="Surat's Most Prestigious"
-          titleHighlight="Wedding Destination"
-          subtitle="Every detail at Green Land Farm is crafted to perfection — from our lush green surroundings to our world-class amenities and dedicated team."
+          title="Experience Unparalleled"
+          titleHighlight="Luxury & Elegance"
+          subtitle="Every detail at Green Land Farm is crafted to perfection, creating an unforgettable experience for you and your guests."
         />
 
-        {/* Stats row */}
+        {/* Stats row with glassmorphism */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16"
+          transition={{ duration: 0.8 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-20"
         >
-          {VENUE_STATS.map((stat) => (
-            <div
+          {VENUE_STATS.map((stat, i) => (
+            <motion.div
               key={stat.label}
-              className="text-center p-6 rounded-2xl bg-white border border-[#c6a94c]/15 shadow-sm hover:shadow-md hover:border-[#c6a94c]/30 transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="group relative text-center p-6 md:p-8 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2"
+              style={{
+                background: "rgba(255, 255, 255, 0.9)",
+                backdropFilter: "blur(20px)",
+                boxShadow: "0 4px 30px rgba(0,0,0,0.05)",
+                border: "1px solid rgba(212, 175, 55, 0.15)",
+              }}
             >
-              <div className="font-serif text-3xl md:text-4xl font-bold text-[#2a5245] mb-1">
-                <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+              {/* Hover glow effect */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#d4af37]/10 to-transparent" />
+
+              {/* Top accent line */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#d4af37] via-[#e8c966] to-[#d4af37] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center" />
+
+              <div className="relative">
+                <div className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#1a2e28] mb-2">
+                  <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                </div>
+                <div className="text-[#64605a] text-sm md:text-base font-medium">
+                  {stat.label}
+                </div>
               </div>
-              <div className="text-gray-500 text-sm font-medium">{stat.label}</div>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
 
@@ -116,8 +134,8 @@ export default function HighlightsSection() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
         >
           {HIGHLIGHTS.map((item) => {
             const Icon = item.icon;
@@ -125,21 +143,58 @@ export default function HighlightsSection() {
               <motion.div
                 key={item.title}
                 variants={cardVariants}
-                className={`group p-6 rounded-2xl ${item.bg} border ${item.border} hover:shadow-lg transition-all duration-300 hover:-translate-y-1`}
+                className="group relative p-7 md:p-8 rounded-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+                style={{
+                  background: "rgba(255, 255, 255, 0.95)",
+                  backdropFilter: "blur(20px)",
+                  boxShadow: "0 4px 30px rgba(0,0,0,0.04)",
+                  border: "1px solid rgba(212, 175, 55, 0.1)",
+                }}
               >
-                {/* Icon */}
+                {/* Hover overlay */}
                 <div
-                  className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-4 shadow-md group-hover:scale-110 transition-transform duration-300`}
-                >
-                  <Icon size={22} className="text-white" />
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500"
+                  style={{
+                    background: `linear-gradient(135deg, ${item.accent}08 0%, transparent 60%)`,
+                  }}
+                />
+
+                {/* Top accent line */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-1 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
+                  style={{
+                    background: `linear-gradient(90deg, ${item.accent}, ${item.accent}80, transparent)`,
+                  }}
+                />
+
+                {/* Icon */}
+                <div className="relative mb-6">
+                  <div
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg"
+                    style={{
+                      background: `linear-gradient(135deg, ${item.accent} 0%, ${item.accent}cc 100%)`,
+                      boxShadow: `0 8px 24px ${item.accent}30`,
+                    }}
+                  >
+                    <Icon size={26} className="text-white" />
+                  </div>
                 </div>
 
-                <h3 className="font-serif font-semibold text-lg text-[#1a332b] mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {item.description}
-                </p>
+                {/* Content */}
+                <div className="relative">
+                  <h3 className="font-serif font-bold text-xl text-[#1a2e28] mb-3 group-hover:text-[#2a5245] transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-[#64605a] text-sm md:text-base leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+
+                {/* Corner accent */}
+                <div
+                  className="absolute -bottom-8 -right-8 w-24 h-24 rounded-full opacity-0 group-hover:opacity-10 transition-opacity duration-500"
+                  style={{ background: item.accent }}
+                />
               </motion.div>
             );
           })}

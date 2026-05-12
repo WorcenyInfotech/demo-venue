@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Phone, MessageCircle, Calendar } from "lucide-react";
+import { Phone, MessageCircle, Calendar, Sparkles, ArrowRight } from "lucide-react";
 import { SITE_CONFIG } from "@/utils/constants";
 import { getWhatsAppUrl } from "@/utils/helpers";
 
@@ -13,92 +13,176 @@ export default function CTASection() {
   );
 
   return (
-    <section className="relative py-20 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#1a332b] via-[#2a5245] to-[#1a332b]" />
-
-      {/* Decorative circles */}
-      <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-[#c6a94c]/5 -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-[#c6a94c]/5 translate-y-1/2 -translate-x-1/2" />
-
-      {/* Pattern overlay */}
+    <section className="relative py-24 md:py-32 overflow-hidden">
+      {/* Background gradient */}
       <div
-        className="absolute inset-0 opacity-[0.04]"
+        className="absolute inset-0"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c9a84c' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E")`,
+          background: "linear-gradient(135deg, #0f1c18 0%, #1a2e28 30%, #2a5245 70%, #1a2e28 100%)",
         }}
       />
 
+      {/* Decorative pattern */}
+      <div className="absolute inset-0 mandala-pattern" />
+
+      {/* Animated gradient orbs */}
+      <motion.div
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.1, 0.15, 0.1],
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full -translate-y-1/2 translate-x-1/3"
+        style={{
+          background: "radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%)",
+        }}
+      />
+      <motion.div
+        animate={{
+          scale: [1, 1.3, 1],
+          opacity: [0.08, 0.12, 0.08],
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full translate-y-1/2 -translate-x-1/3"
+        style={{
+          background: "radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 70%)",
+        }}
+      />
+
+      {/* Content */}
       <div className="container-custom relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto"
+          transition={{ duration: 0.8 }}
+          className="text-center max-w-4xl mx-auto"
         >
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c6a94c]/20 border border-[#c6a94c]/40 mb-6">
-            <Calendar size={14} className="text-[#c6a94c]" />
-            <span className="text-[#c6a94c] text-xs font-semibold tracking-widest uppercase">
-              Limited Dates Available
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full mb-8 backdrop-blur-sm"
+            style={{
+              background: "linear-gradient(135deg, rgba(212,175,55,0.2) 0%, rgba(212,175,55,0.05) 100%)",
+              border: "1px solid rgba(212,175,55,0.3)",
+            }}
+          >
+            <Calendar size={16} className="text-[#d4af37]" />
+            <span className="text-[#d4af37] text-sm font-semibold tracking-[0.1em] uppercase">
+              Limited Dates Available for 2025
             </span>
-          </div>
+          </motion.div>
 
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
-            Ready to Plan Your{" "}
+          {/* Heading */}
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.7 }}
+            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+          >
+            Begin Your{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #c6a94c 0%, #dcc875 50%, #c6a94c 100%)",
+                background: "linear-gradient(135deg, #d4af37 0%, #e8c966 40%, #d4af37 60%, #b8941f 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
               }}
             >
-              Dream Wedding?
+              Forever Story
             </span>
-          </h2>
+          </motion.h2>
 
-          <p className="text-white/70 text-lg mb-10 leading-relaxed">
-            Contact us today to check availability, get a customized quote, and
-            begin planning the most memorable day of your life at Green Land Farm.
-          </p>
+          {/* Divider */}
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: 100 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="h-0.5 mx-auto rounded-full mb-8"
+            style={{
+              background: "linear-gradient(90deg, transparent, #d4af37, #e8c966, #d4af37, transparent)",
+            }}
+          />
 
-          {/* Action buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6 }}
+            className="text-white/70 text-lg md:text-xl lg:text-2xl mb-12 leading-relaxed max-w-3xl mx-auto"
+          >
+            Contact us today to check availability, receive a customized quote, and begin planning the most memorable celebration of your life.
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.7 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5"
+          >
             <Link
               href="/contact#inquiry"
-              className="btn-primary text-base px-8 py-4 w-full sm:w-auto"
+              className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 bg-gradient-to-r from-[#d4af37] to-[#e8c966] text-[#1a2e28] shadow-[0_8px_32px_rgba(212,175,55,0.4)] hover:shadow-[0_12px_48px_rgba(212,175,55,0.5)] hover:-translate-y-1"
             >
-              <Calendar size={18} />
-              Book Inquiry Now
+              <Calendar size={20} />
+              <span>Book Your Date</span>
+              <Sparkles size={16} className="group-hover:animate-pulse" />
             </Link>
 
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-[#25D366] text-white font-semibold text-base hover:bg-[#1da851] transition-colors shadow-lg w-full sm:w-auto"
+              className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 bg-[#25D366] text-white shadow-[0_8px_32px_rgba(37,211,102,0.3)] hover:shadow-[0_12px_40px_rgba(37,211,102,0.4)] hover:-translate-y-1"
             >
-              <MessageCircle size={18} />
-              WhatsApp Us
+              <MessageCircle size={20} />
+              <span>WhatsApp Us</span>
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </a>
 
             <a
               href={`tel:${SITE_CONFIG.phone}`}
-              className="flex items-center justify-center gap-2 px-8 py-4 rounded-lg border-2 border-white/30 text-white font-semibold text-base hover:bg-white/10 hover:border-white/50 transition-all w-full sm:w-auto"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 bg-white/10 backdrop-blur-sm text-white border border-white/25 hover:bg-white/20 hover:border-white/40 hover:-translate-y-1"
             >
-              <Phone size={18} />
-              Call Now
+              <Phone size={20} />
+              <span>Call Now</span>
             </a>
-          </div>
+          </motion.div>
 
-          {/* Trust note */}
-          <p className="mt-8 text-white/40 text-sm">
-            ✓ Free site visit &nbsp;·&nbsp; ✓ No booking fee &nbsp;·&nbsp; ✓ Flexible packages
-          </p>
+          {/* Trust indicators */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.9 }}
+            className="mt-10 text-white/40 text-sm flex flex-wrap items-center justify-center gap-x-6 gap-y-2"
+          >
+            <span className="flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37]" />
+              Free Site Visit
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37]" />
+              No Booking Fees
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37]" />
+              Flexible Packages
+            </span>
+          </motion.p>
         </motion.div>
       </div>
+
+      {/* Bottom decorative border */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4af37]/30 to-transparent" />
     </section>
   );
 }
