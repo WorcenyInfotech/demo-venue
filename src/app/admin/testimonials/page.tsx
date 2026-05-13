@@ -110,102 +110,105 @@ export default function AdminTestimonialsPage() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-cream/30">
       <AdminSidebar />
 
-      <div className="flex-1 lg:ml-64 min-w-0">
-        <AdminHeader title="Testimonials" subtitle={`${testimonials.length} testimonials`} />
+      <div className="pt-16 lg:pl-64 lg:pt-0">
+        <AdminHeader title="Testimonials" subtitle={`${testimonials.length} reviews`} />
 
-        <div className="p-6">
-          <div className="flex justify-end mb-6">
+        <div className="px-4 py-6 sm:px-6 lg:px-8">
+          <div className="mb-6 flex items-center justify-between">
+            <h2 className="text-lg font-semibold text-ink">Manage Testimonials</h2>
             <button
               onClick={() => setShowForm(true)}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#2a5245] to-[#4d8b73] text-white font-semibold text-sm shadow-md hover:shadow-lg transition-shadow"
+              className="inline-flex items-center gap-2 rounded-xl bg-rose-gold px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-rose-gold-deep"
             >
-              <Plus size={18} />
+              <Plus size={16} />
               Add Testimonial
             </button>
           </div>
 
           {/* Add form modal */}
           {showForm && (
-            <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 p-4 backdrop-blur-sm">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-white rounded-2xl shadow-2xl w-full max-w-lg p-6"
+                className="w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-luxury"
               >
-                <div className="flex items-center justify-between mb-5">
-                  <h3 className="font-serif font-bold text-lg text-gray-900">Add Testimonial</h3>
-                  <button onClick={() => setShowForm(false)} className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200">
-                    <X size={16} />
+                <div className="flex items-center justify-between border-b border-rose-gold/10 bg-cream/50 px-6 py-4">
+                  <h3 className="font-display text-lg font-semibold text-ink">Add Testimonial</h3>
+                  <button onClick={() => setShowForm(false)} className="text-ink/50 hover:text-rose-gold">
+                    <X size={20} />
                   </button>
                 </div>
 
-                <div className="space-y-4">
+                <div className="p-6 space-y-4">
                   <div>
-                    <label className="form-label">Couple / Person Name *</label>
+                    <label className="mb-1.5 block text-sm font-semibold text-ink">Couple / Person Name *</label>
                     <input
                       type="text"
                       placeholder="e.g. Priya & Rahul Sharma"
                       value={form.name}
                       onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-                      className="form-input text-sm"
+                      className="w-full rounded-xl border border-rose-gold/20 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-rose-gold focus:ring-2 focus:ring-rose-gold/20"
                     />
                   </div>
                   <div>
-                    <label className="form-label">Event Type</label>
+                    <label className="mb-1.5 block text-sm font-semibold text-ink">Event Type</label>
                     <select
                       value={form.eventType}
                       onChange={(e) => setForm((f) => ({ ...f, eventType: e.target.value }))}
-                      className="form-input text-sm"
+                      className="w-full rounded-xl border border-rose-gold/20 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-rose-gold focus:ring-2 focus:ring-rose-gold/20"
                     >
                       {EVENT_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
                     </select>
                   </div>
                   <div>
-                    <label className="form-label">Rating</label>
-                    <div className="flex items-center gap-2">
-                      {[1, 2, 3, 4, 5].map((r) => (
-                        <button
-                          key={r}
-                          type="button"
-                          onClick={() => setForm((f) => ({ ...f, rating: r }))}
-                          className="transition-transform hover:scale-110"
-                        >
-                          <Star
-                            size={24}
-                            className={r <= form.rating ? "text-[#c6a94c] fill-[#c6a94c]" : "text-gray-300"}
-                          />
-                        </button>
-                      ))}
-                      <span className="text-gray-500 text-sm ml-1">{form.rating}/5</span>
+                    <label className="mb-1.5 block text-sm font-semibold text-ink">Rating</label>
+                    <div className="flex items-center gap-4 rounded-xl border border-rose-gold/20 bg-blush/30 px-4 py-2.5">
+                      <div className="flex gap-1">
+                        {[1, 2, 3, 4, 5].map((r) => (
+                          <button
+                            key={r}
+                            type="button"
+                            onClick={() => setForm((f) => ({ ...f, rating: r }))}
+                            className="transition hover:scale-110"
+                          >
+                            <Star
+                              size={24}
+                              className={r <= form.rating ? "fill-rose-gold text-rose-gold" : "text-rose-gold/30"}
+                            />
+                          </button>
+                        ))}
+                      </div>
+                      <span className="text-sm font-medium text-ink/60">{form.rating}/5</span>
                     </div>
                   </div>
                   <div>
-                    <label className="form-label">Review *</label>
+                    <label className="mb-1.5 block text-sm font-semibold text-ink">Review *</label>
                     <textarea
                       rows={4}
                       placeholder="Write the testimonial review..."
                       value={form.review}
                       onChange={(e) => setForm((f) => ({ ...f, review: e.target.value }))}
-                      className="form-input text-sm resize-none"
+                      className="w-full rounded-xl border border-rose-gold/20 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-rose-gold focus:ring-2 focus:ring-rose-gold/20"
                     />
-                    <p className="text-gray-400 text-xs mt-1">{form.review.length}/1000</p>
+                    <p className="mt-1 text-right text-xs text-ink/50">{form.review.length}/1000</p>
                   </div>
                 </div>
 
-                <div className="flex gap-3 mt-5">
+                <div className="flex items-center justify-end gap-3 border-t border-rose-gold/10 bg-cream/50 px-6 py-4">
                   <button
                     onClick={() => setShowForm(false)}
-                    className="flex-1 py-2.5 rounded-xl border border-gray-200 text-gray-600 font-semibold text-sm hover:bg-gray-50 transition-colors"
+                    className="rounded-xl px-4 py-2 text-sm font-semibold text-ink/70 hover:text-ink"
                   >
                     Cancel
                   </button>
                   <button
                     onClick={handleSave}
                     disabled={saving}
-                    className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#2a5245] text-white font-semibold text-sm hover:bg-[#1a332b] transition-colors disabled:opacity-50"
+                    className="flex items-center gap-2 rounded-xl bg-rose-gold px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-rose-gold-deep disabled:opacity-60"
                   >
                     {saving ? <><Loader2 size={16} className="animate-spin" />Saving...</> : "Save Testimonial"}
                   </button>
@@ -216,80 +219,82 @@ export default function AdminTestimonialsPage() {
 
           {/* Testimonials list */}
           {loading ? (
-            <div className="space-y-4">
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
               {Array.from({ length: 3 }).map((_, i) => (
-                <div key={i} className="bg-white rounded-2xl p-6 border border-gray-100 animate-pulse">
-                  <div className="flex gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gray-100" />
+                <div key={i} className="animate-pulse rounded-2xl border border-rose-gold/10 bg-white/80 p-6">
+                  <div className="mb-4 flex items-center gap-4">
+                    <div className="h-12 w-12 rounded-full bg-blush" />
                     <div className="flex-1 space-y-2">
-                      <div className="h-4 bg-gray-100 rounded w-32" />
-                      <div className="h-3 bg-gray-100 rounded w-full" />
-                      <div className="h-3 bg-gray-100 rounded w-3/4" />
+                      <div className="h-4 w-3/4 rounded bg-blush" />
+                      <div className="h-3 w-1/2 rounded bg-blush/70" />
+                      <div className="h-3 w-1/3 rounded bg-blush/50" />
                     </div>
                   </div>
                 </div>
               ))}
             </div>
           ) : testimonials.length === 0 ? (
-            <div className="text-center py-16 text-gray-400">
-              <Star size={40} className="mx-auto mb-3 opacity-30" />
-              <p>No testimonials yet. Add your first one.</p>
+            <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-rose-gold/25 bg-white/80 py-20 text-center">
+              <Star size={48} className="text-rose-gold/40" />
+              <p className="mt-4 text-sm font-medium text-ink/60">No testimonials yet. Add your first one.</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
               {testimonials.map((t) => (
                 <motion.div
                   key={t._id}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className={`bg-white rounded-2xl p-5 border shadow-sm transition-all ${
-                    t.isActive ? "border-gray-100" : "border-red-100 opacity-60"
-                  }`}
+                  className={`relative flex flex-col justify-between rounded-2xl border bg-white p-6 shadow-sm transition hover:shadow-md ${t.isActive ? "border-rose-gold/15" : "border-ink/10 opacity-75"}`}
                 >
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#2a5245] to-[#4d8b73] flex items-center justify-center flex-shrink-0">
-                        <span className="text-white font-bold text-sm">{t.name.charAt(0)}</span>
+                  <div>
+                    <div className="mb-4 flex items-start justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-rose-gold to-rose-gold-deep font-display text-lg font-semibold text-white">
+                          <span>{t.name.charAt(0)}</span>
+                        </div>
+                        <div>
+                          <div className="font-semibold text-ink">{t.name}</div>
+                          <div className="text-xs text-ink/60">{t.eventType}</div>
+                        </div>
                       </div>
-                      <div>
-                        <div className="font-semibold text-gray-900 text-sm">{t.name}</div>
-                        <div className="text-[#c6a94c] text-xs">{t.eventType}</div>
+                      <div className="flex items-center gap-1">
+                        <button
+                          onClick={() => toggleActive(t._id, t.isActive)}
+                          title={t.isActive ? "Hide" : "Show"}
+                          className="flex h-8 w-8 items-center justify-center rounded-lg bg-cream text-ink/60 transition hover:bg-blush hover:text-rose-gold-deep"
+                        >
+                          {t.isActive ? <EyeOff size={14} /> : <Eye size={14} />}
+                        </button>
+                        <button
+                          onClick={() => deleteTestimonial(t._id)}
+                          title="Delete"
+                          className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-50 text-red-500 transition hover:bg-red-100"
+                        >
+                          <Trash2 size={14} />
+                        </button>
                       </div>
                     </div>
-                    <div className="flex items-center gap-1.5">
-                      <button
-                        onClick={() => toggleActive(t._id, t.isActive)}
-                        className="w-7 h-7 rounded-lg bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-gray-100 transition-colors"
-                        title={t.isActive ? "Hide" : "Show"}
-                      >
-                        {t.isActive ? <EyeOff size={13} /> : <Eye size={13} />}
-                      </button>
-                      <button
-                        onClick={() => deleteTestimonial(t._id)}
-                        className="w-7 h-7 rounded-lg bg-red-50 flex items-center justify-center text-red-400 hover:bg-red-100 transition-colors"
-                        title="Delete"
-                      >
-                        <Trash2 size={13} />
-                      </button>
+
+                    <div className="mb-3 flex gap-0.5">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <Star
+                          key={i}
+                          size={14}
+                          className={i < t.rating ? "fill-rose-gold text-rose-gold" : "text-rose-gold/20"}
+                        />
+                      ))}
                     </div>
-                  </div>
 
-                  <div className="flex items-center gap-0.5 mb-2">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star
-                        key={i}
-                        size={14}
-                        className={i < t.rating ? "text-[#c6a94c] fill-[#c6a94c]" : "text-gray-200"}
-                      />
-                    ))}
+                    <p className="text-sm italic leading-relaxed text-ink/80">
+                      &ldquo;{t.review}&rdquo;
+                    </p>
                   </div>
-
-                  <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 italic">
-                    &ldquo;{t.review}&rdquo;
-                  </p>
 
                   {!t.isActive && (
-                    <div className="mt-2 text-xs text-red-500 font-medium">Hidden from website</div>
+                    <div className="absolute bottom-4 right-4 rounded-md bg-ink/5 px-2 py-1 text-xs font-medium text-ink/50">
+                      Hidden from website
+                    </div>
                   )}
                 </motion.div>
               ))}

@@ -34,26 +34,20 @@ type SidebarBodyProps = {
 
 function SidebarBody({ pathname, onNavClick, onLogout, loggingOut }: SidebarBodyProps) {
   return (
-    <div className="flex flex-col h-full">
-      {/* Logo */}
-      <div className="p-6 border-b border-white/10">
+    <div className="flex h-full flex-col border-r border-rose-gold/10 bg-white/95 backdrop-blur-md">
+      <div className="border-b border-rose-gold/10 p-6">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#c6a94c] to-[#dcc875] flex items-center justify-center shadow-lg">
-            <span className="text-[#1a332b] font-bold text-lg font-serif">G</span>
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-rose-gold to-rose-gold-deep font-display text-lg font-bold text-white shadow-glow-rose">
+            <span>G</span>
           </div>
           <div>
-            <div className="text-white font-serif font-bold text-base leading-tight">
-              Green Land Farm
-            </div>
-            <div className="text-[#c6a94c] text-[10px] tracking-widest uppercase">
-              Admin Panel
-            </div>
+            <div className="font-display text-lg font-semibold text-ink">Green Land Farm</div>
+            <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-rose-gold">Admin Panel</div>
           </div>
         </div>
       </div>
 
-      {/* Nav */}
-      <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
+      <nav className="flex-1 space-y-1 p-4">
         {NAV_ITEMS.map((item) => {
           const Icon = item.icon;
           const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
@@ -62,34 +56,33 @@ function SidebarBody({ pathname, onNavClick, onLogout, loggingOut }: SidebarBody
               key={item.href}
               href={item.href}
               onClick={onNavClick}
-              className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group ${
+              className={`flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition ${
                 isActive
-                  ? "bg-[#c6a94c] text-[#1a332b] shadow-md"
-                  : "text-white/70 hover:text-white hover:bg-white/10"
+                  ? "bg-gradient-to-r from-rose-gold to-rose-gold-deep text-white shadow-md"
+                  : "text-ink/75 hover:bg-blush/60 hover:text-rose-gold-deep"
               }`}
             >
-              <Icon size={18} className={isActive ? "text-[#1a332b]" : "text-white/60 group-hover:text-white"} />
-              <span>{item.label}</span>
-              {isActive && <ChevronRight size={14} className="ml-auto text-[#1a332b]/60" />}
+              <Icon size={18} />
+              <span className="flex-1">{item.label}</span>
+              {isActive && <ChevronRight size={14} className="opacity-80" />}
             </Link>
           );
         })}
       </nav>
 
-      {/* Footer */}
-      <div className="p-4 border-t border-white/10">
+      <div className="border-t border-rose-gold/10 p-4">
         <button
           type="button"
           onClick={onLogout}
           disabled={loggingOut}
-          className="flex items-center gap-3 w-full px-4 py-3 rounded-xl text-sm font-medium text-white/70 hover:text-white hover:bg-red-500/20 transition-all duration-200 group"
+          className="flex w-full items-center gap-3 rounded-xl border border-rose-gold/15 bg-cream/80 px-4 py-3 text-sm font-semibold text-ink transition hover:border-rose-gold/30 hover:bg-blush disabled:opacity-50"
         >
-          <LogOut size={18} className="text-white/60 group-hover:text-red-400" />
+          <LogOut size={18} className="text-rose-gold" />
           <span>{loggingOut ? "Logging out..." : "Logout"}</span>
         </button>
-        <div className="mt-3 px-4 py-2 rounded-lg bg-white/5 text-white/40 text-xs">
-          <div className="font-medium text-white/60">Admin</div>
-          <div>admin@greenlandfarm.com</div>
+        <div className="mt-3 rounded-xl bg-blush/50 px-3 py-2 text-center text-xs text-ink/65">
+          <div className="font-semibold text-ink">Admin</div>
+          <div className="truncate">admin@greenlandfarm.com</div>
         </div>
       </div>
     </div>
@@ -118,43 +111,40 @@ export default function AdminSidebar() {
 
   return (
     <>
-      {/* Desktop sidebar */}
-      <aside className="hidden lg:flex flex-col w-64 bg-gradient-to-b from-[#1a332b] to-[#2a5245] min-h-screen fixed left-0 top-0 bottom-0 z-40 shadow-2xl">
+      <aside className="fixed top-0 left-0 z-40 hidden h-screen w-64 lg:block">
         <SidebarBody pathname={pathname} onLogout={handleLogout} loggingOut={loggingOut} />
       </aside>
 
-      {/* Mobile toggle */}
       <button
         type="button"
         onClick={() => setMobileOpen(true)}
-        className="lg:hidden fixed top-4 left-4 z-50 w-10 h-10 rounded-xl bg-[#2a5245] text-white flex items-center justify-center shadow-lg"
+        className="fixed top-4 left-4 z-40 flex h-11 w-11 items-center justify-center rounded-xl border border-rose-gold/15 bg-white/95 shadow-md backdrop-blur-md lg:hidden"
         aria-label="Open menu"
       >
-        <Menu size={20} />
+        <Menu size={20} className="text-ink" />
       </button>
 
-      {/* Mobile drawer */}
       <AnimatePresence>
         {mobileOpen && (
           <>
             <motion.div
+              className="fixed inset-0 z-40 bg-ink/40 backdrop-blur-sm lg:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/60 z-40 lg:hidden"
               onClick={() => setMobileOpen(false)}
             />
             <motion.aside
+              className="fixed top-0 left-0 z-50 h-full w-[min(100%,280px)] shadow-luxury lg:hidden"
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed left-0 top-0 bottom-0 w-72 bg-gradient-to-b from-[#1a332b] to-[#2a5245] z-50 shadow-2xl lg:hidden"
             >
               <button
                 type="button"
                 onClick={() => setMobileOpen(false)}
-                className="absolute top-4 right-4 w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white/70 hover:text-white"
+                className="absolute top-4 right-4 z-10 flex h-9 w-9 items-center justify-center rounded-lg border border-rose-gold/15 bg-white text-ink"
               >
                 <X size={16} />
               </button>

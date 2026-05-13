@@ -15,131 +15,88 @@ export default function LoadingScreen() {
     <AnimatePresence>
       {isLoading && (
         <motion.div
+          className="fixed inset-0 z-[200] flex items-center justify-center bg-gradient-to-br from-cream via-blush to-rose-gold/25"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.02 }}
-          transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center overflow-hidden"
-          style={{
-            background: "linear-gradient(135deg, #0f1c18 0%, #1a2e28 40%, #2a5245 100%)",
-          }}
+          transition={{ duration: 0.55, ease: [0.4, 0, 0.2, 1] }}
         >
-          {/* Decorative background pattern */}
-          <div className="absolute inset-0 mandala-pattern opacity-30" />
-
-          {/* Animated glow circles */}
-          <div className="absolute inset-0 overflow-hidden">
-            <motion.div
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.1, 0.2, 0.1],
-              }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
+          <div className="pointer-events-none absolute inset-0 opacity-[0.04]">
+            <div
+              className="h-full w-full"
               style={{
-                background: "radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 70%)",
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23333333' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
               }}
             />
           </div>
 
-          {/* Main content */}
-          <div className="relative flex flex-col items-center">
-            {/* Animated rings */}
-            <div className="relative flex items-center justify-center mb-10">
-              {/* Outer ring */}
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+            <motion.div
+              className="h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(183,110,121,0.2)_0%,transparent_70%)]"
+              animate={{ scale: [1, 1.15, 1], opacity: [0.35, 0.55, 0.35] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </div>
+
+          <div className="relative flex flex-col items-center px-6">
+            <div className="relative flex h-36 w-36 items-center justify-center">
               <motion.div
+                className="absolute inset-0 rounded-full border-2 border-transparent border-t-rose-gold/70"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                className="absolute w-32 h-32 rounded-full border border-[#d4af37]/20"
-                style={{
-                  borderTopColor: "rgba(212,175,55,0.6)",
-                }}
               />
-
-              {/* Middle ring */}
               <motion.div
+                className="absolute inset-2 rounded-full border-2 border-transparent border-b-rose-gold-muted/60"
                 animate={{ rotate: -360 }}
-                transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-                className="absolute w-24 h-24 rounded-full border border-[#d4af37]/15"
-                style={{
-                  borderBottomColor: "rgba(212,175,55,0.5)",
-                }}
+                transition={{ duration: 5.5, repeat: Infinity, ease: "linear" }}
               />
-
-              {/* Inner ring */}
               <motion.div
+                className="absolute inset-4 rounded-full border-2 border-transparent border-t-rose-gold-deep/50"
                 animate={{ rotate: 360 }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                className="absolute w-16 h-16 rounded-full border border-[#d4af37]/10"
-                style={{
-                  borderTopColor: "rgba(212,175,55,0.4)",
-                }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
               />
-
-              {/* Center logo */}
               <motion.div
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.3, type: "spring", stiffness: 200, damping: 15 }}
-                className="relative w-14 h-14 rounded-full flex items-center justify-center"
-                style={{
-                  background: "linear-gradient(135deg, #d4af37 0%, #e8c966 50%, #d4af37 100%)",
-                  boxShadow: "0 0 40px rgba(212,175,55,0.4), 0 0 80px rgba(212,175,55,0.2)",
-                }}
+                transition={{ delay: 0.25, type: "spring", stiffness: 200, damping: 15 }}
+                className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-gold via-rose-gold-muted to-rose-gold-deep font-display text-2xl font-bold text-white shadow-glow-rose"
               >
-                <span className="text-[#1a2e28] font-bold text-2xl font-serif">G</span>
+                <span>G</span>
               </motion.div>
             </div>
 
-            {/* Brand name */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-              className="text-center"
+              transition={{ delay: 0.45, duration: 0.55 }}
+              className="mt-8 text-center"
             >
-              <h1 className="text-white font-serif text-2xl md:text-3xl font-bold tracking-tight mb-2">
-                Green Land Farm
-              </h1>
-              <p className="text-[#d4af37] text-xs tracking-[0.3em] uppercase font-medium">
-                Luxury Wedding Venue
-              </p>
+              <h1 className="font-display text-2xl font-semibold text-ink sm:text-3xl">Green Land Farm</h1>
+              <p className="mt-1 text-xs font-semibold uppercase tracking-[0.35em] text-rose-gold">Luxury Wedding Venue</p>
             </motion.div>
 
-            {/* Loading bar */}
             <motion.div
+              className="mt-8 h-1 w-48 overflow-hidden rounded-full bg-rose-gold/15"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.7 }}
-              className="mt-10 w-56 h-1 rounded-full overflow-hidden"
-              style={{ background: "rgba(255,255,255,0.1)" }}
+              transition={{ delay: 0.65 }}
             >
               <motion.div
+                className="h-full rounded-full bg-gradient-to-r from-rose-gold via-rose-gold-muted to-rose-gold"
                 initial={{ width: "0%" }}
                 animate={{ width: "100%" }}
-                transition={{ duration: 1.5, delay: 0.8, ease: [0.4, 0, 0.2, 1] }}
-                className="h-full rounded-full"
-                style={{
-                  background: "linear-gradient(90deg, #d4af37, #e8c966, #d4af37)",
-                }}
+                transition={{ duration: 1.45, delay: 0.75, ease: [0.4, 0, 0.2, 1] }}
               />
             </motion.div>
 
-            {/* Tagline */}
             <motion.p
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.6 }}
+              animate={{ opacity: 0.65 }}
               transition={{ delay: 1 }}
-              className="mt-6 text-white/50 text-sm font-light tracking-wide"
+              className="mt-6 text-sm text-ink/55"
             >
               Creating Timeless Memories...
             </motion.p>
           </div>
-
-          {/* Corner decorations */}
-          <div className="absolute top-8 left-8 w-16 h-16 border-l-2 border-t-2 border-[#d4af37]/20 rounded-tl-lg" />
-          <div className="absolute top-8 right-8 w-16 h-16 border-r-2 border-t-2 border-[#d4af37]/20 rounded-tr-lg" />
-          <div className="absolute bottom-8 left-8 w-16 h-16 border-l-2 border-b-2 border-[#d4af37]/20 rounded-bl-lg" />
-          <div className="absolute bottom-8 right-8 w-16 h-16 border-r-2 border-b-2 border-[#d4af37]/20 rounded-br-lg" />
         </motion.div>
       )}
     </AnimatePresence>

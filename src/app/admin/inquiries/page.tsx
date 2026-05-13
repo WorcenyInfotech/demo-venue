@@ -4,8 +4,17 @@ import { useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 import {
-  Search, Filter, Trash2, Phone, Mail, Calendar,
-  Users, MessageSquare, RefreshCw, ChevronLeft, ChevronRight,
+  Search,
+  Filter,
+  Trash2,
+  Phone,
+  Mail,
+  Calendar,
+  Users,
+  MessageSquare,
+  RefreshCw,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import AdminHeader from "@/components/admin/AdminHeader";
@@ -87,7 +96,7 @@ export default function InquiriesPage() {
           prev.map((inq) => (inq._id === id ? { ...inq, status: status as Inquiry["status"] } : inq))
         );
         if (selectedInquiry?._id === id) {
-          setSelectedInquiry((prev) => prev ? { ...prev, status: status as Inquiry["status"] } : null);
+          setSelectedInquiry((prev) => (prev ? { ...prev, status: status as Inquiry["status"] } : null));
         }
         toast.success("Status updated");
       }
@@ -118,95 +127,99 @@ export default function InquiriesPage() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-cream/30">
       <AdminSidebar />
 
-      <div className="flex-1 lg:ml-64 min-w-0">
-        <AdminHeader
-          title="Inquiries"
-          subtitle={`${total} total inquiries`}
-        />
+      <div className="pt-16 lg:pl-64 lg:pt-0">
+        <AdminHeader title="Inquiries" subtitle={`${total} total inquiries`} />
 
-        <div className="p-6">
-          {/* Filters */}
-          <div className="flex flex-col sm:flex-row gap-3 mb-6">
-            <div className="relative flex-1">
-              <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+        <div className="px-4 py-6 sm:px-6 lg:px-8">
+          <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <div className="flex min-w-0 flex-1 items-center gap-2 rounded-2xl border border-rose-gold/15 bg-white/95 px-4 py-2.5 shadow-sm">
+              <Search size={16} className="shrink-0 text-rose-gold" />
               <input
                 type="text"
                 placeholder="Search by name, email, or mobile..."
                 value={search}
-                onChange={(e) => { setSearch(e.target.value); setPage(1); }}
-                className="form-input pl-10 text-sm"
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                  setPage(1);
+                }}
+                className="min-w-0 flex-1 border-0 bg-transparent text-sm text-ink outline-none placeholder:text-ink/45"
               />
             </div>
-            <div className="relative">
-              <Filter size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+            <div className="flex items-center gap-2 rounded-2xl border border-rose-gold/15 bg-white/95 px-3 py-2 shadow-sm">
+              <Filter size={14} className="text-rose-gold" />
               <select
                 value={statusFilter}
-                onChange={(e) => { setStatusFilter(e.target.value); setPage(1); }}
-                className="form-input pl-9 pr-8 text-sm w-full sm:w-44"
+                onChange={(e) => {
+                  setStatusFilter(e.target.value);
+                  setPage(1);
+                }}
+                className="border-0 bg-transparent text-sm font-medium text-ink outline-none"
               >
                 {STATUS_OPTIONS.map((opt) => (
-                  <option key={opt.value} value={opt.value}>{opt.label}</option>
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </option>
                 ))}
               </select>
             </div>
             <button
+              type="button"
               onClick={fetchInquiries}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-gray-200 bg-white text-gray-600 text-sm font-medium hover:bg-gray-50 transition-colors"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl border border-rose-gold/20 bg-white px-4 py-2.5 text-sm font-semibold text-ink transition hover:bg-blush/50"
             >
-              <RefreshCw size={14} />
+              <RefreshCw size={14} className="text-rose-gold" />
               Refresh
             </button>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-6">
-            {/* Inquiry list */}
-            <div className="lg:col-span-2 bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+          <div className="grid gap-6 lg:grid-cols-5">
+            <div className="lg:col-span-2">
               {loading ? (
-                <div className="p-6 space-y-3">
+                <div className="space-y-3">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <div key={i} className="flex items-center gap-4 p-3 animate-pulse">
-                      <div className="w-10 h-10 rounded-full bg-gray-100" />
+                    <div key={i} className="flex animate-pulse gap-3 rounded-2xl border border-rose-gold/10 bg-white/80 p-4">
+                      <div className="h-10 w-10 rounded-full bg-blush" />
                       <div className="flex-1 space-y-2">
-                        <div className="h-4 bg-gray-100 rounded w-32" />
-                        <div className="h-3 bg-gray-100 rounded w-48" />
+                        <div className="h-4 w-[70%] rounded bg-blush" />
+                        <div className="h-3 w-[45%] rounded bg-blush/70" />
                       </div>
                     </div>
                   ))}
                 </div>
               ) : inquiries.length === 0 ? (
-                <div className="p-12 text-center text-gray-400">
-                  <MessageSquare size={32} className="mx-auto mb-3 opacity-30" />
-                  <p>No inquiries found</p>
+                <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-rose-gold/25 bg-white/80 py-16 text-center">
+                  <MessageSquare size={32} className="text-rose-gold/40" />
+                  <p className="mt-3 text-sm font-medium text-ink/60">No inquiries found</p>
                 </div>
               ) : (
                 <>
-                  <div className="divide-y divide-gray-50">
+                  <div className="space-y-2">
                     {inquiries.map((inquiry) => (
                       <motion.div
                         key={inquiry._id}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        className={`flex items-center gap-3 p-4 cursor-pointer hover:bg-gray-50 transition-colors ${
-                          selectedInquiry?._id === inquiry._id ? "bg-green-50 border-l-2 border-[#2a5245]" : ""
-                        }`}
                         onClick={() => setSelectedInquiry(inquiry)}
+                        className={`flex cursor-pointer items-center gap-3 rounded-2xl border p-4 transition ${
+                          selectedInquiry?._id === inquiry._id
+                            ? "border-rose-gold/40 bg-blush/60 shadow-md"
+                            : "border-rose-gold/10 bg-white/95 hover:border-rose-gold/25 hover:bg-blush/30"
+                        }`}
                       >
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#2a5245] to-[#4d8b73] flex items-center justify-center flex-shrink-0">
-                          <span className="text-white font-bold text-sm">
-                            {inquiry.name?.charAt(0)?.toUpperCase() || "?"}
-                          </span>
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-rose-gold to-rose-gold-deep font-display text-sm font-semibold text-white">
+                          <span>{inquiry.name?.charAt(0)?.toUpperCase() || "?"}</span>
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2 flex-wrap">
-                            <span className="font-semibold text-gray-900 text-sm">{inquiry.name}</span>
-                            <span className="text-gray-400 text-xs">{inquiry.eventType}</span>
+                        <div className="min-w-0 flex-1">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <span className="truncate font-semibold text-ink">{inquiry.name}</span>
+                            <span className="truncate text-xs text-ink/55">{inquiry.eventType}</span>
                           </div>
-                          <div className="text-gray-400 text-xs mt-0.5 flex items-center gap-2">
+                          <div className="mt-0.5 text-xs text-ink/50">
                             <span>{inquiry.mobile}</span>
-                            <span>·</span>
+                            <span className="mx-1.5">·</span>
                             <span>{formatDate(inquiry.createdAt)}</span>
                           </div>
                         </div>
@@ -215,24 +228,25 @@ export default function InquiriesPage() {
                     ))}
                   </div>
 
-                  {/* Pagination */}
                   {totalPages > 1 && (
-                    <div className="flex items-center justify-between p-4 border-t border-gray-50">
-                      <span className="text-gray-400 text-xs">
+                    <div className="mt-4 flex items-center justify-between rounded-2xl border border-rose-gold/10 bg-white/90 px-4 py-3">
+                      <span className="text-xs font-medium text-ink/60">
                         Page {page} of {totalPages}
                       </span>
-                      <div className="flex items-center gap-2">
+                      <div className="flex gap-2">
                         <button
+                          type="button"
                           onClick={() => setPage((p) => Math.max(1, p - 1))}
                           disabled={page === 1}
-                          className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                          className="flex h-9 w-9 items-center justify-center rounded-xl border border-rose-gold/15 bg-cream text-ink transition enabled:hover:bg-blush disabled:opacity-40"
                         >
                           <ChevronLeft size={14} />
                         </button>
                         <button
+                          type="button"
                           onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                           disabled={page === totalPages}
-                          className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                          className="flex h-9 w-9 items-center justify-center rounded-xl border border-rose-gold/15 bg-cream text-ink transition enabled:hover:bg-blush disabled:opacity-40"
                         >
                           <ChevronRight size={14} />
                         </button>
@@ -243,40 +257,38 @@ export default function InquiriesPage() {
               )}
             </div>
 
-            {/* Detail panel */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+            <div className="rounded-2xl border border-rose-gold/12 bg-white/95 shadow-sm lg:col-span-3">
               {!selectedInquiry ? (
-                <div className="p-8 text-center text-gray-400 h-full flex flex-col items-center justify-center">
-                  <MessageSquare size={32} className="mb-3 opacity-30" />
-                  <p className="text-sm">Select an inquiry to view details</p>
+                <div className="flex min-h-[320px] flex-col items-center justify-center p-8 text-center">
+                  <MessageSquare size={36} className="text-rose-gold/35" />
+                  <p className="mt-4 text-sm font-medium text-ink/60">Select an inquiry to view details</p>
                 </div>
               ) : (
-                <div className="p-5">
-                  {/* Header */}
-                  <div className="flex items-start justify-between mb-5">
+                <div className="flex flex-col">
+                  <div className="flex items-start justify-between gap-3 border-b border-rose-gold/10 p-6">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#2a5245] to-[#4d8b73] flex items-center justify-center">
-                        <span className="text-white font-bold text-lg">
-                          {selectedInquiry.name?.charAt(0)?.toUpperCase()}
-                        </span>
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-gold to-rose-gold-deep font-display text-lg font-semibold text-white">
+                        <span>{selectedInquiry.name?.charAt(0)?.toUpperCase()}</span>
                       </div>
                       <div>
-                        <div className="font-semibold text-gray-900">{selectedInquiry.name}</div>
-                        <StatusBadge status={selectedInquiry.status} />
+                        <div className="font-display text-lg font-semibold text-ink">{selectedInquiry.name}</div>
+                        <div className="mt-1">
+                          <StatusBadge status={selectedInquiry.status} />
+                        </div>
                       </div>
                     </div>
                     <button
+                      type="button"
                       onClick={() => deleteInquiry(selectedInquiry._id)}
                       disabled={deletingId === selectedInquiry._id}
-                      className="w-8 h-8 rounded-lg bg-red-50 border border-red-100 flex items-center justify-center text-red-500 hover:bg-red-100 transition-colors disabled:opacity-50"
                       title="Delete inquiry"
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-red-200 bg-red-50 text-red-700 transition hover:bg-red-100 disabled:opacity-50"
                     >
                       <Trash2 size={14} />
                     </button>
                   </div>
 
-                  {/* Details */}
-                  <div className="space-y-3 mb-5">
+                  <div className="divide-y divide-rose-gold/10 p-6">
                     {[
                       { icon: Phone, label: "Mobile", value: selectedInquiry.mobile },
                       { icon: Mail, label: "Email", value: selectedInquiry.email },
@@ -285,40 +297,39 @@ export default function InquiriesPage() {
                       { icon: Users, label: "Guest Count", value: selectedInquiry.guestCount },
                       { icon: Calendar, label: "Received", value: formatDate(selectedInquiry.createdAt) },
                     ].map(({ icon: Icon, label, value }) => (
-                      <div key={label} className="flex items-start gap-3 text-sm">
-                        <div className="w-7 h-7 rounded-lg bg-gray-50 flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <Icon size={13} className="text-gray-400" />
+                      <div key={label} className="flex gap-3 py-3 first:pt-0 last:pb-0">
+                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blush text-rose-gold">
+                          <Icon size={13} />
                         </div>
                         <div>
-                          <div className="text-gray-400 text-xs">{label}</div>
-                          <div className="text-gray-800 font-medium">{value}</div>
+                          <div className="text-[11px] font-semibold uppercase tracking-wider text-rose-gold">{label}</div>
+                          <div className="text-sm text-ink">{value}</div>
                         </div>
                       </div>
                     ))}
                   </div>
 
-                  {/* Message */}
                   {selectedInquiry.message && (
-                    <div className="mb-5 p-3 rounded-xl bg-gray-50 border border-gray-100">
-                      <div className="text-gray-400 text-xs mb-1">Message</div>
-                      <p className="text-gray-700 text-sm leading-relaxed">{selectedInquiry.message}</p>
+                    <div className="border-t border-rose-gold/10 px-6 py-5">
+                      <div className="text-xs font-semibold uppercase tracking-wider text-rose-gold">Message</div>
+                      <p className="mt-2 text-sm leading-relaxed text-ink/80">{selectedInquiry.message}</p>
                     </div>
                   )}
 
-                  {/* Status update */}
-                  <div>
-                    <div className="text-gray-500 text-xs font-medium mb-2">Update Status</div>
-                    <div className="grid grid-cols-2 gap-2">
-                      {["new", "contacted", "confirmed", "cancelled"].map((s) => (
+                  <div className="border-t border-rose-gold/10 px-6 py-5">
+                    <div className="text-xs font-semibold uppercase tracking-wider text-rose-gold">Update Status</div>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {(["new", "contacted", "confirmed", "cancelled"] as const).map((s) => (
                         <button
                           key={s}
+                          type="button"
                           onClick={() => updateStatus(selectedInquiry._id, s)}
                           disabled={selectedInquiry.status === s || updatingId === selectedInquiry._id}
-                          className={`py-2 px-3 rounded-lg text-xs font-semibold capitalize transition-all border ${
+                          className={`rounded-full px-3 py-1.5 text-xs font-semibold capitalize transition ${
                             selectedInquiry.status === s
-                              ? "bg-[#2a5245] text-white border-[#2a5245]"
-                              : "bg-white text-gray-600 border-gray-200 hover:border-[#2a5245] hover:text-[#2a5245]"
-                          } disabled:opacity-50 disabled:cursor-not-allowed`}
+                              ? "bg-rose-gold text-white shadow-sm"
+                              : "border border-rose-gold/20 bg-cream text-ink/80 hover:border-rose-gold/40 hover:bg-blush"
+                          } disabled:opacity-50`}
                         >
                           {s}
                         </button>
@@ -326,18 +337,17 @@ export default function InquiriesPage() {
                     </div>
                   </div>
 
-                  {/* Quick actions */}
-                  <div className="mt-4 flex gap-2">
+                  <div className="flex flex-wrap gap-2 border-t border-rose-gold/10 p-6">
                     <a
                       href={`tel:${selectedInquiry.mobile}`}
-                      className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-lg bg-[#2a5245] text-white text-xs font-semibold hover:bg-[#1a332b] transition-colors"
+                      className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-rose-gold px-4 py-2.5 text-xs font-semibold text-white shadow-sm transition hover:bg-rose-gold-deep sm:flex-none"
                     >
                       <Phone size={13} />
                       Call
                     </a>
                     <a
                       href={`mailto:${selectedInquiry.email}`}
-                      className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-lg bg-[#c6a94c] text-[#1a332b] text-xs font-semibold hover:bg-[#dcc875] transition-colors"
+                      className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-rose-gold/25 bg-white px-4 py-2.5 text-xs font-semibold text-ink transition hover:bg-blush sm:flex-none"
                     >
                       <Mail size={13} />
                       Email
@@ -346,7 +356,7 @@ export default function InquiriesPage() {
                       href={`https://wa.me/91${selectedInquiry.mobile}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-lg bg-[#25D366] text-white text-xs font-semibold hover:bg-[#1da851] transition-colors"
+                      className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-rose-gold/25 bg-blush/50 px-4 py-2.5 text-xs font-semibold text-ink transition hover:bg-blush sm:flex-none"
                     >
                       WA
                     </a>

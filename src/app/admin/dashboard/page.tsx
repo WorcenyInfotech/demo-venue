@@ -53,78 +53,79 @@ export default function DashboardPage() {
           title: "Total Inquiries",
           value: stats.totalInquiries,
           icon: MessageSquare,
-          color: "text-blue-600",
-          bgColor: "bg-blue-50",
+          color: "text-rose-gold-deep",
+          bgColor: "bg-blush",
           trend: { value: 12, label: "vs last month" },
         },
         {
           title: "New Inquiries",
           value: stats.newInquiries,
           icon: TrendingUp,
-          color: "text-[#c6a94c]",
-          bgColor: "bg-amber-50",
+          color: "text-rose-gold",
+          bgColor: "bg-blush",
           trend: { value: 8, label: "awaiting response" },
         },
         {
           title: "Contacted",
           value: stats.contactedInquiries,
           icon: Phone,
-          color: "text-purple-600",
-          bgColor: "bg-purple-50",
+          color: "text-rose-gold-muted",
+          bgColor: "bg-cream",
         },
         {
           title: "Confirmed",
           value: stats.confirmedInquiries,
           icon: CheckCircle2,
-          color: "text-[#2a5245]",
-          bgColor: "bg-green-50",
+          color: "text-rose-gold-deep",
+          bgColor: "bg-rose-gold/15",
           trend: { value: 5, label: "bookings secured" },
         },
         {
           title: "Gallery Images",
           value: stats.totalGalleryImages,
           icon: Images,
-          color: "text-pink-600",
-          bgColor: "bg-pink-50",
+          color: "text-rose-gold",
+          bgColor: "bg-blush",
         },
         {
           title: "Testimonials",
           value: stats.totalTestimonials,
           icon: Star,
-          color: "text-orange-600",
-          bgColor: "bg-orange-50",
+          color: "text-rose-gold-deep",
+          bgColor: "bg-cream",
         },
       ]
     : [];
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-cream/30">
       <AdminSidebar />
 
-      {/* Main content */}
-      <div className="flex-1 lg:ml-64 min-w-0">
+      <div className="lg:pl-64 pt-16 lg:pt-0">
         <AdminHeader
           title="Dashboard"
           subtitle="Welcome back! Here's what's happening at Green Land Farm."
         />
 
-        <div className="p-6 space-y-8">
-          {/* Stat cards */}
+        <div className="px-4 py-8 sm:px-6 lg:px-10">
           {loading ? (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
               {Array.from({ length: 6 }).map((_, i) => (
-                <div key={i} className="bg-white rounded-2xl p-6 border border-gray-100 animate-pulse">
-                  <div className="w-12 h-12 rounded-xl bg-gray-100 mb-4" />
-                  <div className="h-8 bg-gray-100 rounded mb-2 w-16" />
-                  <div className="h-4 bg-gray-100 rounded w-24" />
+                <div
+                  key={i}
+                  className="animate-pulse rounded-2xl border border-rose-gold/10 bg-white/80 p-6 shadow-sm"
+                >
+                  <div className="h-10 w-10 rounded-xl bg-blush" />
+                  <div className="mt-4 h-8 w-24 rounded-lg bg-blush/80" />
+                  <div className="mt-2 h-4 w-32 rounded bg-blush/60" />
                 </div>
               ))}
             </div>
           ) : (
             <motion.div
+              className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
             >
               {statCards.map((card, i) => (
                 <motion.div
@@ -139,41 +140,41 @@ export default function DashboardPage() {
             </motion.div>
           )}
 
-          {/* Quick actions */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="mt-10 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
             {[
-              { label: "View All Inquiries", href: "/admin/inquiries", icon: MessageSquare, color: "bg-blue-500" },
-              { label: "Manage Gallery", href: "/admin/gallery", icon: Images, color: "bg-pink-500" },
-              { label: "Testimonials", href: "/admin/testimonials", icon: Star, color: "bg-amber-500" },
-              { label: "Manage Banners", href: "/admin/banners", icon: Calendar, color: "bg-[#2a5245]" },
+              { label: "View All Inquiries", href: "/admin/inquiries", icon: MessageSquare },
+              { label: "Manage Gallery", href: "/admin/gallery", icon: Images },
+              { label: "Testimonials", href: "/admin/testimonials", icon: Star },
+              { label: "Manage Banners", href: "/admin/banners", icon: Calendar },
             ].map((action) => {
               const Icon = action.icon;
               return (
                 <Link
                   key={action.href}
                   href={action.href}
-                  className="flex items-center gap-3 p-4 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-gray-200 transition-all group"
+                  className="group flex items-center justify-between gap-3 rounded-2xl border border-rose-gold/12 bg-white/95 px-4 py-4 shadow-sm transition hover:border-rose-gold/30 hover:shadow-md"
                 >
-                  <div className={`w-9 h-9 rounded-lg ${action.color} flex items-center justify-center flex-shrink-0`}>
-                    <Icon size={16} className="text-white" />
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-rose-gold to-rose-gold-deep text-white shadow-sm">
+                      <Icon size={16} />
+                    </div>
+                    <span className="text-sm font-semibold text-ink">{action.label}</span>
                   </div>
-                  <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900">{action.label}</span>
-                  <ArrowRight size={14} className="ml-auto text-gray-300 group-hover:text-gray-500 group-hover:translate-x-0.5 transition-all" />
+                  <ArrowRight size={14} className="text-rose-gold/50 transition group-hover:translate-x-0.5 group-hover:text-rose-gold" />
                 </Link>
               );
             })}
           </div>
 
-          {/* Recent inquiries */}
-          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-            <div className="flex items-center justify-between p-6 border-b border-gray-50">
+          <div className="mt-12 overflow-hidden rounded-2xl border border-rose-gold/12 bg-white/95 shadow-sm">
+            <div className="flex flex-col gap-4 border-b border-rose-gold/10 bg-blush/30 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <h2 className="font-serif font-bold text-lg text-gray-900">Recent Inquiries</h2>
-                <p className="text-gray-400 text-sm mt-0.5">Latest 5 inquiries received</p>
+                <h2 className="font-display text-xl font-semibold text-ink">Recent Inquiries</h2>
+                <p className="text-sm text-ink/60">Latest 5 inquiries received</p>
               </div>
               <Link
                 href="/admin/inquiries"
-                className="flex items-center gap-1.5 text-sm font-semibold text-[#2a5245] hover:text-[#c6a94c] transition-colors"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-rose-gold transition hover:text-rose-gold-deep"
               >
                 View All
                 <ArrowRight size={14} />
@@ -181,60 +182,53 @@ export default function DashboardPage() {
             </div>
 
             {loading ? (
-              <div className="p-6 space-y-4">
+              <div className="divide-y divide-rose-gold/10">
                 {Array.from({ length: 3 }).map((_, i) => (
-                  <div key={i} className="flex items-center gap-4 animate-pulse">
-                    <div className="w-10 h-10 rounded-full bg-gray-100" />
+                  <div key={i} className="flex animate-pulse gap-4 px-6 py-5">
+                    <div className="h-11 w-11 rounded-full bg-blush" />
                     <div className="flex-1 space-y-2">
-                      <div className="h-4 bg-gray-100 rounded w-32" />
-                      <div className="h-3 bg-gray-100 rounded w-48" />
+                      <div className="h-4 w-40 rounded bg-blush" />
+                      <div className="h-3 w-56 rounded bg-blush/70" />
                     </div>
-                    <div className="h-6 bg-gray-100 rounded-full w-20" />
+                    <div className="h-6 w-20 rounded-full bg-blush" />
                   </div>
                 ))}
               </div>
             ) : stats?.recentInquiries.length === 0 ? (
-              <div className="p-12 text-center text-gray-400">
-                <MessageSquare size={32} className="mx-auto mb-3 opacity-30" />
-                <p>No inquiries yet</p>
+              <div className="flex flex-col items-center justify-center py-16 text-center">
+                <MessageSquare size={32} className="text-rose-gold/40" />
+                <p className="mt-3 text-sm font-medium text-ink/60">No inquiries yet</p>
               </div>
             ) : (
-              <div className="divide-y divide-gray-50">
+              <div className="divide-y divide-rose-gold/10">
                 {stats?.recentInquiries.map((inquiry) => (
-                  <div key={inquiry._id} className="flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors">
-                    {/* Avatar */}
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#2a5245] to-[#4d8b73] flex items-center justify-center flex-shrink-0">
-                      <span className="text-white font-bold text-sm">
-                        {inquiry.name?.charAt(0)?.toUpperCase() || "?"}
-                      </span>
+                  <div key={inquiry._id} className="flex flex-wrap items-center gap-4 px-6 py-5 transition hover:bg-blush/20">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-rose-gold to-rose-gold-deep font-display text-sm font-semibold text-white">
+                      <span>{inquiry.name?.charAt(0)?.toUpperCase() || "?"}</span>
                     </div>
 
-                    {/* Info */}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <span className="font-semibold text-gray-900 text-sm truncate">
-                          {inquiry.name}
-                        </span>
-                        <span className="text-gray-300">·</span>
-                        <span className="text-gray-500 text-xs">{inquiry.eventType}</span>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-center gap-2 text-sm">
+                        <span className="font-semibold text-ink">{inquiry.name}</span>
+                        <span className="text-ink/35">·</span>
+                        <span className="text-ink/70">{inquiry.eventType}</span>
                       </div>
-                      <div className="flex items-center gap-3 mt-0.5 text-xs text-gray-400 flex-wrap">
-                        <span className="flex items-center gap-1">
-                          <Phone size={11} />
+                      <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs text-ink/55">
+                        <span className="inline-flex items-center gap-1">
+                          <Phone size={11} className="text-rose-gold" />
                           {inquiry.mobile}
                         </span>
-                        <span className="flex items-center gap-1">
-                          <Calendar size={11} />
+                        <span className="inline-flex items-center gap-1">
+                          <Calendar size={11} className="text-rose-gold" />
                           {formatDate(inquiry.functionDate)}
                         </span>
-                        <span className="flex items-center gap-1">
-                          <Clock size={11} />
+                        <span className="inline-flex items-center gap-1">
+                          <Clock size={11} className="text-rose-gold" />
                           {formatDate(inquiry.createdAt)}
                         </span>
                       </div>
                     </div>
 
-                    {/* Status */}
                     <StatusBadge status={inquiry.status} />
                   </div>
                 ))}

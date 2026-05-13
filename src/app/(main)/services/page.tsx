@@ -5,10 +5,7 @@ import PageHero from "@/components/ui/PageHero";
 import SectionHeader from "@/components/ui/SectionHeader";
 import CTASection from "@/components/home/CTASection";
 import { SERVICES } from "@/utils/constants";
-import {
-  Heart, Star, Gem, Music, Briefcase, MapPin,
-  CheckCircle2, ArrowRight, Phone,
-} from "lucide-react";
+import { Heart, Star, Gem, Music, Briefcase, MapPin, CheckCircle2, ArrowRight, Phone } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Wedding Services | Green Land Farm - Luxury Venue Surat",
@@ -24,16 +21,21 @@ export const metadata: Metadata = {
 };
 
 const ICON_MAP: Record<string, React.ElementType> = {
-  Heart, Star, Gem, Music, Briefcase, MapPin,
+  Heart,
+  Star,
+  Gem,
+  Music,
+  Briefcase,
+  MapPin,
 };
 
 const SERVICE_IMAGES: Record<string, string> = {
-  wedding: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80",
-  reception: "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80",
-  engagement: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&q=80",
-  sangeet: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80",
-  corporate: "https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=800&q=80",
-  destination: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80",
+  wedding: "https://images.unsplash.com/photo-1587271636175-90d58cdad458?w=800&q=80",
+  reception: "https://images.unsplash.com/photo-1610173827043-9db50e0d8ef9?w=800&q=80",
+  engagement: "https://images.unsplash.com/photo-1597157639073-69284dc0fdaf?w=800&q=80",
+  sangeet: "https://images.unsplash.com/photo-1587271407850-8d438ca9fdf2?w=800&q=80",
+  corporate: "https://images.unsplash.com/photo-1542042161784-26ab9e041e89?w=800&q=80",
+  destination: "https://images.unsplash.com/photo-1587271315307-eaebc181c749?w=800&q=80",
 };
 
 const AMENITIES = [
@@ -60,14 +62,13 @@ export default function ServicesPage() {
         title="Our Wedding"
         titleHighlight="Services"
         subtitle="Comprehensive event services tailored to make every celebration extraordinary."
-        image="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1920&q=80"
+        image="https://images.unsplash.com/photo-1610173827043-9db50e0d8ef9?w=1920&q=80"
         breadcrumbs={[{ label: "Services" }]}
         badge="What We Offer"
       />
 
-      {/* Services list */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
+      <section className="relative bg-cream py-16 md:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             badge="Our Services"
             title="Everything for Your"
@@ -75,66 +76,61 @@ export default function ServicesPage() {
             subtitle="From intimate ceremonies to grand destination weddings, we offer end-to-end event management with unmatched attention to detail."
           />
 
-          <div className="space-y-20">
+          <div className="mt-4 space-y-16 md:space-y-24">
             {SERVICES.map((service, i) => {
               const Icon = ICON_MAP[service.icon] || Heart;
               const isEven = i % 2 === 0;
               return (
                 <div
                   key={service.id}
-                  className={`grid lg:grid-cols-2 gap-10 lg:gap-16 items-center ${
-                    !isEven ? "lg:flex-row-reverse" : ""
-                  }`}
+                  className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
                 >
-                  {/* Image */}
                   <div className={`relative ${!isEven ? "lg:order-2" : ""}`}>
-                    <div className="relative h-[340px] md:h-[400px] rounded-2xl overflow-hidden shadow-xl">
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-rose-gold/15 shadow-luxury">
                       <Image
                         src={SERVICE_IMAGES[service.id] || SERVICE_IMAGES.wedding}
                         alt={service.title}
                         fill
-                        className="object-cover"
                         sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="object-cover transition duration-700 hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#1a332b]/60 via-transparent to-transparent" />
-                      <div className="absolute bottom-4 left-4">
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#c6a94c] to-[#dcc875] flex items-center justify-center shadow-lg">
-                          <Icon size={22} className="text-[#1a332b]" />
-                        </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent" />
+                      <div className="absolute bottom-5 left-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/90 text-rose-gold shadow-md backdrop-blur-md">
+                        <Icon size={22} />
                       </div>
                     </div>
                   </div>
 
-                  {/* Content */}
                   <div className={!isEven ? "lg:order-1" : ""}>
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#c6a94c]/10 border border-[#c6a94c]/30 mb-4">
-                      <span className="text-[#c6a94c] text-xs font-semibold tracking-widest uppercase">
-                        Service {String(i + 1).padStart(2, "0")}
-                      </span>
-                    </div>
+                    <span className="text-xs font-bold uppercase tracking-[0.25em] text-rose-gold">
+                      Service {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h2 className="mt-2 font-display text-3xl font-semibold text-ink sm:text-4xl">{service.title}</h2>
+                    <div className="mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-rose-gold to-blush" />
+                    <p className="mt-6 text-sm leading-relaxed text-ink/75 sm:text-base">{service.description}</p>
 
-                    <h2 className="font-serif text-2xl md:text-3xl font-bold text-[#1a332b] mb-3">
-                      {service.title}
-                    </h2>
-                    <div className="w-12 h-0.5 bg-gradient-to-r from-[#c6a94c] to-[#dcc875] rounded-full mb-4" />
-                    <p className="text-gray-600 leading-relaxed mb-6">{service.description}</p>
-
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-8">
+                    <ul className="mt-8 space-y-2.5">
                       {service.features.map((f) => (
-                        <li key={f} className="flex items-center gap-2 text-sm text-gray-700">
-                          <CheckCircle2 size={16} className="text-[#2a5245] flex-shrink-0" />
+                        <li key={f} className="flex items-start gap-2.5 text-sm text-ink/80">
+                          <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-rose-gold" />
                           {f}
                         </li>
                       ))}
                     </ul>
 
-                    <div className="flex flex-wrap gap-3">
-                      <Link href="/contact#inquiry" className="btn-primary text-sm px-6 py-3">
+                    <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+                      <Link
+                        href="/contact#inquiry"
+                        className="inline-flex items-center justify-center gap-2 rounded-2xl bg-rose-gold px-6 py-3.5 text-sm font-semibold text-white shadow-glow-rose transition hover:bg-rose-gold-deep"
+                      >
                         Book This Service
                         <ArrowRight size={16} />
                       </Link>
-                      <a href="tel:+919876543210" className="flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-[#2a5245] text-[#2a5245] font-semibold text-sm hover:bg-[#2a5245] hover:text-white transition-all">
-                        <Phone size={16} />
+                      <a
+                        href="tel:+919876543210"
+                        className="inline-flex items-center justify-center gap-2 rounded-2xl border border-rose-gold/25 px-6 py-3.5 text-sm font-semibold text-ink transition hover:bg-blush/50"
+                      >
+                        <Phone size={16} className="text-rose-gold" />
                         Call for Details
                       </a>
                     </div>
@@ -146,9 +142,10 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Amenities */}
-      <section className="section-padding bg-gradient-to-br from-[#1a332b] to-[#2a5245]">
-        <div className="container-custom">
+      <section className="relative overflow-hidden py-16 md:py-24">
+        <div className="absolute inset-0 bg-gradient-to-br from-footer via-[#3a3234] to-footer" />
+        <div className="pointer-events-none absolute top-20 right-10 h-64 w-64 rounded-full bg-rose-gold/15 blur-3xl" />
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             badge="Amenities"
             title="World-Class"
@@ -156,42 +153,42 @@ export default function ServicesPage() {
             subtitle="Every amenity you need for a flawless event — all under one roof at Green Land Farm."
             light
           />
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {AMENITIES.map((amenity) => (
               <div
                 key={amenity}
-                className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 rounded-xl px-3 py-3 text-white/90 text-sm hover:bg-white/15 hover:border-[#c6a94c]/40 transition-all duration-200"
+                className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-cream/90 backdrop-blur-sm transition hover:border-rose-gold/30 hover:bg-white/10"
               >
-                <CheckCircle2 size={14} className="text-[#c6a94c] flex-shrink-0" />
-                <span className="text-xs leading-tight">{amenity}</span>
+                <CheckCircle2 size={14} className="shrink-0 text-rose-gold-muted" />
+                <span>{amenity}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Process */}
-      <section className="section-padding bg-[#f7f3ec]">
-        <div className="container-custom">
+      <section className="bg-gradient-to-b from-blush/35 to-cream py-16 md:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             badge="How It Works"
             title="Our Simple"
             titleHighlight="Booking Process"
             subtitle="From your first inquiry to your wedding day — we make every step easy and stress-free."
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { step: "01", title: "Send Inquiry", desc: "Fill out our inquiry form or call us to check availability for your date." },
               { step: "02", title: "Site Visit", desc: "Schedule a free site visit to tour the venue and discuss your requirements." },
               { step: "03", title: "Customize Package", desc: "Work with our team to customize a package that fits your vision and budget." },
               { step: "04", title: "Celebrate!", desc: "Relax and enjoy your perfect day while our team handles every detail." },
-            ].map((step) => (
-              <div key={step.step} className="relative text-center p-6 bg-white rounded-2xl border border-[#c6a94c]/15 shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#2a5245] to-[#4d8b73] flex items-center justify-center mx-auto mb-4 shadow-lg">
-                  <span className="text-[#c6a94c] font-bold text-lg font-serif">{step.step}</span>
-                </div>
-                <h3 className="font-serif font-bold text-[#1a332b] text-lg mb-2">{step.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{step.desc}</p>
+            ].map((s) => (
+              <div
+                key={s.step}
+                className="rounded-2xl border border-rose-gold/12 bg-white/95 p-6 shadow-luxury transition hover:-translate-y-1 hover:border-rose-gold/28"
+              >
+                <div className="font-display text-3xl font-semibold text-gradient-rose">{s.step}</div>
+                <h3 className="mt-3 font-display text-lg font-semibold text-ink">{s.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink/70">{s.desc}</p>
               </div>
             ))}
           </div>

@@ -7,7 +7,14 @@ import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import CTASection from "@/components/home/CTASection";
 import MapEmbed, { GetDirectionsButton } from "@/components/ui/MapEmbed";
 import {
-  CheckCircle2, Leaf, Award, Users, Heart, Star, MapPin, Clock,
+  CheckCircle2,
+  Leaf,
+  Award,
+  Users,
+  Heart,
+  Star,
+  MapPin,
+  Clock,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -93,75 +100,75 @@ export default function AboutPage() {
         title="About"
         titleHighlight="Green Land Farm"
         subtitle="15+ years of creating magical wedding memories in the heart of Surat, Gujarat."
-        image="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1920&q=80"
+        image="https://images.unsplash.com/photo-1587271407850-8d438ca9fdf2?w=1920&q=80"
         breadcrumbs={[{ label: "About Us" }]}
         badge="Our Story"
       />
 
-      {/* Story Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Images */}
-            <div className="relative pb-8 sm:pb-0">
-              <div className="relative h-[300px] sm:h-[360px] lg:h-[420px] rounded-2xl overflow-hidden shadow-2xl">
+      <section className="relative overflow-hidden bg-gradient-to-b from-cream via-blush/25 to-cream py-16 md:py-24">
+        <div className="pointer-events-none absolute top-20 right-0 h-64 w-64 rounded-full bg-rose-gold/10 blur-3xl" />
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            <div className="relative">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-rose-gold/15 shadow-luxury sm:aspect-[3/4]">
                 <Image
-                  src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80"
+                  src="https://images.unsplash.com/photo-1587271636175-90d58cdad458?w=800&q=80"
                   alt="Green Land Farm Wedding Venue"
                   fill
-                  className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />
               </div>
-              {/* Floating card */}
-              <div className="absolute bottom-0 right-0 sm:-bottom-6 sm:-right-6 bg-white rounded-2xl p-4 sm:p-5 shadow-xl border border-[#c6a94c]/20 max-w-[min(200px,88vw)]">
-                <div className="text-[#2a5245] font-serif font-bold text-3xl mb-1">
+
+              <div className="absolute right-4 bottom-24 left-4 rounded-2xl border border-white/30 bg-cream/95 p-4 shadow-luxury backdrop-blur-md sm:right-6 sm:bottom-28 sm:left-6">
+                <div className="font-display text-3xl font-semibold text-gradient-rose">
                   <AnimatedCounter value={500} suffix="+" />
                 </div>
-                <div className="text-gray-500 text-sm">Happy Couples</div>
-                <div className="flex mt-2">
-                  {[1,2,3,4,5].map(i => (
-                    <Star key={i} size={14} className="text-[#c6a94c] fill-[#c6a94c]" />
+                <div className="text-xs font-semibold uppercase tracking-wider text-ink/60">Happy Couples</div>
+                <div className="mt-2 flex gap-0.5 text-rose-gold">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <Star key={i} size={14} className="fill-rose-gold" />
                   ))}
                 </div>
               </div>
-              {/* Floating badge */}
-              <div className="absolute top-2 left-2 sm:-top-4 sm:-left-4 bg-gradient-to-br from-[#2a5245] to-[#4d8b73] rounded-2xl p-3 sm:p-4 shadow-lg text-white text-center">
-                <div className="font-serif font-bold text-2xl">15+</div>
-                <div className="text-xs text-white/80">Years</div>
+
+              <div className="absolute top-6 right-6 rounded-2xl border border-rose-gold/25 bg-gradient-to-br from-rose-gold to-rose-gold-deep px-4 py-3 text-center text-white shadow-glow-rose">
+                <div className="font-display text-2xl font-bold">15+</div>
+                <div className="text-[10px] font-semibold uppercase tracking-wider text-white/90">Years</div>
               </div>
             </div>
 
-            {/* Content */}
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c6a94c]/10 border border-[#c6a94c]/30 mb-5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#c6a94c]" />
-                <span className="text-[#c6a94c] text-xs font-semibold tracking-widest uppercase">Our Story</span>
+              <div className="inline-flex items-center gap-2 rounded-full border border-rose-gold/20 bg-blush/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-rose-gold-deep">
+                <span className="h-1.5 w-1.5 rounded-full bg-rose-gold" />
+                <span>Our Story</span>
               </div>
 
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#1a332b] mb-4 leading-tight">
-                Where Every Wedding Becomes a{" "}
-                <span style={{ background: "linear-gradient(135deg, #c6a94c 0%, #dcc875 50%, #c6a94c 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                  Timeless Memory
-                </span>
+              <h2 className="mt-4 font-display text-3xl font-semibold leading-tight text-ink sm:text-4xl">
+                Where Every Wedding Becomes a <span className="text-gradient-rose">Timeless Memory</span>
               </h2>
 
-              <div className="w-16 h-0.5 bg-gradient-to-r from-[#c6a94c] to-[#dcc875] rounded-full mb-5" />
+              <div className="mt-4 h-1 w-20 rounded-full bg-gradient-to-r from-rose-gold to-blush" />
 
-              <div className="space-y-4 text-gray-600 leading-relaxed">
+              <div className="mt-6 space-y-4 text-sm leading-relaxed text-ink/75 sm:text-base">
                 <p>
-                  Founded in 2009 by Rajesh Patel, Green Land Farm was born from a simple yet powerful dream — to create a wedding venue in Surat that combines the grandeur of luxury hospitality with the natural beauty of lush green surroundings.
+                  Founded in 2009 by Rajesh Patel, Green Land Farm was born from a simple yet powerful dream — to create a
+                  wedding venue in Surat that combines the grandeur of luxury hospitality with the natural beauty of lush
+                  green surroundings.
                 </p>
                 <p>
-                  What started as a modest 2-acre farm has grown into Surat&apos;s most prestigious wedding destination — a sprawling 5-acre paradise that has hosted over 500 weddings, receptions, engagements, and destination celebrations.
+                  What started as a modest 2-acre farm has grown into Surat&apos;s most prestigious wedding destination — a
+                  sprawling 5-acre paradise that has hosted over 500 weddings, receptions, engagements, and destination
+                  celebrations.
                 </p>
                 <p>
-                  Today, Green Land Farm stands as a testament to our unwavering commitment to excellence, personalized service, and the belief that every couple deserves a wedding that exceeds their wildest dreams.
+                  Today, Green Land Farm stands as a testament to our unwavering commitment to excellence, personalized
+                  service, and the belief that every couple deserves a wedding that exceeds their wildest dreams.
                 </p>
               </div>
 
-              {/* Key points */}
-              <ul className="mt-6 space-y-3">
+              <ul className="mt-8 space-y-3">
                 {[
                   "5-acre lush green farm in prime Surat location",
                   "Indoor & outdoor spaces for 50 to 1000+ guests",
@@ -169,18 +176,24 @@ export default function AboutPage() {
                   "Dedicated event coordinators for every wedding",
                   "Luxury bridal suite and accommodation",
                 ].map((point) => (
-                  <li key={point} className="flex items-start gap-3 text-sm text-gray-700">
-                    <CheckCircle2 size={18} className="text-[#2a5245] flex-shrink-0 mt-0.5" />
+                  <li key={point} className="flex items-start gap-3 text-sm text-ink/80">
+                    <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-rose-gold" />
                     {point}
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link href="/contact#inquiry" className="btn-primary">
+              <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  href="/contact#inquiry"
+                  className="inline-flex items-center justify-center rounded-2xl bg-rose-gold px-6 py-3.5 text-sm font-semibold text-white shadow-glow-rose transition hover:bg-rose-gold-deep"
+                >
                   Book a Site Visit
                 </Link>
-                <Link href="/packages" className="btn-green">
+                <Link
+                  href="/packages"
+                  className="inline-flex items-center justify-center rounded-2xl border border-rose-gold/25 bg-white px-6 py-3.5 text-sm font-semibold text-ink transition hover:border-rose-gold/45 hover:bg-blush/50"
+                >
                   View Packages
                 </Link>
               </div>
@@ -189,52 +202,54 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-16 bg-gradient-to-br from-[#1a332b] to-[#2a5245]">
-        <div className="container-custom">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <section className="relative bg-footer py-16 text-cream md:py-20">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(183,110,121,0.15),transparent_55%)]" />
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { value: 500, suffix: "+", label: "Weddings Hosted", icon: Heart },
               { value: 15, suffix: "+", label: "Years Experience", icon: Award },
               { value: 1000, suffix: "+", label: "Guest Capacity", icon: Users },
               { value: 5, suffix: " Acres", label: "Green Land", icon: Leaf },
             ].map(({ value, suffix, label, icon: Icon }) => (
-              <div key={label} className="p-6">
-                <div className="w-12 h-12 rounded-xl bg-[#c6a94c]/20 border border-[#c6a94c]/30 flex items-center justify-center mx-auto mb-3">
-                  <Icon size={22} className="text-[#c6a94c]" />
+              <div
+                key={label}
+                className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur-md transition hover:border-rose-gold/35 hover:bg-white/10"
+              >
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-rose-gold/20 text-rose-gold-muted">
+                  <Icon size={22} />
                 </div>
-                <div className="font-serif text-3xl md:text-4xl font-bold text-white mb-1">
+                <div className="font-display text-3xl font-semibold text-cream">
                   <AnimatedCounter value={value} suffix={suffix} />
                 </div>
-                <div className="text-white/60 text-sm">{label}</div>
+                <div className="mt-2 text-xs font-semibold uppercase tracking-wider text-cream/65">{label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Values */}
-      <section className="section-padding bg-[#f7f3ec]">
-        <div className="container-custom">
+      <section className="bg-cream py-16 md:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             badge="Our Values"
             title="What Makes Us"
             titleHighlight="Different"
             subtitle="Our core values guide everything we do — from how we plan your event to how we treat every guest."
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid gap-6 sm:grid-cols-2">
             {VALUES.map((val) => {
               const Icon = val.icon;
               return (
                 <div
                   key={val.title}
-                  className="text-center p-6 rounded-2xl bg-white border border-[#c6a94c]/15 shadow-sm hover:shadow-lg hover:border-[#c6a94c]/30 transition-all duration-300 hover:-translate-y-1"
+                  className="rounded-2xl border border-rose-gold/12 bg-white/95 p-8 shadow-luxury transition hover:-translate-y-1 hover:border-rose-gold/25 hover:shadow-luxury-hover"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#2a5245] to-[#4d8b73] flex items-center justify-center mx-auto mb-4 shadow-md">
-                    <Icon size={24} className="text-[#c6a94c]" />
+                  <div className="mb-4 inline-flex rounded-2xl bg-gradient-to-br from-rose-gold to-rose-gold-deep p-3 text-white shadow-md">
+                    <Icon size={24} />
                   </div>
-                  <h3 className="font-serif font-bold text-lg text-[#1a332b] mb-2">{val.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{val.description}</p>
+                  <h3 className="font-display text-xl font-semibold text-ink">{val.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-ink/70">{val.description}</p>
                 </div>
               );
             })}
@@ -242,41 +257,39 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
+      <section className="relative overflow-hidden bg-gradient-to-b from-blush/35 to-cream py-16 md:py-24">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             badge="Our Journey"
             title="15 Years of"
             titleHighlight="Excellence"
             subtitle="From a humble beginning to Surat's most prestigious wedding venue — our journey of growth and dedication."
           />
-          <div className="relative max-w-3xl mx-auto">
-            {/* Center line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#c6a94c] to-[#2a5245] -translate-x-1/2 hidden md:block" />
 
-            <div className="space-y-8">
+          <div className="relative mt-12">
+            <div className="absolute top-0 bottom-0 left-[19px] w-px bg-gradient-to-b from-rose-gold/20 via-rose-gold/50 to-rose-gold/20 md:left-1/2 md:-translate-x-1/2" />
+
+            <div className="space-y-10">
               {MILESTONES.map((m, i) => (
                 <div
                   key={m.year}
-                  className={`flex items-center gap-6 md:gap-0 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
+                  className={`relative flex flex-col gap-6 md:grid md:grid-cols-2 md:items-center ${
+                    i % 2 === 0 ? "" : ""
+                  }`}
                 >
-                  {/* Content */}
-                  <div className={`flex-1 ${i % 2 === 0 ? "md:pr-10 md:text-right" : "md:pl-10"}`}>
-                    <div className="bg-white border border-[#c6a94c]/20 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
-                      <div className="text-[#c6a94c] font-bold text-sm mb-1">{m.year}</div>
-                      <h3 className="font-serif font-bold text-[#1a332b] text-lg mb-1">{m.title}</h3>
-                      <p className="text-gray-500 text-sm">{m.desc}</p>
+                  <div className={`pl-12 md:pl-0 ${i % 2 === 0 ? "md:pr-12 md:text-right" : "md:col-start-2"}`}>
+                    <div className="inline-block rounded-2xl border border-rose-gold/15 bg-white/95 p-6 shadow-md backdrop-blur-md">
+                      <div className="text-xs font-bold uppercase tracking-widest text-rose-gold">{m.year}</div>
+                      <h3 className="mt-2 font-display text-lg font-semibold text-ink">{m.title}</h3>
+                      <p className="mt-2 text-sm text-ink/70">{m.desc}</p>
                     </div>
                   </div>
 
-                  {/* Center dot */}
-                  <div className="hidden md:flex w-10 h-10 rounded-full bg-gradient-to-br from-[#c6a94c] to-[#dcc875] items-center justify-center flex-shrink-0 shadow-lg z-10">
-                    <span className="text-[#1a332b] font-bold text-xs">{i + 1}</span>
+                  <div className="absolute top-6 left-0 flex h-10 w-10 items-center justify-center rounded-full border-2 border-cream bg-gradient-to-br from-rose-gold to-rose-gold-deep font-display text-sm font-bold text-white shadow-glow-rose md:left-1/2 md:-translate-x-1/2">
+                    {i + 1}
                   </div>
 
-                  {/* Spacer */}
-                  <div className="flex-1 hidden md:block" />
+                  <div className="hidden md:block" />
                 </div>
               ))}
             </div>
@@ -284,36 +297,32 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team */}
-      <section className="section-padding bg-[#f7f3ec]">
-        <div className="container-custom">
+      <section className="bg-cream py-16 md:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             badge="Our Team"
             title="The People Behind"
             titleHighlight="Your Perfect Day"
             subtitle="Our experienced team of professionals is dedicated to making your wedding day absolutely flawless."
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid gap-8 sm:grid-cols-2">
             {TEAM.map((member) => (
               <div
                 key={member.name}
-                className="group bg-white rounded-2xl overflow-hidden border border-[#c6a94c]/15 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="flex gap-5 rounded-2xl border border-rose-gold/12 bg-white/95 p-6 shadow-luxury transition hover:border-rose-gold/25 md:p-8"
               >
-                {/* Avatar */}
-                <div className="h-48 bg-gradient-to-br from-[#2a5245] to-[#4d8b73] flex items-center justify-center relative overflow-hidden">
-                  <div className="w-20 h-20 rounded-full bg-white/20 border-2 border-[#c6a94c]/50 flex items-center justify-center">
-                    <span className="text-white font-serif font-bold text-3xl">
-                      {member.name.charAt(0)}
-                    </span>
+                <div className="relative shrink-0">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-gold to-rose-gold-deep font-display text-xl font-bold text-white shadow-md">
+                    <span>{member.name.charAt(0)}</span>
                   </div>
-                  <div className="absolute bottom-3 right-3 bg-[#c6a94c] text-[#1a332b] text-xs font-bold px-2 py-1 rounded-full">
+                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-blush px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-rose-gold-deep">
                     {member.experience}
                   </div>
                 </div>
-                <div className="p-5">
-                  <h3 className="font-serif font-bold text-[#1a332b] text-lg mb-0.5">{member.name}</h3>
-                  <div className="text-[#c6a94c] text-xs font-semibold tracking-wide uppercase mb-3">{member.role}</div>
-                  <p className="text-gray-500 text-sm leading-relaxed">{member.description}</p>
+                <div className="min-w-0 pt-1">
+                  <h3 className="font-display text-lg font-semibold text-ink">{member.name}</h3>
+                  <div className="text-sm font-medium text-rose-gold">{member.role}</div>
+                  <p className="mt-2 text-sm leading-relaxed text-ink/70">{member.description}</p>
                 </div>
               </div>
             ))}
@@ -321,10 +330,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Location highlight */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-10 items-center">
+      <section className="border-t border-rose-gold/10 bg-gradient-to-b from-cream to-blush/30 py-16 md:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-14">
             <div>
               <SectionHeader
                 badge="Location"
@@ -333,16 +341,19 @@ export default function AboutPage() {
                 align="left"
                 subtitle="Situated on the Surat-Navsari Highway, Green Land Farm is easily accessible from all parts of Surat and neighboring cities."
               />
-              <div className="space-y-4 mt-2">
+              <div className="mt-8 space-y-3">
                 {[
                   { icon: MapPin, text: "Near NH-48, Surat-Navsari Highway, Surat" },
                   { icon: Clock, text: "30 minutes from Surat Railway Station" },
                   { icon: Users, text: "Ample parking for 200+ vehicles" },
                   { icon: Award, text: "Helicopter landing facility available" },
                 ].map(({ icon: Icon, text }) => (
-                  <div key={text} className="flex items-center gap-3 text-gray-600 text-sm">
-                    <div className="w-8 h-8 rounded-lg bg-[#2a5245]/10 flex items-center justify-center flex-shrink-0">
-                      <Icon size={16} className="text-[#2a5245]" />
+                  <div
+                    key={text}
+                    className="flex items-center gap-3 rounded-2xl border border-rose-gold/12 bg-white/90 px-4 py-3 text-sm text-ink/80 shadow-sm"
+                  >
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blush text-rose-gold">
+                      <Icon size={16} />
                     </div>
                     {text}
                   </div>
@@ -352,7 +363,7 @@ export default function AboutPage() {
                 <GetDirectionsButton variant="primary" size="md" />
               </div>
             </div>
-            <MapEmbed height="h-[350px]" showDirectionsButton={false} className="rounded-2xl" />
+            <MapEmbed height="h-[350px]" showDirectionsButton={false} />
           </div>
         </div>
       </section>

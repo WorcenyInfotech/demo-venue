@@ -66,33 +66,33 @@ export function getStatusColor(
   switch (status) {
     case "new":
       return {
-        bg: "bg-blue-50",
-        text: "text-blue-700",
-        border: "border-blue-200",
+        bg: "bg-blush",
+        text: "text-rose-gold-deep",
+        border: "border-rose-gold/25",
       };
     case "contacted":
       return {
-        bg: "bg-yellow-50",
-        text: "text-yellow-700",
-        border: "border-yellow-200",
+        bg: "bg-cream",
+        text: "text-ink",
+        border: "border-rose-gold/20",
       };
     case "confirmed":
       return {
-        bg: "bg-green-50",
-        text: "text-green-700",
-        border: "border-green-200",
+        bg: "bg-rose-gold/15",
+        text: "text-rose-gold-deep",
+        border: "border-rose-gold/35",
       };
     case "cancelled":
       return {
         bg: "bg-red-50",
-        text: "text-red-700",
+        text: "text-red-800",
         border: "border-red-200",
       };
     default:
       return {
-        bg: "bg-gray-50",
-        text: "text-gray-700",
-        border: "border-gray-200",
+        bg: "bg-blush/50",
+        text: "text-ink/80",
+        border: "border-rose-gold/15",
       };
   }
 }

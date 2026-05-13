@@ -15,9 +15,7 @@ export default function TestimonialsSection() {
   }, []);
 
   const prev = useCallback(() => {
-    setCurrent(
-      (prev) => (prev - 1 + DEFAULT_TESTIMONIALS.length) % DEFAULT_TESTIMONIALS.length
-    );
+    setCurrent((prev) => (prev - 1 + DEFAULT_TESTIMONIALS.length) % DEFAULT_TESTIMONIALS.length);
   }, []);
 
   useEffect(() => {
@@ -27,16 +25,10 @@ export default function TestimonialsSection() {
   }, [isAutoPlaying, next]);
 
   return (
-    <section className="section-padding relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#faf8f5] via-white to-[#faf8f5]" />
-      <div className="absolute inset-0 pattern-overlay" />
+    <section className="relative overflow-hidden bg-gradient-to-b from-blush/35 via-cream to-cream py-20 md:py-28">
+      <div className="pointer-events-none absolute top-16 right-0 h-56 w-56 rounded-full bg-rose-gold/10 blur-3xl" />
 
-      {/* Decorative elements */}
-      <div className="absolute top-1/4 -left-32 w-64 h-64 rounded-full bg-[#d4af37]/5 blur-3xl" />
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-[#2a5245]/5 blur-3xl" />
-
-      <div className="container-custom relative z-10">
+      <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
           badge="Testimonials"
           title="Love Stories From"
@@ -45,128 +37,89 @@ export default function TestimonialsSection() {
         />
 
         <div
-          className="relative max-w-4xl mx-auto"
+          className="relative"
           onMouseEnter={() => setIsAutoPlaying(false)}
           onMouseLeave={() => setIsAutoPlaying(true)}
         >
-          {/* Large decorative quote */}
-          <div className="absolute -top-6 left-4 md:left-8 text-[#d4af37]/10 pointer-events-none">
-            <Quote size={100} className="fill-[#d4af37]/10" strokeWidth={0} />
+          <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 text-rose-gold/10">
+            <Quote size={100} strokeWidth={0} fill="currentColor" />
           </div>
 
-          {/* Main testimonial card */}
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 36 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-              className="relative rounded-3xl p-8 md:p-12 lg:p-14 overflow-hidden"
-              style={{
-                background: "rgba(255, 255, 255, 0.95)",
-                backdropFilter: "blur(20px)",
-                boxShadow: "0 20px 60px rgba(0,0,0,0.08), 0 0 0 1px rgba(212,175,55,0.1)",
-              }}
+              exit={{ opacity: 0, y: -28 }}
+              transition={{ duration: 0.55, ease: [0.4, 0, 0.2, 1] }}
+              className="relative mx-auto max-w-3xl overflow-hidden rounded-2xl border border-rose-gold/15 bg-white/95 p-8 shadow-luxury backdrop-blur-xl sm:p-12"
             >
-              {/* Top gold accent */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#d4af37] via-[#e8c966] to-[#d4af37]" />
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-rose-gold to-transparent" />
 
-              {/* Stars */}
-              <div className="flex items-center gap-1.5 mb-8">
+              <div className="mb-6 flex justify-center gap-1">
                 {Array.from({ length: DEFAULT_TESTIMONIALS[current].rating }).map((_, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: i * 0.1 }}
+                    transition={{ delay: i * 0.08 }}
                   >
-                    <Star size={22} className="text-[#d4af37] fill-[#d4af37]" />
+                    <Star size={22} className="fill-rose-gold text-rose-gold" />
                   </motion.div>
                 ))}
               </div>
 
-              {/* Review text */}
-              <blockquote className="text-[#1a2e28] text-lg md:text-xl lg:text-2xl leading-relaxed font-serif mb-10">
-                <span className="text-[#d4af37] text-3xl font-serif">&ldquo;</span>
+              <blockquote className="text-center font-display text-xl font-medium leading-relaxed text-ink sm:text-2xl">
+                <span className="text-rose-gold/40">&ldquo;</span>
                 {DEFAULT_TESTIMONIALS[current].review}
-                <span className="text-[#d4af37] text-3xl font-serif">&rdquo;</span>
+                <span className="text-rose-gold/40">&rdquo;</span>
               </blockquote>
 
-              {/* Author */}
-              <div className="flex items-center gap-5">
-                {/* Avatar */}
-                <div
-                  className="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0"
-                  style={{
-                    background: "linear-gradient(135deg, #1a2e28 0%, #2a5245 50%, #3d7a68 100%)",
-                    boxShadow: "0 8px 24px rgba(42, 82, 69, 0.25)",
-                  }}
-                >
-                  <span className="text-white font-bold text-2xl font-serif">
-                    {DEFAULT_TESTIMONIALS[current].name.charAt(0)}
-                  </span>
-                </div>
-
-                <div>
-                  <div className="font-serif font-bold text-[#1a2e28] text-lg md:text-xl">
-                    {DEFAULT_TESTIMONIALS[current].name}
+              <div className="mt-10 flex flex-col items-center gap-4 border-t border-rose-gold/10 pt-8 sm:flex-row sm:justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-gold to-rose-gold-deep font-display text-xl font-semibold text-white shadow-glow-rose">
+                    <span>{DEFAULT_TESTIMONIALS[current].name.charAt(0)}</span>
                   </div>
-                  <div className="text-[#d4af37] text-sm font-semibold tracking-wide">
-                    {DEFAULT_TESTIMONIALS[current].eventType}
+                  <div className="text-center sm:text-left">
+                    <div className="font-display text-lg font-semibold text-ink">{DEFAULT_TESTIMONIALS[current].name}</div>
+                    <div className="text-sm text-rose-gold">{DEFAULT_TESTIMONIALS[current].eventType}</div>
                   </div>
                 </div>
-
-                {/* Decorative quote icon */}
-                <div className="ml-auto hidden sm:flex w-14 h-14 rounded-full items-center justify-center"
-                  style={{
-                    background: "linear-gradient(135deg, rgba(212,175,55,0.15) 0%, rgba(212,175,55,0.05) 100%)",
-                    border: "1px solid rgba(212,175,55,0.2)",
-                  }}
-                >
-                  <Quote size={22} className="text-[#d4af37]" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-rose-gold/20 bg-blush/50 text-rose-gold">
+                  <Quote size={22} />
                 </div>
               </div>
             </motion.div>
           </AnimatePresence>
 
-          {/* Navigation */}
-          <div className="flex items-center justify-between mt-10">
+          <div className="mt-10 flex items-center justify-center gap-6">
             <button
+              type="button"
               onClick={prev}
-              className="w-12 h-12 rounded-full flex items-center justify-center text-[#1a2e28] transition-all duration-300 hover:bg-[#1a2e28] hover:text-white hover:shadow-lg"
-              style={{
-                background: "rgba(255,255,255,0.9)",
-                border: "2px solid rgba(26,46,40,0.15)",
-              }}
+              className="flex h-12 w-12 items-center justify-center rounded-2xl border border-rose-gold/20 bg-white text-ink shadow-sm transition hover:border-rose-gold/40 hover:bg-blush"
               aria-label="Previous testimonial"
             >
               <ChevronLeft size={22} />
             </button>
 
-            {/* Dots */}
-            <div className="flex items-center gap-3">
+            <div className="flex gap-2">
               {DEFAULT_TESTIMONIALS.map((_, i) => (
                 <button
                   key={i}
+                  type="button"
                   onClick={() => setCurrent(i)}
-                  className={`transition-all duration-400 rounded-full ${
-                    i === current
-                      ? "w-10 h-3 bg-gradient-to-r from-[#d4af37] to-[#e8c966] shadow-[0_0_15px_rgba(212,175,55,0.4)]"
-                      : "w-3 h-3 bg-[#e0dcd5] hover:bg-[#d4af37]/50"
-                  }`}
                   aria-label={`Go to testimonial ${i + 1}`}
+                  className={`h-2.5 rounded-full transition-all ${
+                    i === current ? "w-8 bg-rose-gold shadow-glow-rose" : "w-2.5 bg-rose-gold/25 hover:bg-rose-gold/45"
+                  }`}
                 />
               ))}
             </div>
 
             <button
+              type="button"
               onClick={next}
-              className="w-12 h-12 rounded-full flex items-center justify-center text-[#1a2e28] transition-all duration-300 hover:bg-[#1a2e28] hover:text-white hover:shadow-lg"
-              style={{
-                background: "rgba(255,255,255,0.9)",
-                border: "2px solid rgba(26,46,40,0.15)",
-              }}
+              className="flex h-12 w-12 items-center justify-center rounded-2xl border border-rose-gold/20 bg-white text-ink shadow-sm transition hover:border-rose-gold/40 hover:bg-blush"
               aria-label="Next testimonial"
             >
               <ChevronRight size={22} />
@@ -174,50 +127,37 @@ export default function TestimonialsSection() {
           </div>
         </div>
 
-        {/* Mini testimonial cards */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4"
+          initial={{ opacity: 0, y: 26 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14"
+          transition={{ duration: 0.65, delay: 0.15 }}
         >
           {DEFAULT_TESTIMONIALS.map((t, i) => (
             <button
               key={i}
+              type="button"
               onClick={() => setCurrent(i)}
-              className={`p-5 rounded-2xl text-left transition-all duration-400 ${
+              className={`rounded-2xl border px-4 py-4 text-left transition hover:-translate-y-1 ${
                 i === current
-                  ? "bg-gradient-to-br from-[#1a2e28] to-[#2a5245] text-white shadow-xl -translate-y-1"
-                  : "bg-white hover:shadow-lg hover:-translate-y-0.5"
+                  ? "border-rose-gold/40 bg-gradient-to-br from-rose-gold to-rose-gold-deep text-white shadow-glow-rose"
+                  : "border-rose-gold/12 bg-white/90 shadow-sm hover:border-rose-gold/30 hover:shadow-md"
               }`}
-              style={{
-                border: i === current ? "none" : "1px solid rgba(212,175,55,0.15)",
-              }}
             >
-              <div className="flex items-center gap-1 mb-3">
+              <div className="flex gap-0.5">
                 {Array.from({ length: t.rating }).map((_, j) => (
                   <Star
                     key={j}
                     size={12}
-                    className="text-[#d4af37] fill-[#d4af37]"
+                    className={i === current ? "fill-white text-white" : "fill-rose-gold text-rose-gold"}
                   />
                 ))}
               </div>
-              <div
-                className={`font-semibold text-sm mb-1 ${
-                  i === current ? "text-white" : "text-[#1a2e28]"
-                }`}
-              >
+              <div className={`mt-2 font-display text-sm font-semibold ${i === current ? "text-white" : "text-ink"}`}>
                 {t.name.split(" & ")[0]}
               </div>
-              <div
-                className={`text-xs ${
-                  i === current ? "text-white/70" : "text-[#64605a]"
-                }`}
-              >
-                {t.eventType}
-              </div>
+              <div className={`text-xs ${i === current ? "text-white/85" : "text-ink/60"}`}>{t.eventType}</div>
             </button>
           ))}
         </motion.div>

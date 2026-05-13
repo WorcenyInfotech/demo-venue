@@ -15,14 +15,9 @@ export default function StatusBadge({ status }: StatusBadgeProps) {
   const colors = getStatusColor(status);
   return (
     <span
-      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold border ${colors.bg} ${colors.text} ${colors.border}`}
+      className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold ${colors.bg} ${colors.text} ${colors.border}`}
     >
-      <span className={`w-1.5 h-1.5 rounded-full ${
-        status === "new" ? "bg-blue-500" :
-        status === "contacted" ? "bg-yellow-500" :
-        status === "confirmed" ? "bg-green-500" :
-        "bg-red-500"
-      }`} />
+      <span className="h-1.5 w-1.5 rounded-full bg-current opacity-70" />
       {STATUS_LABELS[status] || status}
     </span>
   );

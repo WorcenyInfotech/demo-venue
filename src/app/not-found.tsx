@@ -9,51 +9,35 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1a332b] to-[#2a5245] flex items-center justify-center p-6">
-      <div className="text-center max-w-lg">
-        {/* Logo */}
-        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#c6a94c] to-[#dcc875] flex items-center justify-center mx-auto mb-8 shadow-xl">
-          <span className="text-[#1a332b] font-bold text-3xl font-serif">G</span>
+    <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-cream via-blush/50 to-cream px-4 py-20">
+      <div className="max-w-lg text-center">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-gold to-rose-gold-deep font-display text-2xl font-bold text-white shadow-glow-rose">
+          <span>G</span>
         </div>
 
-        {/* 404 */}
-        <div
-          className="text-8xl font-serif font-bold mb-4"
-          style={{
-            background: "linear-gradient(135deg, #c6a94c 0%, #dcc875 50%, #c6a94c 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}
-        >
-          404
-        </div>
+        <div className="mt-8 font-display text-7xl font-semibold text-gradient-rose sm:text-8xl">404</div>
 
-        <h1 className="text-white font-serif text-2xl font-bold mb-3">
-          Page Not Found
-        </h1>
-        <p className="text-white/60 mb-8 leading-relaxed">
-          The page you&apos;re looking for doesn&apos;t exist or has been moved.
-          Let us help you find what you need.
+        <h1 className="mt-4 font-display text-2xl font-semibold text-ink sm:text-3xl">Page Not Found</h1>
+        <p className="mt-3 text-sm leading-relaxed text-ink/70">
+          The page you&apos;re looking for doesn&apos;t exist or has been moved. Let us help you find what you need.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+        <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:justify-center">
           <Link
             href="/"
-            className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#c6a94c] to-[#dcc875] text-[#1a332b] font-semibold hover:shadow-lg transition-shadow"
+            className="inline-flex items-center justify-center rounded-2xl bg-rose-gold px-6 py-3.5 text-sm font-semibold text-white shadow-glow-rose transition hover:bg-rose-gold-deep"
           >
             Go to Homepage
           </Link>
           <Link
             href="/contact"
-            className="px-6 py-3 rounded-xl border-2 border-white/30 text-white font-semibold hover:bg-white/10 transition-colors"
+            className="inline-flex items-center justify-center rounded-2xl border border-rose-gold/25 px-6 py-3.5 text-sm font-semibold text-ink transition hover:bg-blush/50"
           >
             Contact Us
           </Link>
         </div>
 
-        {/* Quick links */}
-        <div className="mt-10 flex flex-wrap justify-center gap-4 text-sm text-white/50">
+        <div className="mt-12 flex flex-wrap justify-center gap-3">
           {[
             { label: "About", href: "/about" },
             { label: "Services", href: "/services" },
@@ -63,7 +47,7 @@ export default function NotFound() {
             <Link
               key={link.href}
               href={link.href}
-              className="hover:text-[#c6a94c] transition-colors"
+              className="rounded-full border border-rose-gold/20 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-ink/80 transition hover:border-rose-gold/40 hover:text-rose-gold"
             >
               {link.label}
             </Link>

@@ -20,36 +20,29 @@ export default function StatCard({
   suffix = "",
 }: StatCardProps) {
   return (
-    <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-      <div className="flex items-start justify-between mb-4">
-        <div className={`w-12 h-12 rounded-xl ${bgColor} flex items-center justify-center`}>
-          <Icon size={22} className={color} />
+    <div className="group relative overflow-hidden rounded-2xl border border-rose-gold/12 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-rose-gold/25 hover:shadow-md">
+      <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-rose-gold/40 to-transparent opacity-0 transition group-hover:opacity-100" />
+      <div className="flex items-start justify-between gap-3">
+        <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${bgColor} ${color}`}>
+          <Icon size={22} />
         </div>
         {trend && (
           <div
-            className={`flex items-center gap-1 text-xs font-semibold px-2 py-1 rounded-full ${
-              trend.value >= 0
-                ? "bg-green-50 text-green-600"
-                : "bg-red-50 text-red-600"
+            className={`flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold ${
+              trend.value >= 0 ? "bg-blush text-rose-gold-deep" : "bg-red-50 text-red-700"
             }`}
           >
-            {trend.value >= 0 ? (
-              <TrendingUp size={12} />
-            ) : (
-              <TrendingDown size={12} />
-            )}
+            {trend.value >= 0 ? <TrendingUp size={12} /> : <TrendingDown size={12} />}
             {Math.abs(trend.value)}%
           </div>
         )}
       </div>
-      <div className="font-serif font-bold text-3xl text-gray-900 mb-1">
+      <div className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink">
         {value}
         {suffix}
       </div>
-      <div className="text-gray-500 text-sm">{title}</div>
-      {trend && (
-        <div className="text-gray-400 text-xs mt-1">{trend.label}</div>
-      )}
+      <div className="mt-1 text-sm font-medium text-ink/60">{title}</div>
+      {trend && <div className="mt-2 text-xs text-ink/45">{trend.label}</div>}
     </div>
   );
 }

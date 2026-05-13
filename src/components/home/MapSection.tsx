@@ -20,7 +20,7 @@ const CONTACT_ITEMS = [
     cta: (
       <a
         href={`tel:${SITE_CONFIG.phone}`}
-        className="inline-flex items-center gap-1 mt-2 text-xs font-semibold text-[#2a5245] hover:text-[#c6a94c] transition-colors"
+        className="mt-2 inline-flex text-sm font-semibold text-rose-gold transition hover:text-rose-gold-deep"
       >
         Call Now →
       </a>
@@ -33,7 +33,7 @@ const CONTACT_ITEMS = [
     cta: (
       <a
         href={`mailto:${SITE_CONFIG.email}`}
-        className="inline-flex items-center gap-1 mt-2 text-xs font-semibold text-[#2a5245] hover:text-[#c6a94c] transition-colors"
+        className="mt-2 inline-flex text-sm font-semibold text-rose-gold transition hover:text-rose-gold-deep"
       >
         Send Email →
       </a>
@@ -49,8 +49,10 @@ const CONTACT_ITEMS = [
 
 export default function MapSection() {
   return (
-    <section className="section-padding bg-[#f7f3ec]">
-      <div className="container-custom">
+    <section className="relative overflow-hidden bg-gradient-to-b from-cream via-blush/25 to-cream py-20 md:py-28">
+      <div className="pointer-events-none absolute top-20 left-10 h-48 w-48 rounded-full bg-rose-gold/8 blur-3xl" />
+
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
           badge="Find Us"
           title="Visit Green Land Farm"
@@ -58,27 +60,28 @@ export default function MapSection() {
           subtitle="Conveniently located on the Surat-Navsari Highway with easy access from all parts of the city."
         />
 
-        <div className="grid lg:grid-cols-3 gap-8 items-start">
-          {/* Contact info cards */}
-          <div className="space-y-4">
+        <div className="mt-4 grid gap-10 lg:grid-cols-12 lg:items-start">
+          <div className="space-y-4 lg:col-span-5">
             {CONTACT_ITEMS.map((item, i) => {
               const Icon = item.icon;
               return (
                 <motion.div
                   key={item.title}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -18 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.08 }}
-                  className="flex items-start gap-4 p-5 bg-white rounded-xl border border-[#c6a94c]/15 shadow-sm hover:shadow-md hover:border-[#c6a94c]/30 transition-all duration-300"
+                  transition={{ duration: 0.4, delay: i * 0.06 }}
+                  className="flex gap-4 rounded-2xl border border-rose-gold/12 bg-white/90 p-5 shadow-sm backdrop-blur-md transition hover:border-rose-gold/28 hover:shadow-md"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2a5245] to-[#4d8b73] flex items-center justify-center flex-shrink-0">
-                    <Icon size={18} className="text-[#c6a94c]" />
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blush text-rose-gold">
+                    <Icon size={18} />
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="font-semibold text-[#1a332b] text-sm mb-1">{item.title}</div>
+                  <div className="min-w-0 flex-1">
+                    <div className="font-display text-base font-semibold text-ink">{item.title}</div>
                     {item.lines.map((line, j) => (
-                      <div key={j} className="text-gray-600 text-sm leading-relaxed">{line}</div>
+                      <div key={j} className="text-sm text-ink/70">
+                        {line}
+                      </div>
                     ))}
                     {item.cta}
                   </div>
@@ -87,13 +90,12 @@ export default function MapSection() {
             })}
           </div>
 
-          {/* Map — no API key needed */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            className="lg:col-span-7"
+            initial={{ opacity: 0, y: 26 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-2"
+            transition={{ duration: 0.55 }}
           >
             <MapEmbed height="h-[400px] lg:h-[480px]" showDirectionsButton />
           </motion.div>

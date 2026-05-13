@@ -23,138 +23,113 @@ export default function PageHero({
   title,
   titleHighlight,
   subtitle,
-  image = "https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80",
+  image = "https://images.unsplash.com/photo-1587271636175-90d58cdad458?w=1920&q=80",
   breadcrumbs = [],
   badge,
 }: PageHeroProps) {
   return (
-    <section className="relative h-[340px] sm:h-[420px] md:h-[500px] overflow-hidden flex items-end">
-      {/* Background image with parallax */}
+    <section className="relative flex min-h-[52vh] items-end overflow-hidden pt-28 pb-16 md:min-h-[58vh] md:pt-32 md:pb-20">
       <motion.div
-        initial={{ scale: 1.1 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
         className="absolute inset-0"
+        initial={{ scale: 1.08 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1.4, ease: [0.4, 0, 0.2, 1] }}
       >
         <Image
           src={image}
           alt={title}
           fill
           priority
-          className="object-cover"
           sizes="100vw"
+          className="object-cover"
         />
       </motion.div>
 
-      {/* Premium gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0f1c18]/95 via-[#1a2e28]/85 to-[#1a2e28]/60" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0f1c18]/90 via-transparent to-[#0f1c18]/20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-cream/95 via-blush/55 to-ink/45" />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/55 via-transparent to-cream/30" />
 
-      {/* Decorative pattern */}
-      <div className="absolute inset-0 mandala-pattern opacity-50" />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.07]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23333333' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }}
+      />
 
-      {/* Content */}
-      <div className="relative z-10 container-custom w-full pb-14 md:pb-18">
-        {/* Breadcrumbs */}
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
         {breadcrumbs.length > 0 && (
           <motion.nav
+            className="mb-6 flex flex-wrap items-center gap-2 text-sm text-ink/70"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="flex items-center gap-2 text-white/60 text-sm mb-5"
             aria-label="Breadcrumb"
           >
             <Link
               href="/"
-              className="flex items-center gap-1.5 hover:text-[#d4af37] transition-colors"
+              className="inline-flex items-center gap-1.5 rounded-full border border-rose-gold/20 bg-cream/80 px-3 py-1 text-ink/80 backdrop-blur-md transition hover:border-rose-gold/40 hover:text-rose-gold"
             >
               <Home size={14} />
               <span>Home</span>
             </Link>
             {breadcrumbs.map((crumb, i) => (
-              <span key={i} className="flex items-center gap-2">
-                <ChevronRight size={14} className="text-white/30" />
+              <span key={i} className="flex items-center gap-2 text-ink/50">
+                <ChevronRight size={14} className="text-rose-gold/60" />
                 {crumb.href ? (
-                  <Link
-                    href={crumb.href}
-                    className="hover:text-[#d4af37] transition-colors"
-                  >
+                  <Link href={crumb.href} className="transition hover:text-rose-gold">
                     {crumb.label}
                   </Link>
                 ) : (
-                  <span className="text-[#d4af37] font-medium">{crumb.label}</span>
+                  <span className="font-medium text-ink">{crumb.label}</span>
                 )}
               </span>
             ))}
           </motion.nav>
         )}
 
-        {/* Badge */}
         {badge && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            className="mb-4 inline-flex items-center gap-2 rounded-full border border-rose-gold/30 bg-blush/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-rose-gold-deep shadow-sm backdrop-blur-md"
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3 }}
-            className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-[#d4af37]/15 border border-[#d4af37]/30 backdrop-blur-sm mb-5"
           >
-            <Sparkles size={14} className="text-[#d4af37]" />
-            <span className="text-[#d4af37] text-xs font-semibold tracking-[0.15em] uppercase">
-              {badge}
-            </span>
+            <Sparkles size={14} className="text-rose-gold" />
+            <span>{badge}</span>
           </motion.div>
         )}
 
-        {/* Title */}
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          className="font-display text-4xl font-semibold leading-[1.1] tracking-tight text-ink sm:text-5xl lg:text-6xl"
+          initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-          className="heading-hero text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white mb-4"
+          transition={{ delay: 0.35, duration: 0.75 }}
         >
           {title}{" "}
           {titleHighlight && (
-            <span
-              style={{
-                background: "linear-gradient(135deg, #d4af37 0%, #e8c966 40%, #d4af37 60%, #b8941f 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              {titleHighlight}
-            </span>
+            <span className="text-gradient-rose">{titleHighlight}</span>
           )}
         </motion.h1>
 
-        {/* Gold divider */}
         <motion.div
+          className="mt-6 h-1 w-0 max-w-[5rem] rounded-full bg-gradient-to-r from-rose-gold via-rose-gold-muted to-blush"
           initial={{ width: 0 }}
           animate={{ width: 80 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-          className="h-0.5 rounded-full mb-4 relative"
-          style={{
-            background: "linear-gradient(90deg, #d4af37, #e8c966, #d4af37)",
-          }}
-        >
-          <span className="absolute -left-2 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#d4af37]" />
-          <span className="absolute -right-2 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#d4af37]" />
-        </motion.div>
+          transition={{ delay: 0.55, duration: 0.65 }}
+        />
 
-        {/* Subtitle */}
         {subtitle && (
           <motion.p
-            initial={{ opacity: 0, y: 10 }}
+            className="mt-6 max-w-2xl text-base leading-relaxed text-ink/80 sm:text-lg"
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7 }}
-            className="text-white/70 text-base md:text-lg lg:text-xl max-w-2xl leading-relaxed"
+            transition={{ delay: 0.65 }}
           >
             {subtitle}
           </motion.p>
         )}
       </div>
 
-      {/* Bottom decorative border */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4af37]/30 to-transparent" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-rose-gold/40 to-transparent" />
     </section>
   );
 }

@@ -1,33 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Playfair_Display, Cormorant_Garamond } from "next/font/google";
-import "./globals.css";
+import { DM_Sans, Cormorant_Garamond } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import { localBusinessSchema, websiteSchema } from "@/lib/schema";
+import "./globals.css";
 
-// ============================================
-// Font Configuration — optimized with display:swap
-// ============================================
-const inter = Inter({
+const fontSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-dm",
   display: "swap",
-  preload: true,
 });
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap",
-  weight: ["400", "500", "600", "700", "800", "900"],
-  preload: true,
-});
-
-const cormorant = Cormorant_Garamond({
+const fontDisplay = Cormorant_Garamond({
   subsets: ["latin"],
   variable: "--font-cormorant",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
-  preload: false, // secondary font, lazy
+  weight: ["400", "500", "600", "700"],
 });
 
 // ============================================
@@ -149,8 +136,8 @@ export const viewport: Viewport = {
   maximumScale: 5,
   userScalable: true,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#2a5245" },
-    { media: "(prefers-color-scheme: dark)", color: "#1a332b" },
+    { media: "(prefers-color-scheme: light)", color: "#B76E79" },
+    { media: "(prefers-color-scheme: dark)", color: "#2a2426" },
   ],
 };
 
@@ -166,7 +153,7 @@ export default function RootLayout({
     <html
       lang="en"
       dir="ltr"
-      className={`${inter.variable} ${playfair.variable} ${cormorant.variable} bg-[#fffef9]`}
+      className={`${fontSans.variable} ${fontDisplay.variable}`}
     >
       <head>
         {/* DNS prefetch for performance */}
@@ -200,26 +187,27 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-sans antialiased">
+      <body className="min-h-screen bg-cream font-sans text-ink">
         {children}
         <Toaster
           position="top-center"
           toastOptions={{
             duration: 4000,
             style: {
-              background: "#2a5245",
-              color: "#fff",
-              borderRadius: "0.75rem",
+              background: "#333333",
+              color: "#FAF7F2",
+              borderRadius: "1rem",
               padding: "0.875rem 1.25rem",
               fontSize: "0.9375rem",
               fontWeight: "500",
-              boxShadow: "0 10px 36px rgba(28,24,20,0.12)",
+              boxShadow: "0 18px 48px rgba(51,51,51,0.15)",
+              border: "1px solid rgba(183,110,121,0.35)",
             },
             success: {
-              iconTheme: { primary: "#c6a94c", secondary: "#fff" },
+              iconTheme: { primary: "#B76E79", secondary: "#FAF7F2" },
             },
             error: {
-              style: { background: "#dc2626" },
+              style: { background: "#5c2a2f", color: "#FAF7F2" },
             },
           }}
         />

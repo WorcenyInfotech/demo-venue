@@ -29,7 +29,7 @@ export const localBusinessSchema = {
   },
   image: [
     `${siteUrl}/og-image.jpg`,
-    "https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80",
+    "https://images.unsplash.com/photo-1587271636175-90d58cdad458?w=1200&q=80",
   ],
   telephone: ["+91-98765-43210", "+91-87654-32109"],
   email: "info@greenlandfarm.in",

@@ -14,37 +14,49 @@ export default function PrivacyPolicyPage() {
         title="Privacy"
         titleHighlight="Policy"
         breadcrumbs={[{ label: "Privacy Policy" }]}
+        badge="Legal"
       />
-      <section className="section-padding bg-white">
-        <div className="container-custom max-w-3xl">
-          <div className="max-w-none text-gray-600">
-            <p className="text-gray-500 text-sm mb-8">Last updated: January 2025</p>
+      <section className="bg-cream py-14 md:py-20">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <p className="rounded-2xl border border-rose-gold/15 bg-white/90 px-4 py-2 text-center text-sm text-ink/65 shadow-sm">
+            Last updated: January 2026
+          </p>
 
+          <div className="mt-10 space-y-10">
             {[
               {
                 title: "Information We Collect",
-                content: "We collect information you provide directly to us, such as your name, email address, phone number, and event details when you submit an inquiry or contact form. We also collect usage data to improve our website.",
+                content:
+                  "We collect information you provide directly to us, such as your name, email address, phone number, and event details when you submit an inquiry or contact form. We also collect usage data to improve our website.",
               },
               {
                 title: "How We Use Your Information",
-                content: "We use the information we collect to respond to your inquiries, provide our services, send you relevant information about our venue and packages, and improve our website and services.",
+                content:
+                  "We use the information we collect to respond to your inquiries, provide our services, send you relevant information about our venue and packages, and improve our website and services.",
               },
               {
                 title: "Information Sharing",
-                content: "We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as required by law or to provide our services.",
+                content:
+                  "We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as required by law or to provide our services.",
               },
               {
                 title: "Data Security",
-                content: "We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.",
+                content:
+                  "We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.",
               },
               {
                 title: "Contact Us",
-                content: "If you have any questions about this Privacy Policy, please contact us at info@greenlandfarm.in or call +91 98765 43210.",
+                content:
+                  "If you have any questions about this Privacy Policy, please contact us at info@greenlandfarm.in or call +91 98765 43210.",
               },
             ].map((section) => (
-              <div key={section.title} className="mb-8">
-                <h2 className="font-serif text-xl font-bold text-[#1a332b] mb-3">{section.title}</h2>
-                <p className="text-gray-600 leading-relaxed">{section.content}</p>
+              <div
+                key={section.title}
+                className="rounded-2xl border border-rose-gold/12 bg-white/95 p-8 shadow-sm transition hover:border-rose-gold/25 hover:shadow-md"
+              >
+                <h2 className="font-display text-xl font-semibold text-ink">{section.title}</h2>
+                <div className="mt-3 h-px w-12 bg-gradient-to-r from-rose-gold to-transparent" />
+                <p className="mt-4 text-sm leading-relaxed text-ink/75">{section.content}</p>
               </div>
             ))}
           </div>

@@ -13,176 +13,130 @@ export default function CTASection() {
   );
 
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden">
-      {/* Background gradient */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: "linear-gradient(135deg, #0f1c18 0%, #1a2e28 30%, #2a5245 70%, #1a2e28 100%)",
-        }}
-      />
+    <section className="relative overflow-hidden py-20 md:py-28">
+      <div className="absolute inset-0 bg-gradient-to-br from-footer via-ink to-footer" />
+      <div className="pointer-events-none absolute top-0 left-1/2 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-rose-gold/20 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-0 right-0 h-64 w-64 rounded-full bg-blush/10 blur-3xl" />
 
-      {/* Decorative pattern */}
-      <div className="absolute inset-0 mandala-pattern" />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.04]">
+        <div
+          className="h-full w-full"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23faf7f2' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+        />
+      </div>
 
-      {/* Animated gradient orbs */}
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.1, 0.15, 0.1],
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full -translate-y-1/2 translate-x-1/3"
-        style={{
-          background: "radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%)",
-        }}
-      />
-      <motion.div
-        animate={{
-          scale: [1, 1.3, 1],
-          opacity: [0.08, 0.12, 0.08],
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full translate-y-1/2 -translate-x-1/3"
-        style={{
-          background: "radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 70%)",
-        }}
-      />
-
-      {/* Content */}
-      <div className="container-custom relative z-10">
+      <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 36 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center max-w-4xl mx-auto"
+          transition={{ duration: 0.75 }}
         >
-          {/* Badge */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.94 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full mb-8 backdrop-blur-sm"
-            style={{
-              background: "linear-gradient(135deg, rgba(212,175,55,0.2) 0%, rgba(212,175,55,0.05) 100%)",
-              border: "1px solid rgba(212,175,55,0.3)",
-            }}
+            transition={{ delay: 0.15 }}
+            className="mx-auto mb-8 inline-flex items-center gap-2 rounded-full border border-rose-gold/35 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-blush backdrop-blur-md"
           >
-            <Calendar size={16} className="text-[#d4af37]" />
-            <span className="text-[#d4af37] text-sm font-semibold tracking-[0.1em] uppercase">
-              Limited Dates Available for 2025
-            </span>
+            <Calendar size={16} className="text-rose-gold-muted" />
+            <span>Limited Dates Available for 2026</span>
           </motion.div>
 
-          {/* Heading */}
           <motion.h2
-            initial={{ opacity: 0, y: 30 }}
+            className="font-display text-3xl font-semibold leading-tight text-cream sm:text-4xl md:text-5xl"
+            initial={{ opacity: 0, y: 26 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.7 }}
-            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+            transition={{ delay: 0.2, duration: 0.65 }}
           >
             Begin Your{" "}
-            <span
-              style={{
-                background: "linear-gradient(135deg, #d4af37 0%, #e8c966 40%, #d4af37 60%, #b8941f 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
+            <span className="text-gradient-rose [text-shadow:0_2px_24px_rgba(183,110,121,0.35)]">
               Forever Story
             </span>
           </motion.h2>
 
-          {/* Divider */}
           <motion.div
+            className="mx-auto mt-8 h-1 max-w-xs rounded-full bg-gradient-to-r from-transparent via-rose-gold to-transparent"
             initial={{ width: 0 }}
-            whileInView={{ width: 100 }}
+            whileInView={{ width: "100%" }}
             viewport={{ once: true }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="h-0.5 mx-auto rounded-full mb-8"
-            style={{
-              background: "linear-gradient(90deg, transparent, #d4af37, #e8c966, #d4af37, transparent)",
-            }}
+            transition={{ delay: 0.35, duration: 0.6 }}
           />
 
-          {/* Subtitle */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-cream/80 sm:text-lg"
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.6 }}
-            className="text-white/70 text-lg md:text-xl lg:text-2xl mb-12 leading-relaxed max-w-3xl mx-auto"
+            transition={{ delay: 0.45 }}
           >
-            Contact us today to check availability, receive a customized quote, and begin planning the most memorable celebration of your life.
+            Contact us today to check availability, receive a customized quote, and begin planning the most memorable
+            celebration of your life.
           </motion.p>
 
-          {/* CTA Buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap"
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.7 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5"
+            transition={{ delay: 0.55 }}
           >
             <Link
               href="/contact#inquiry"
-              className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 bg-gradient-to-r from-[#d4af37] to-[#e8c966] text-[#1a2e28] shadow-[0_8px_32px_rgba(212,175,55,0.4)] hover:shadow-[0_12px_48px_rgba(212,175,55,0.5)] hover:-translate-y-1"
+              className="inline-flex w-full min-w-[200px] items-center justify-center gap-2 rounded-2xl bg-rose-gold px-7 py-4 text-sm font-semibold text-white shadow-glow-rose transition hover:bg-rose-gold-muted hover:shadow-luxury-hover sm:w-auto"
             >
               <Calendar size={20} />
               <span>Book Your Date</span>
-              <Sparkles size={16} className="group-hover:animate-pulse" />
+              <Sparkles size={16} />
             </Link>
 
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 bg-[#25D366] text-white shadow-[0_8px_32px_rgba(37,211,102,0.3)] hover:shadow-[0_12px_40px_rgba(37,211,102,0.4)] hover:-translate-y-1"
+              className="inline-flex w-full min-w-[200px] items-center justify-center gap-2 rounded-2xl border border-white/25 bg-white/10 px-7 py-4 text-sm font-semibold text-cream backdrop-blur-md transition hover:border-rose-gold/50 hover:bg-blush/15 sm:w-auto"
             >
               <MessageCircle size={20} />
               <span>WhatsApp Us</span>
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={16} />
             </a>
 
             <a
               href={`tel:${SITE_CONFIG.phone}`}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 bg-white/10 backdrop-blur-sm text-white border border-white/25 hover:bg-white/20 hover:border-white/40 hover:-translate-y-1"
+              className="inline-flex w-full min-w-[200px] items-center justify-center gap-2 rounded-2xl border border-rose-gold/40 bg-transparent px-7 py-4 text-sm font-semibold text-cream transition hover:bg-rose-gold/20 sm:w-auto"
             >
               <Phone size={20} />
               <span>Call Now</span>
             </a>
           </motion.div>
 
-          {/* Trust indicators */}
           <motion.p
+            className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-cream/70"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.9 }}
-            className="mt-10 text-white/40 text-sm flex flex-wrap items-center justify-center gap-x-6 gap-y-2"
+            transition={{ delay: 0.75 }}
           >
-            <span className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37]" />
+            <span className="inline-flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-rose-gold" />
               Free Site Visit
             </span>
-            <span className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37]" />
+            <span className="inline-flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-rose-gold" />
               No Booking Fees
             </span>
-            <span className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37]" />
+            <span className="inline-flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-rose-gold" />
               Flexible Packages
             </span>
           </motion.p>
         </motion.div>
       </div>
 
-      {/* Bottom decorative border */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4af37]/30 to-transparent" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-rose-gold/40 to-transparent" />
     </section>
   );
 }

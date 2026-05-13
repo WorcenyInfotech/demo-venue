@@ -26,14 +26,14 @@ export default function PackagesPage() {
         title="Wedding"
         titleHighlight="Packages"
         subtitle="Transparent pricing, premium experiences. Choose the package that matches your dream wedding."
-        image="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1920&q=80"
+        image="https://images.unsplash.com/photo-1587271315307-eaebc181c749?w=1920&q=80"
         breadcrumbs={[{ label: "Packages" }]}
         badge="Pricing"
       />
 
-      {/* Packages */}
-      <section className="section-padding bg-[#f7f3ec]">
-        <div className="container-custom">
+      <section className="relative overflow-hidden bg-gradient-to-b from-cream via-blush/25 to-cream py-16 md:py-24">
+        <div className="pointer-events-none absolute top-20 right-0 h-72 w-72 rounded-full bg-rose-gold/10 blur-3xl" />
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             badge="Our Packages"
             title="Choose Your"
@@ -41,66 +41,54 @@ export default function PackagesPage() {
             subtitle="All packages are fully customizable. Contact us to create a bespoke package tailored to your exact requirements."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start overflow-x-clip">
+          <div className="mt-4 grid gap-8 lg:grid-cols-3">
             {WEDDING_PACKAGES.map((pkg) => (
               <div
                 key={pkg.id}
-                className={`relative rounded-3xl overflow-hidden border transition-all duration-300 hover:-translate-y-2 ${
+                className={`relative flex flex-col overflow-hidden rounded-2xl border bg-white/95 shadow-luxury backdrop-blur-md transition hover:-translate-y-1 hover:shadow-luxury-hover ${
                   pkg.isPopular
-                    ? "border-[#c6a94c] shadow-[0_20px_60px_rgba(198,169,76,0.25)] md:scale-105 z-10"
-                    : "border-gray-200 shadow-lg hover:shadow-xl hover:border-[#c6a94c]/40"
+                    ? "border-rose-gold/45 ring-2 ring-rose-gold/20"
+                    : "border-rose-gold/12 hover:border-rose-gold/25"
                 }`}
               >
-                {/* Popular badge */}
                 {pkg.isPopular && (
-                  <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-[#c6a94c] to-[#dcc875] text-[#1a332b] text-center py-2 text-xs font-bold tracking-widest uppercase flex items-center justify-center gap-2">
-                    <Star size={12} className="fill-[#1a332b]" />
-                    Most Popular Choice
-                    <Star size={12} className="fill-[#1a332b]" />
+                  <div className="absolute top-4 right-4 flex items-center gap-1 rounded-full bg-gradient-to-r from-rose-gold to-rose-gold-deep px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-md">
+                    <Star size={12} className="fill-white" />
+                    Popular
+                    <Star size={12} className="fill-white" />
                   </div>
                 )}
 
-                {/* Header */}
-                <div className={`bg-gradient-to-br ${pkg.color} p-8 ${pkg.isPopular ? "pt-12" : ""}`}>
-                  <h3 className="font-serif font-bold text-2xl text-white mb-1">{pkg.name}</h3>
-                  <p className="text-white/70 text-sm mb-5">{pkg.description}</p>
-                  <div className="text-white">
-                    <span className="font-serif font-bold text-4xl">{pkg.price}</span>
-                    <div className="text-white/60 text-xs mt-1">{pkg.priceNote}</div>
+                <div className="border-b border-rose-gold/10 bg-gradient-to-br from-blush/50 to-cream/80 p-8">
+                  <h3 className="font-display text-2xl font-semibold text-ink">{pkg.name}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-ink/70">{pkg.description}</p>
+                  <div className="mt-6">
+                    <span className="font-display text-3xl font-semibold text-gradient-rose">{pkg.price}</span>
+                    <div className="mt-1 text-xs font-medium text-ink/55">{pkg.priceNote}</div>
                   </div>
                 </div>
 
-                {/* Features */}
-                <div className="bg-white p-8">
-                  <ul className="space-y-3 mb-8">
+                <div className="flex flex-1 flex-col p-8">
+                  <ul className="flex-1 space-y-3">
                     {pkg.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-3 text-sm text-gray-700">
-                        <CheckCircle2
-                          size={17}
-                          className={`flex-shrink-0 mt-0.5 ${
-                            pkg.isPopular ? "text-[#c6a94c]" : "text-[#2a5245]"
-                          }`}
-                        />
+                      <li key={feature} className="flex items-start gap-3 text-sm text-ink/80">
+                        <CheckCircle2 size={17} className="mt-0.5 shrink-0 text-rose-gold" />
                         {feature}
                       </li>
                     ))}
                   </ul>
 
-                  <div className="space-y-3">
+                  <div className="mt-8 flex flex-col gap-3">
                     <Link
                       href="/contact#inquiry"
-                      className={`flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 ${
-                        pkg.isPopular
-                          ? "bg-gradient-to-r from-[#c6a94c] to-[#dcc875] text-[#1a332b] hover:shadow-[0_4px_20px_rgba(198,169,76,0.4)] hover:-translate-y-0.5"
-                          : "bg-gradient-to-br from-[#2a5245] to-[#4d8b73] text-white hover:shadow-lg hover:-translate-y-0.5"
-                      }`}
+                      className="inline-flex items-center justify-center gap-2 rounded-2xl bg-rose-gold py-3.5 text-sm font-semibold text-white shadow-glow-rose transition hover:bg-rose-gold-deep"
                     >
                       Book This Package
                       <ArrowRight size={16} />
                     </Link>
                     <a
                       href="tel:+919876543210"
-                      className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border-2 border-gray-200 text-gray-600 font-semibold text-sm hover:border-[#2a5245] hover:text-[#2a5245] transition-all"
+                      className="inline-flex items-center justify-center gap-2 rounded-2xl border border-rose-gold/25 py-3 text-sm font-semibold text-ink transition hover:bg-blush/50"
                     >
                       <Phone size={15} />
                       Call for Custom Quote
@@ -111,25 +99,26 @@ export default function PackagesPage() {
             ))}
           </div>
 
-          {/* Custom package note */}
-          <div className="mt-12 text-center p-8 rounded-2xl bg-gradient-to-br from-[#1a332b] to-[#2a5245] text-white">
-            <h3 className="font-serif text-2xl font-bold mb-2">
-              Need a Custom Package?
-            </h3>
-            <p className="text-white/70 mb-6 max-w-xl mx-auto">
-              Every wedding is unique. Contact us to create a fully bespoke package tailored to your specific requirements, guest count, and budget.
+          <div className="mt-14 rounded-2xl border border-rose-gold/15 bg-white/95 p-8 text-center shadow-md backdrop-blur-md md:p-10">
+            <h3 className="font-display text-2xl font-semibold text-ink">Need a Custom Package?</h3>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-ink/70">
+              Every wedding is unique. Contact us to create a fully bespoke package tailored to your specific requirements,
+              guest count, and budget.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href="/contact#inquiry" className="btn-primary">
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Link
+                href="/contact#inquiry"
+                className="inline-flex items-center justify-center rounded-2xl bg-rose-gold px-6 py-3.5 text-sm font-semibold text-white shadow-glow-rose transition hover:bg-rose-gold-deep"
+              >
                 Request Custom Quote
               </Link>
               <a
                 href="https://wa.me/919876543210"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 rounded-lg bg-[#25D366] text-white font-semibold text-sm hover:bg-[#1da851] transition-colors"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-rose-gold/25 bg-blush/50 px-6 py-3.5 text-sm font-semibold text-ink transition hover:border-rose-gold/40"
               >
-                <MessageCircle size={18} />
+                <MessageCircle size={18} className="text-rose-gold" />
                 WhatsApp Us
               </a>
             </div>
@@ -137,16 +126,15 @@ export default function PackagesPage() {
         </div>
       </section>
 
-      {/* What's included */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
+      <section className="bg-cream py-16 md:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             badge="Inclusions"
             title="What's Always"
             titleHighlight="Included"
             subtitle="Regardless of the package you choose, these essentials are always part of your Green Land Farm experience."
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid gap-6 md:grid-cols-2">
             {[
               { title: "Dedicated Event Coordinator", desc: "A personal coordinator assigned to your event from booking to execution." },
               { title: "Venue Setup & Cleanup", desc: "Complete setup before your event and thorough cleanup after — no extra charges." },
@@ -155,13 +143,16 @@ export default function PackagesPage() {
               { title: "Bridal Changing Room", desc: "Private, well-equipped bridal room for the bride and her entourage." },
               { title: "Free Site Visit", desc: "Complimentary venue tour before booking — see the magic for yourself." },
             ].map((item) => (
-              <div key={item.title} className="flex gap-4 p-5 rounded-xl bg-[#f7f3ec] border border-[#c6a94c]/15 hover:border-[#c6a94c]/30 hover:shadow-md transition-all">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2a5245] to-[#4d8b73] flex items-center justify-center flex-shrink-0">
-                  <CheckCircle2 size={18} className="text-[#c6a94c]" />
+              <div
+                key={item.title}
+                className="flex gap-4 rounded-2xl border border-rose-gold/12 bg-white/95 p-6 shadow-sm transition hover:border-rose-gold/25 hover:shadow-md"
+              >
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blush text-rose-gold">
+                  <CheckCircle2 size={18} />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-[#1a332b] text-sm mb-1">{item.title}</h3>
-                  <p className="text-gray-500 text-xs leading-relaxed">{item.desc}</p>
+                  <h3 className="font-display text-lg font-semibold text-ink">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink/70">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -169,34 +160,33 @@ export default function PackagesPage() {
         </div>
       </section>
 
-      {/* Payment terms */}
-      <section className="py-14 bg-[#f7f3ec]">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="font-serif text-2xl md:text-3xl font-bold text-[#1a332b] mb-4">
-              Simple & Transparent{" "}
-              <span style={{ background: "linear-gradient(135deg, #c6a94c 0%, #dcc875 50%, #c6a94c 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                Payment Terms
-              </span>
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
-              {[
-                { step: "30%", label: "Advance to Confirm Booking", color: "from-[#2a5245] to-[#4d8b73]" },
-                { step: "40%", label: "30 Days Before Event", color: "from-[#c6a94c] to-[#8b6914]" },
-                { step: "30%", label: "On Event Day", color: "from-[#1a332b] to-[#2a5245]" },
-              ].map((t) => (
-                <div key={t.step} className="p-6 rounded-2xl bg-white border border-[#c6a94c]/15 shadow-sm text-center">
-                  <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center mx-auto mb-3 shadow-md`}>
-                    <span className="text-white font-bold text-xl font-serif">{t.step}</span>
-                  </div>
-                  <p className="text-gray-600 text-sm font-medium">{t.label}</p>
+      <section className="relative overflow-hidden border-t border-rose-gold/10 bg-gradient-to-b from-blush/30 to-cream py-16 md:py-24">
+        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="font-display text-3xl font-semibold text-ink sm:text-4xl">
+            Simple & Transparent <span className="text-gradient-rose">Payment Terms</span>
+          </h2>
+          <div className="mt-10 grid gap-6 sm:grid-cols-3">
+            {[
+              { step: "30%", label: "Advance to Confirm Booking", gradient: "from-rose-gold to-rose-gold-deep" },
+              { step: "40%", label: "30 Days Before Event", gradient: "from-rose-gold-muted to-rose-gold" },
+              { step: "30%", label: "On Event Day", gradient: "from-blush to-rose-gold-muted" },
+            ].map((t) => (
+              <div
+                key={t.step}
+                className="rounded-2xl border border-rose-gold/12 bg-white/95 p-6 shadow-luxury transition hover:-translate-y-1"
+              >
+                <div
+                  className={`mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${t.gradient} font-display text-xl font-bold text-white shadow-md`}
+                >
+                  <span>{t.step}</span>
                 </div>
-              ))}
-            </div>
-            <p className="mt-6 text-gray-500 text-sm">
-              We accept Bank Transfer, UPI, NEFT/RTGS, and all major credit/debit cards.
-            </p>
+                <p className="mt-4 text-sm font-medium leading-snug text-ink/80">{t.label}</p>
+              </div>
+            ))}
           </div>
+          <p className="mt-10 text-sm text-ink/65">
+            We accept Bank Transfer, UPI, NEFT/RTGS, and all major credit/debit cards.
+          </p>
         </div>
       </section>
 

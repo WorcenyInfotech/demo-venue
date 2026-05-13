@@ -17,24 +17,23 @@ export const metadata: Metadata = {
   },
 };
 
-// Placeholder gallery images with categories
 const GALLERY_IMAGES = [
-  { id: 1, url: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80", title: "Grand Wedding Ceremony", category: "wedding" },
-  { id: 2, url: "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80", title: "Elegant Reception Hall", category: "reception" },
-  { id: 3, url: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&q=80", title: "Romantic Engagement", category: "engagement" },
-  { id: 4, url: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80", title: "Sangeet Night", category: "wedding" },
-  { id: 5, url: "https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=800&q=80", title: "Outdoor Lawn Setup", category: "venue" },
-  { id: 6, url: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80", title: "Floral Decoration", category: "decoration" },
-  { id: 7, url: "https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&q=80", title: "Bridal Portrait", category: "wedding" },
-  { id: 8, url: "https://images.unsplash.com/photo-1529636798458-92182e662485?w=800&q=80", title: "Venue Overview", category: "venue" },
-  { id: 9, url: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80", title: "Wedding Mandap", category: "decoration" },
-  { id: 10, url: "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80", title: "Reception Dinner", category: "reception" },
-  { id: 11, url: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&q=80", title: "Ring Ceremony", category: "engagement" },
-  { id: 12, url: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80", title: "Dance Floor", category: "reception" },
-  { id: 13, url: "https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=800&q=80", title: "Garden Ceremony", category: "venue" },
-  { id: 14, url: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80", title: "Stage Decoration", category: "decoration" },
-  { id: 15, url: "https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&q=80", title: "Couple Portrait", category: "wedding" },
-  { id: 16, url: "https://images.unsplash.com/photo-1529636798458-92182e662485?w=800&q=80", title: "Banquet Hall", category: "venue" },
+  { id: 1, url: "https://images.unsplash.com/photo-1587271636175-90d58cdad458?w=800&q=80", title: "Grand Wedding Ceremony", category: "wedding" },
+  { id: 2, url: "https://images.unsplash.com/photo-1610173827043-9db50e0d8ef9?w=800&q=80", title: "Elegant Reception Hall", category: "reception" },
+  { id: 3, url: "https://images.unsplash.com/photo-1597157639073-69284dc0fdaf?w=800&q=80", title: "Romantic Engagement", category: "engagement" },
+  { id: 4, url: "https://images.unsplash.com/photo-1587271407850-8d438ca9fdf2?w=800&q=80", title: "Sangeet Night", category: "wedding" },
+  { id: 5, url: "https://images.unsplash.com/photo-1542042161784-26ab9e041e89?w=800&q=80", title: "Outdoor Lawn Setup", category: "venue" },
+  { id: 6, url: "https://images.unsplash.com/photo-1587271315307-eaebc181c749?w=800&q=80", title: "Floral Decoration", category: "decoration" },
+  { id: 7, url: "https://images.unsplash.com/photo-1505932794465-147d1f1b2c97?w=800&q=80", title: "Bridal Portrait", category: "wedding" },
+  { id: 8, url: "https://images.unsplash.com/photo-1583878545126-2f1ca0142714?w=800&q=80", title: "Venue Overview", category: "venue" },
+  { id: 9, url: "https://images.unsplash.com/photo-1587271636175-90d58cdad458?w=800&q=80", title: "Wedding Mandap", category: "decoration" },
+  { id: 10, url: "https://images.unsplash.com/photo-1610173827043-9db50e0d8ef9?w=800&q=80", title: "Reception Dinner", category: "reception" },
+  { id: 11, url: "https://images.unsplash.com/photo-1597157639073-69284dc0fdaf?w=800&q=80", title: "Ring Ceremony", category: "engagement" },
+  { id: 12, url: "https://images.unsplash.com/photo-1587271407850-8d438ca9fdf2?w=800&q=80", title: "Dance Floor", category: "reception" },
+  { id: 13, url: "https://images.unsplash.com/photo-1542042161784-26ab9e041e89?w=800&q=80", title: "Garden Ceremony", category: "venue" },
+  { id: 14, url: "https://images.unsplash.com/photo-1587271315307-eaebc181c749?w=800&q=80", title: "Stage Decoration", category: "decoration" },
+  { id: 15, url: "https://images.unsplash.com/photo-1505932794465-147d1f1b2c97?w=800&q=80", title: "Couple Portrait", category: "wedding" },
+  { id: 16, url: "https://images.unsplash.com/photo-1583878545126-2f1ca0142714?w=800&q=80", title: "Banquet Hall", category: "venue" },
 ];
 
 export default function GalleryPage() {
@@ -44,53 +43,57 @@ export default function GalleryPage() {
         title="Our"
         titleHighlight="Gallery"
         subtitle="A visual journey through the magical weddings and events we've had the privilege of hosting."
-        image="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=1920&q=80"
+        image="https://images.unsplash.com/photo-1505932794465-147d1f1b2c97?w=1920&q=80"
         breadcrumbs={[{ label: "Gallery" }]}
         badge="Photo Gallery"
       />
 
-      <section className="section-padding bg-white">
-        <div className="container-custom">
+      <section className="relative overflow-hidden bg-gradient-to-b from-cream via-blush/20 to-cream py-16 md:py-24">
+        <div className="pointer-events-none absolute bottom-0 left-1/4 h-64 w-64 rounded-full bg-rose-gold/8 blur-3xl" />
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             badge="Our Work"
             title="Moments We've"
             titleHighlight="Captured"
             subtitle="Every image tells a story of love, joy, and celebration. Browse through our collection of beautiful weddings and events."
           />
-
           <GalleryGrid images={GALLERY_IMAGES} />
         </div>
       </section>
 
-      {/* Video section placeholder */}
-      <section className="section-padding bg-[#f7f3ec]">
-        <div className="container-custom">
+      <section className="border-t border-rose-gold/10 bg-cream py-16 md:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             badge="Video Gallery"
             title="Watch Our"
             titleHighlight="Wedding Films"
             subtitle="Experience the magic of Green Land Farm through our cinematic wedding films."
           />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mt-8 grid gap-6 sm:grid-cols-3">
             {[1, 2, 3].map((i) => (
               <div
                 key={i}
-                className="relative aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-[#1a332b] to-[#2a5245] flex items-center justify-center group cursor-pointer hover:shadow-xl transition-shadow"
+                className="group relative overflow-hidden rounded-2xl border border-rose-gold/12 bg-gradient-to-br from-footer to-[#3a3234] shadow-luxury"
               >
-                <div className="text-center text-white">
-                  <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/40 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
-                    <div className="w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-l-[18px] border-l-white ml-1" />
+                <div className="aspect-video bg-gradient-to-br from-rose-gold/20 to-transparent" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-6 text-center">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md transition group-hover:bg-rose-gold/25">
+                    <div className="ml-1 h-0 w-0 border-y-8 border-y-transparent border-l-[14px] border-l-cream" />
                   </div>
-                  <p className="text-white/80 text-sm font-medium">Wedding Film {i}</p>
-                  <p className="text-[#c6a94c] text-xs mt-1">Green Land Farm</p>
+                  <p className="font-display text-lg font-semibold text-cream">Wedding Film {i}</p>
+                  <p className="text-xs uppercase tracking-wider text-rose-gold-muted">Green Land Farm</p>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1a332b]/40 to-transparent" />
               </div>
             ))}
           </div>
-          <p className="text-center text-gray-400 text-sm mt-6">
+          <p className="mt-10 text-center text-sm text-ink/70">
             Full video gallery available on our{" "}
-            <a href="https://youtube.com/@greenlandfarm" target="_blank" rel="noopener noreferrer" className="text-[#2a5245] font-semibold hover:text-[#c6a94c] transition-colors">
+            <a
+              href="https://youtube.com/@greenlandfarm"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-rose-gold underline-offset-4 transition hover:text-rose-gold-deep hover:underline"
+            >
               YouTube Channel
             </a>
           </p>

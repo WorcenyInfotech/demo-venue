@@ -26,28 +26,16 @@ export default function FloatingButtons() {
   );
 
   return (
-    <div
-      className="fixed z-50 flex flex-col items-end gap-3 no-print"
-      style={{
-        bottom: "max(1.5rem, env(safe-area-inset-bottom))",
-        right: "max(1.25rem, env(safe-area-inset-right))",
-      }}
-    >
-      {/* Scroll to top */}
+    <div className="fixed z-40 flex flex-col items-end gap-3" style={{ bottom: "max(1.5rem, env(safe-area-inset-bottom))", right: "max(1.25rem, env(safe-area-inset-right))" }}>
       <AnimatePresence>
         {showScrollTop && (
           <motion.button
+            type="button"
             initial={{ opacity: 0, scale: 0.5, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.5, y: 20 }}
             onClick={scrollToTop}
-            className="w-11 h-11 rounded-full flex items-center justify-center text-[#1a2e28] transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
-            style={{
-              background: "rgba(255, 255, 255, 0.95)",
-              backdropFilter: "blur(12px)",
-              border: "1px solid rgba(212, 175, 55, 0.2)",
-              boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
-            }}
+            className="flex h-12 w-12 items-center justify-center rounded-2xl border border-rose-gold/20 bg-cream/95 text-rose-gold shadow-luxury backdrop-blur-md transition hover:border-rose-gold/40 hover:bg-blush"
             aria-label="Scroll to top"
           >
             <ArrowUp size={18} />
@@ -55,80 +43,62 @@ export default function FloatingButtons() {
         )}
       </AnimatePresence>
 
-      {/* Expandable action buttons */}
       <AnimatePresence>
         {isExpanded && (
           <>
-            {/* Call button */}
             <motion.a
               href={`tel:${SITE_CONFIG.phone}`}
-              initial={{ opacity: 0, y: 20, scale: 0.8 }}
+              initial={{ opacity: 0, y: 20, scale: 0.85 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 20, scale: 0.8 }}
+              exit={{ opacity: 0, y: 20, scale: 0.85 }}
               transition={{ delay: 0.1, type: "spring", damping: 20 }}
-              className="group flex items-center gap-2.5 px-5 py-3 rounded-full shadow-xl transition-all duration-300 hover:-translate-y-1"
-              style={{
-                background: "linear-gradient(135deg, #1a2e28 0%, #2a5245 100%)",
-              }}
+              className="flex items-center gap-2 rounded-2xl bg-gradient-to-r from-rose-gold-deep to-rose-gold px-4 py-3 text-sm font-semibold text-white shadow-glow-rose"
               aria-label="Call us"
             >
-              <Phone size={18} className="text-[#d4af37]" />
-              <span className="text-white text-sm font-semibold">Call Now</span>
+              <Phone size={18} />
+              <span>Call Now</span>
             </motion.a>
 
-            {/* WhatsApp button */}
             <motion.a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20, scale: 0.8 }}
+              initial={{ opacity: 0, y: 20, scale: 0.85 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 20, scale: 0.8 }}
+              exit={{ opacity: 0, y: 20, scale: 0.85 }}
               transition={{ delay: 0.05, type: "spring", damping: 20 }}
-              className="group flex items-center gap-2.5 px-5 py-3 rounded-full shadow-xl transition-all duration-300 hover:-translate-y-1 bg-[#25D366]"
+              className="flex items-center gap-2 rounded-2xl border border-rose-gold/35 bg-blush px-4 py-3 text-sm font-semibold text-ink shadow-md backdrop-blur-md"
               aria-label="WhatsApp us"
             >
-              <MessageCircle size={18} className="text-white" />
-              <span className="text-white text-sm font-semibold">WhatsApp</span>
+              <MessageCircle size={18} />
+              <span>WhatsApp</span>
             </motion.a>
           </>
         )}
       </AnimatePresence>
 
-      {/* Main FAB */}
       <motion.button
+        type="button"
         onClick={() => setIsExpanded(!isExpanded)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="relative w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300"
-        style={{
-          background: isExpanded
-            ? "linear-gradient(135deg, #1a2e28 0%, #2a5245 100%)"
-            : "linear-gradient(135deg, #d4af37 0%, #e8c966 50%, #d4af37 100%)",
-          boxShadow: isExpanded
-            ? "0 8px 32px rgba(42, 82, 69, 0.4)"
-            : "0 8px 32px rgba(212, 175, 55, 0.5)",
-        }}
+        className={`relative flex h-14 w-14 items-center justify-center rounded-2xl text-white shadow-lg transition ${
+          isExpanded
+            ? "bg-gradient-to-br from-rose-gold-deep to-footer"
+            : "bg-gradient-to-br from-rose-gold via-rose-gold-muted to-rose-gold-deep shadow-glow-rose"
+        }`}
         aria-label="Contact options"
       >
-        {/* Pulse ring when not expanded */}
         {!isExpanded && (
-          <span
-            className="absolute inset-0 rounded-full animate-pulse-gold"
-            style={{ boxShadow: "0 0 0 0 rgba(212, 175, 55, 0.5)" }}
-          />
+          <span className="absolute inset-0 animate-ping rounded-2xl bg-rose-gold/35 opacity-40" />
         )}
-
-        <motion.div
-          animate={{ rotate: isExpanded ? 45 : 0 }}
-          transition={{ duration: 0.2 }}
-        >
+        <motion.div animate={{ rotate: isExpanded ? 45 : 0 }} transition={{ duration: 0.2 }}>
           {isExpanded ? (
-            <X size={24} className="text-white" />
+            <X size={24} />
           ) : (
-            <div className="relative">
-              <Phone size={22} className="text-[#1a2e28]" />
-              <Sparkles size={10} className="absolute -top-1 -right-1 text-[#1a2e28]/60" />
+            <div className="relative flex items-center justify-center">
+              <Phone size={22} />
+              <Sparkles size={10} className="absolute -top-1 -right-1 text-blush" />
             </div>
           )}
         </motion.div>

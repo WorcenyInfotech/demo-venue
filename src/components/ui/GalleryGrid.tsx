@@ -22,9 +22,7 @@ export default function GalleryGrid({ images }: GalleryGridProps) {
   const [lightbox, setLightbox] = useState<number | null>(null);
 
   const filtered =
-    activeCategory === "all"
-      ? images
-      : images.filter((img) => img.category === activeCategory);
+    activeCategory === "all" ? images : images.filter((img) => img.category === activeCategory);
 
   const lightboxImg = lightbox !== null ? filtered[lightbox] : null;
 
@@ -35,90 +33,66 @@ export default function GalleryGrid({ images }: GalleryGridProps) {
 
   return (
     <>
-      {/* Category filter */}
-      <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
+      <div className="mb-10 flex flex-wrap justify-center gap-2 sm:gap-3">
         {GALLERY_CATEGORIES.map((cat) => (
           <button
             key={cat.id}
+            type="button"
             onClick={() => setActiveCategory(cat.id)}
-            className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+            className={`rounded-full px-5 py-2.5 text-sm font-semibold transition ${
               activeCategory === cat.id
-                ? "text-[#1a2e28] shadow-lg -translate-y-0.5"
-                : "text-[#64605a] hover:text-[#1a2e28]"
+                ? "bg-gradient-to-r from-rose-gold to-rose-gold-deep text-white shadow-glow-rose"
+                : "border border-rose-gold/20 bg-white/90 text-ink/80 shadow-sm hover:border-rose-gold/40 hover:bg-blush/60"
             }`}
-            style={
-              activeCategory === cat.id
-                ? {
-                    background: "linear-gradient(135deg, #d4af37 0%, #e8c966 100%)",
-                    boxShadow: "0 4px 20px rgba(212, 175, 55, 0.35)",
-                  }
-                : {
-                    background: "rgba(255, 255, 255, 0.9)",
-                    border: "1px solid rgba(212, 175, 55, 0.2)",
-                  }
-            }
           >
             {cat.label}
           </button>
         ))}
       </div>
 
-      {/* Grid */}
       <motion.div
         layout
-        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5"
+        className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4"
       >
         <AnimatePresence>
           {filtered.map((img, i) => (
             <motion.div
               key={img.id}
               layout
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.94 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
+              exit={{ opacity: 0, scale: 0.94 }}
               transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-              className={`relative group cursor-pointer overflow-hidden ${
-                i % 7 === 0 ? "col-span-2 row-span-2 aspect-square" : "aspect-square"
-              }`}
-              style={{ borderRadius: "1rem" }}
+              className="group relative aspect-square cursor-pointer overflow-hidden rounded-2xl border border-rose-gold/10 bg-blush/30 shadow-sm"
               onClick={() => setLightbox(i)}
             >
               <Image
                 src={img.url}
                 alt={img.title}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                className="object-cover transition duration-700 ease-out group-hover:scale-110"
               />
 
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0f1c18]/80 via-[#0f1c18]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/10 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
 
-              {/* Zoom icon */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-400">
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 transition duration-300 group-hover:opacity-100">
                 <motion.div
-                  initial={{ scale: 0.5 }}
-                  whileHover={{ scale: 1.1 }}
-                  className="w-14 h-14 rounded-full flex items-center justify-center"
-                  style={{
-                    background: "rgba(255, 255, 255, 0.15)",
-                    backdropFilter: "blur(8px)",
-                    border: "1px solid rgba(255, 255, 255, 0.25)",
-                  }}
+                  initial={{ scale: 0.85 }}
+                  whileHover={{ scale: 1.08 }}
+                  className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/30 bg-white/20 text-white backdrop-blur-md"
                 >
-                  <ZoomIn size={22} className="text-white" />
+                  <ZoomIn size={22} />
                 </motion.div>
               </div>
 
-              {/* Title on hover */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-400">
-                <p className="text-white text-sm font-semibold truncate">{img.title}</p>
-                <p className="text-white/60 text-xs capitalize">{img.category}</p>
+              <div className="absolute right-0 bottom-0 left-0 translate-y-full p-4 transition duration-300 group-hover:translate-y-0">
+                <p className="font-display text-sm font-semibold text-cream">{img.title}</p>
+                <p className="text-xs uppercase tracking-wider text-rose-gold-muted">{img.category}</p>
               </div>
 
-              {/* Corner accent */}
-              <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-400">
-                <Sparkles size={16} className="text-[#d4af37]" />
+              <div className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-xl bg-white/15 text-white opacity-0 backdrop-blur-md transition group-hover:opacity-100">
+                <Sparkles size={16} />
               </div>
             </motion.div>
           ))}
@@ -126,90 +100,75 @@ export default function GalleryGrid({ images }: GalleryGridProps) {
       </motion.div>
 
       {filtered.length === 0 && (
-        <div className="text-center py-20 text-[#a8a29e]">
-          <p className="text-lg">No images in this category yet.</p>
+        <div className="rounded-2xl border border-dashed border-rose-gold/25 bg-blush/40 py-16 text-center">
+          <p className="text-sm font-medium text-ink/65">No images in this category yet.</p>
         </div>
       )}
 
-      {/* Lightbox */}
       <AnimatePresence>
         {lightbox !== null && lightboxImg && (
           <motion.div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/95 p-4 backdrop-blur-md"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-            style={{ background: "rgba(15, 28, 24, 0.98)" }}
             onClick={() => setLightbox(null)}
           >
-            {/* Close button */}
             <button
-              className="absolute top-6 right-6 w-12 h-12 rounded-full flex items-center justify-center text-white/70 hover:text-white transition-colors z-10"
-              style={{
-                background: "rgba(255, 255, 255, 0.1)",
-                backdropFilter: "blur(8px)",
-              }}
+              type="button"
+              className="absolute top-6 right-6 z-10 flex h-11 w-11 items-center justify-center rounded-2xl border border-white/15 bg-white/10 text-cream backdrop-blur-md transition hover:bg-rose-gold/30"
               onClick={() => setLightbox(null)}
             >
               <X size={22} />
             </button>
 
-            {/* Counter */}
-            <div className="absolute top-6 left-1/2 -translate-x-1/2 text-white/50 text-sm font-medium tracking-wider">
+            <div className="absolute top-6 left-6 z-10 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-medium text-cream backdrop-blur-md">
               {lightbox + 1} / {filtered.length}
             </div>
 
-            {/* Main image */}
             <motion.div
               key={lightbox}
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="relative w-full max-w-5xl max-h-[85vh] overflow-hidden"
-              style={{ borderRadius: "1.5rem" }}
+              className="relative max-h-[85vh] w-full max-w-5xl overflow-hidden rounded-2xl border border-white/10 shadow-luxury"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative aspect-[4/3]">
+              <div className="relative aspect-[16/10] w-full">
                 <Image
                   src={lightboxImg.url}
                   alt={lightboxImg.title}
                   fill
-                  className="object-contain"
                   sizes="(max-width: 1280px) 100vw, 1200px"
+                  className="object-cover"
                 />
               </div>
-
-              {/* Info bar */}
-              <div
-                className="absolute bottom-0 left-0 right-0 p-6"
-                style={{
-                  background: "linear-gradient(to top, rgba(15,28,24,0.9) 0%, transparent 100%)",
-                }}
-              >
-                <p className="text-white font-serif font-semibold text-lg">{lightboxImg.title}</p>
-                <p className="text-[#d4af37] text-sm capitalize">{lightboxImg.category}</p>
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/95 to-transparent px-6 py-5">
+                <p className="font-display text-lg text-cream">{lightboxImg.title}</p>
+                <p className="text-xs font-semibold uppercase tracking-wider text-rose-gold-muted">
+                  {lightboxImg.category}
+                </p>
               </div>
             </motion.div>
 
-            {/* Navigation */}
             <button
-              className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center text-white/70 hover:text-white transition-all hover:scale-110"
-              style={{
-                background: "rgba(255, 255, 255, 0.1)",
-                backdropFilter: "blur(8px)",
+              type="button"
+              className="absolute top-1/2 left-4 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-2xl border border-white/15 bg-white/10 text-cream backdrop-blur-md transition hover:bg-rose-gold/30 md:left-8"
+              onClick={(e) => {
+                e.stopPropagation();
+                prevLightbox();
               }}
-              onClick={(e) => { e.stopPropagation(); prevLightbox(); }}
             >
               <ChevronLeft size={24} />
             </button>
             <button
-              className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center text-white/70 hover:text-white transition-all hover:scale-110"
-              style={{
-                background: "rgba(255, 255, 255, 0.1)",
-                backdropFilter: "blur(8px)",
+              type="button"
+              className="absolute top-1/2 right-4 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-2xl border border-white/15 bg-white/10 text-cream backdrop-blur-md transition hover:bg-rose-gold/30 md:right-8"
+              onClick={(e) => {
+                e.stopPropagation();
+                nextLightbox();
               }}
-              onClick={(e) => { e.stopPropagation(); nextLightbox(); }}
             >
               <ChevronRight size={24} />
             </button>

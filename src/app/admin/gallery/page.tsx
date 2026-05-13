@@ -124,104 +124,112 @@ export default function AdminGalleryPage() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-cream/30">
       <AdminSidebar />
 
-      <div className="flex-1 lg:ml-64 min-w-0">
+      <div className="pt-16 lg:pl-64 lg:pt-0">
         <AdminHeader title="Gallery" subtitle={`${images.length} images`} />
 
-        <div className="p-6">
+        <div className="px-4 py-6 sm:px-6 lg:px-8">
           {/* Upload button */}
-          <div className="flex justify-end mb-6">
+          <div className="mb-6 flex items-center justify-between">
+            <div className="flex gap-2 overflow-x-auto pb-2 sm:pb-0">
+              <button className="whitespace-nowrap rounded-full bg-rose-gold px-4 py-1.5 text-sm font-medium text-white shadow-sm">All</button>
+              {CATEGORIES.map(c => (
+                <button key={c} className="whitespace-nowrap rounded-full border border-rose-gold/20 bg-white px-4 py-1.5 text-sm font-medium text-ink/70 transition hover:bg-blush capitalize">{c}</button>
+              ))}
+            </div>
             <button
               onClick={() => setShowUpload(true)}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#2a5245] to-[#4d8b73] text-white font-semibold text-sm shadow-md hover:shadow-lg transition-shadow"
+              className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-rose-gold px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-rose-gold-deep"
             >
-              <Plus size={18} />
-              Upload Image
+              <Plus size={16} />
+              <span className="hidden sm:inline">Upload Image</span>
             </button>
           </div>
 
           {/* Upload modal */}
           {showUpload && (
-            <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 p-4 backdrop-blur-sm">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-white rounded-2xl shadow-2xl w-full max-w-lg p-6"
+                className="w-full max-w-md overflow-hidden rounded-2xl bg-white shadow-luxury"
               >
-                <div className="flex items-center justify-between mb-5">
-                  <h3 className="font-serif font-bold text-lg text-gray-900">Upload Image</h3>
-                  <button onClick={() => { setShowUpload(false); setPreview(null); }} className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200">
-                    <X size={16} />
+                <div className="flex items-center justify-between border-b border-rose-gold/10 bg-cream/50 px-6 py-4">
+                  <h3 className="font-display text-lg font-semibold text-ink">Upload Image</h3>
+                  <button onClick={() => { setShowUpload(false); setPreview(null); }} className="text-ink/50 hover:text-rose-gold">
+                    <X size={20} />
                   </button>
                 </div>
 
-                {/* Drop zone */}
-                <div
-                  className="border-2 border-dashed border-gray-200 rounded-xl p-6 text-center mb-4 cursor-pointer hover:border-[#2a5245] transition-colors"
-                  onClick={() => fileRef.current?.click()}
-                >
-                  {preview ? (
-                    <div className="relative h-40 rounded-lg overflow-hidden">
+                <div className="p-6">
+                  {/* Drop zone */}
+                  <div
+                    onClick={() => fileRef.current?.click()}
+                    className="group relative mb-6 flex h-48 cursor-pointer flex-col items-center justify-center overflow-hidden rounded-xl border-2 border-dashed border-rose-gold/30 bg-blush/30 transition hover:border-rose-gold hover:bg-blush/50"
+                  >
+                    {preview ? (
                       <Image src={preview} alt="Preview" fill className="object-cover" sizes="400px" />
+                    ) : (
+                      <div className="text-center">
+                        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-white text-rose-gold shadow-sm transition-transform group-hover:scale-110">
+                          <Upload size={24} />
+                        </div>
+                        <p className="mt-3 text-sm font-medium text-ink">Click to select image</p>
+                        <p className="mt-1 text-xs text-ink/50">JPG, PNG, WebP — max 5MB</p>
+                      </div>
+                    )}
+                    <input ref={fileRef} type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
+                  </div>
+
+                  <div className="space-y-4">
+                    <div>
+                      <label className="mb-1.5 block text-sm font-semibold text-ink">Title *</label>
+                      <input
+                        type="text"
+                        placeholder="e.g. Grand Wedding Ceremony"
+                        value={form.title}
+                        onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
+                        className="w-full rounded-xl border border-rose-gold/20 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-rose-gold focus:ring-2 focus:ring-rose-gold/20"
+                      />
                     </div>
-                  ) : (
-                    <>
-                      <Upload size={28} className="mx-auto mb-2 text-gray-300" />
-                      <p className="text-gray-500 text-sm">Click to select image</p>
-                      <p className="text-gray-400 text-xs mt-1">JPG, PNG, WebP — max 5MB</p>
-                    </>
-                  )}
-                  <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleFileChange} />
-                </div>
-
-                <div className="space-y-3 mb-5">
-                  <div>
-                    <label className="form-label">Title *</label>
-                    <input
-                      type="text"
-                      placeholder="e.g. Grand Wedding Ceremony"
-                      value={form.title}
-                      onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
-                      className="form-input text-sm"
-                    />
-                  </div>
-                  <div>
-                    <label className="form-label">Category *</label>
-                    <select
-                      value={form.category}
-                      onChange={(e) => setForm((f) => ({ ...f, category: e.target.value }))}
-                      className="form-input text-sm"
-                    >
-                      {CATEGORIES.map((c) => (
-                        <option key={c} value={c} className="capitalize">{c}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label className="form-label">Alt Text</label>
-                    <input
-                      type="text"
-                      placeholder="Describe the image for accessibility"
-                      value={form.alt}
-                      onChange={(e) => setForm((f) => ({ ...f, alt: e.target.value }))}
-                      className="form-input text-sm"
-                    />
+                    <div>
+                      <label className="mb-1.5 block text-sm font-semibold text-ink">Category *</label>
+                      <select
+                        value={form.category}
+                        onChange={(e) => setForm((f) => ({ ...f, category: e.target.value }))}
+                        className="w-full rounded-xl border border-rose-gold/20 bg-white px-4 py-2.5 text-sm capitalize outline-none transition focus:border-rose-gold focus:ring-2 focus:ring-rose-gold/20"
+                      >
+                        {CATEGORIES.map((c) => (
+                          <option key={c} value={c}>{c}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="mb-1.5 block text-sm font-semibold text-ink">Alt Text</label>
+                      <input
+                        type="text"
+                        placeholder="Describe the image for accessibility"
+                        value={form.alt}
+                        onChange={(e) => setForm((f) => ({ ...f, alt: e.target.value }))}
+                        className="w-full rounded-xl border border-rose-gold/20 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-rose-gold focus:ring-2 focus:ring-rose-gold/20"
+                      />
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex gap-3">
+                <div className="flex items-center justify-end gap-3 border-t border-rose-gold/10 bg-cream/50 px-6 py-4">
                   <button
                     onClick={() => { setShowUpload(false); setPreview(null); }}
-                    className="flex-1 py-2.5 rounded-xl border border-gray-200 text-gray-600 font-semibold text-sm hover:bg-gray-50 transition-colors"
+                    className="rounded-xl px-4 py-2 text-sm font-semibold text-ink/70 hover:text-ink"
                   >
                     Cancel
                   </button>
                   <button
                     onClick={handleUpload}
                     disabled={uploading || !preview}
-                    className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#2a5245] text-white font-semibold text-sm hover:bg-[#1a332b] transition-colors disabled:opacity-50"
+                    className="flex items-center gap-2 rounded-xl bg-rose-gold px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-rose-gold-deep disabled:opacity-60"
                   >
                     {uploading ? <><Loader2 size={16} className="animate-spin" />Uploading...</> : <><Upload size={16} />Upload</>}
                   </button>
@@ -232,57 +240,60 @@ export default function AdminGalleryPage() {
 
           {/* Gallery grid */}
           {loading ? (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {Array.from({ length: 8 }).map((_, i) => (
-                <div key={i} className="aspect-square rounded-xl bg-gray-100 animate-pulse" />
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+              {Array.from({ length: 10 }).map((_, i) => (
+                <div key={i} className="aspect-square animate-pulse rounded-2xl bg-blush/60" />
               ))}
             </div>
           ) : images.length === 0 ? (
-            <div className="text-center py-16 text-gray-400">
-              <Images size={40} className="mx-auto mb-3 opacity-30" />
-              <p>No images yet. Upload your first image.</p>
+            <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-rose-gold/25 bg-white/80 py-20 text-center">
+              <Images size={48} className="text-rose-gold/40" />
+              <p className="mt-4 text-sm font-medium text-ink/60">No images yet. Upload your first image.</p>
             </div>
           ) : (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5">
               {images.map((img) => (
                 <motion.div
                   key={img._id}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className={`group relative aspect-square rounded-xl overflow-hidden border-2 transition-all ${
-                    img.isActive ? "border-transparent" : "border-red-200 opacity-60"
-                  }`}
+                  className={`group relative aspect-square overflow-hidden rounded-2xl bg-cream shadow-sm transition hover:shadow-md ${img.isActive ? "" : "opacity-75 grayscale-[50%]"}`}
                 >
                   <Image
                     src={img.url}
                     alt={img.alt || img.title}
                     fill
-                    className="object-cover"
+                    className="object-cover transition duration-500 group-hover:scale-110"
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   />
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-200 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100">
-                    <button
-                      onClick={() => toggleActive(img._id, img.isActive)}
-                      className="w-9 h-9 rounded-full bg-white/90 flex items-center justify-center text-gray-700 hover:bg-white transition-colors"
-                      title={img.isActive ? "Hide" : "Show"}
-                    >
-                      {img.isActive ? <EyeOff size={15} /> : <Eye size={15} />}
-                    </button>
-                    <button
-                      onClick={() => deleteImage(img._id)}
-                      className="w-9 h-9 rounded-full bg-red-500/90 flex items-center justify-center text-white hover:bg-red-600 transition-colors"
-                      title="Delete"
-                    >
-                      <Trash2 size={15} />
-                    </button>
+                  <div className="absolute inset-0 flex flex-col justify-between bg-gradient-to-b from-ink/40 via-transparent to-ink/60 p-3 opacity-0 transition-opacity group-hover:opacity-100">
+                    <div className="flex justify-end gap-2">
+                      <button
+                        onClick={() => toggleActive(img._id, img.isActive)}
+                        title={img.isActive ? "Hide" : "Show"}
+                        className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/20 text-white backdrop-blur-md transition hover:bg-white/40"
+                      >
+                        {img.isActive ? <EyeOff size={14} /> : <Eye size={14} />}
+                      </button>
+                      <button
+                        onClick={() => deleteImage(img._id)}
+                        title="Delete"
+                        className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-500/80 text-white backdrop-blur-md transition hover:bg-red-600"
+                      >
+                        <Trash2 size={14} />
+                      </button>
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-white line-clamp-1">{img.title}</p>
+                    </div>
                   </div>
                   {/* Category badge */}
-                  <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded-full bg-black/50 text-white text-[10px] font-medium capitalize">
+                  <div className="absolute top-3 left-3 rounded-md bg-white/90 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-rose-gold-deep backdrop-blur-sm">
                     {img.category}
                   </div>
                   {!img.isActive && (
-                    <div className="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-red-500 text-white text-[10px] font-medium">
+                    <div className="absolute top-3 left-1/2 -translate-x-1/2 rounded-md bg-ink/80 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm">
                       Hidden
                     </div>
                   )}

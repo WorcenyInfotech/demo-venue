@@ -280,21 +280,21 @@ export const GALLERY_CATEGORIES = [
 // Placeholder Images (Unsplash)
 // ============================================
 export const PLACEHOLDER_IMAGES = {
-  hero: "https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80",
-  hero2: "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1920&q=80",
-  hero3: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1920&q=80",
-  about: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80",
-  venue1: "https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=800&q=80",
-  venue2: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
+  hero: "https://images.unsplash.com/photo-1587271636175-90d58cdad458?w=1920&q=80",
+  hero2: "https://images.unsplash.com/photo-1610173827043-9db50e0d8ef9?w=1920&q=80",
+  hero3: "https://images.unsplash.com/photo-1597157639073-69284dc0fdaf?w=1920&q=80",
+  about: "https://images.unsplash.com/photo-1587271407850-8d438ca9fdf2?w=800&q=80",
+  venue1: "https://images.unsplash.com/photo-1542042161784-26ab9e041e89?w=800&q=80",
+  venue2: "https://images.unsplash.com/photo-1630526720753-aa4e71acf67d?w=800&q=80",
   gallery: [
-    "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80",
-    "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=600&q=80",
-    "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80",
-    "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&q=80",
-    "https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=600&q=80",
-    "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&q=80",
-    "https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=600&q=80",
-    "https://images.unsplash.com/photo-1529636798458-92182e662485?w=600&q=80",
+    "https://images.unsplash.com/photo-1587271636175-90d58cdad458?w=600&q=80",
+    "https://images.unsplash.com/photo-1610173827043-9db50e0d8ef9?w=600&q=80",
+    "https://images.unsplash.com/photo-1597157639073-69284dc0fdaf?w=600&q=80",
+    "https://images.unsplash.com/photo-1587271407850-8d438ca9fdf2?w=600&q=80",
+    "https://images.unsplash.com/photo-1542042161784-26ab9e041e89?w=600&q=80",
+    "https://images.unsplash.com/photo-1587271315307-eaebc181c749?w=600&q=80",
+    "https://images.unsplash.com/photo-1505932794465-147d1f1b2c97?w=600&q=80",
+    "https://images.unsplash.com/photo-1583878545126-2f1ca0142714?w=600&q=80",
   ],
 };
 

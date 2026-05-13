@@ -16,7 +16,7 @@ export default function MainLayout({
     <>
       <LoadingScreen />
       <Navbar />
-      <main className="min-h-screen">{children}</main>
+      <main className="min-h-screen bg-cream text-ink">{children}</main>
       <Footer />
       <FloatingButtons />
     </>

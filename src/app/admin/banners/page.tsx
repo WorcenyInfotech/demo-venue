@@ -124,81 +124,84 @@ export default function AdminBannersPage() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-cream/30">
       <AdminSidebar />
 
-      <div className="flex-1 lg:ml-64 min-w-0">
+      <div className="pt-16 lg:pl-64 lg:pt-0">
         <AdminHeader title="Hero Banners" subtitle={`${banners.length} banners`} />
 
-        <div className="p-6">
-          <div className="flex justify-end mb-6">
+        <div className="px-4 py-6 sm:px-6 lg:px-8">
+          <div className="mb-6 flex items-center justify-between">
+            <h2 className="text-lg font-semibold text-ink">Manage Banners</h2>
             <button
               onClick={() => setShowForm(true)}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#2a5245] to-[#4d8b73] text-white font-semibold text-sm shadow-md hover:shadow-lg transition-shadow"
+              className="inline-flex items-center gap-2 rounded-xl bg-rose-gold px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-rose-gold-deep"
             >
-              <Plus size={18} />
+              <Plus size={16} />
               Add Banner
             </button>
           </div>
 
           {/* Add form modal */}
           {showForm && (
-            <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 p-4 backdrop-blur-sm">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-white rounded-2xl shadow-2xl w-full max-w-lg p-6 max-h-[90vh] overflow-y-auto"
+                className="w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-luxury"
               >
-                <div className="flex items-center justify-between mb-5">
-                  <h3 className="font-serif font-bold text-lg text-gray-900">Add Hero Banner</h3>
-                  <button onClick={() => { setShowForm(false); setPreview(null); }} className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200">
-                    <X size={16} />
+                <div className="flex items-center justify-between border-b border-rose-gold/10 bg-cream/50 px-6 py-4">
+                  <h3 className="font-display text-lg font-semibold text-ink">Add Hero Banner</h3>
+                  <button onClick={() => { setShowForm(false); setPreview(null); }} className="text-ink/50 hover:text-rose-gold">
+                    <X size={20} />
                   </button>
                 </div>
 
-                {/* Image upload */}
-                <div
-                  className="border-2 border-dashed border-gray-200 rounded-xl p-4 text-center mb-4 cursor-pointer hover:border-[#2a5245] transition-colors"
-                  onClick={() => fileRef.current?.click()}
-                >
-                  {preview ? (
-                    <div className="relative h-36 rounded-lg overflow-hidden">
+                <div className="p-6">
+                  {/* Image upload */}
+                  <div
+                    onClick={() => fileRef.current?.click()}
+                    className="group relative mb-6 flex h-48 cursor-pointer flex-col items-center justify-center overflow-hidden rounded-xl border-2 border-dashed border-rose-gold/30 bg-blush/30 transition hover:border-rose-gold hover:bg-blush/50"
+                  >
+                    {preview ? (
                       <Image src={preview} alt="Preview" fill className="object-cover" sizes="400px" />
-                    </div>
-                  ) : (
-                    <>
-                      <Upload size={24} className="mx-auto mb-2 text-gray-300" />
-                      <p className="text-gray-500 text-sm">Click to select banner image</p>
-                      <p className="text-gray-400 text-xs mt-1">Recommended: 1920×1080px — max 8MB</p>
-                    </>
-                  )}
-                  <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleFileChange} />
-                </div>
+                    ) : (
+                      <div className="text-center">
+                        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-white text-rose-gold shadow-sm transition-transform group-hover:scale-110">
+                          <Upload size={24} />
+                        </div>
+                        <p className="mt-3 text-sm font-medium text-ink">Click to select banner image</p>
+                        <p className="mt-1 text-xs text-ink/50">Recommended: 1920×1080px — max 8MB</p>
+                      </div>
+                    )}
+                    <input ref={fileRef} type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
+                  </div>
 
-                <div className="space-y-3 mb-5">
-                  <div>
-                    <label className="form-label">Title *</label>
-                    <input type="text" placeholder="e.g. Luxury Wedding Venue in Surat" value={form.title} onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))} className="form-input text-sm" />
-                  </div>
-                  <div>
-                    <label className="form-label">Subtitle</label>
-                    <textarea rows={2} placeholder="Banner subtitle or description" value={form.subtitle} onChange={(e) => setForm((f) => ({ ...f, subtitle: e.target.value }))} className="form-input text-sm resize-none" />
-                  </div>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-4">
                     <div>
-                      <label className="form-label">CTA Button Text</label>
-                      <input type="text" placeholder="e.g. Book Now" value={form.ctaText} onChange={(e) => setForm((f) => ({ ...f, ctaText: e.target.value }))} className="form-input text-sm" />
+                      <label className="mb-1.5 block text-sm font-semibold text-ink">Title *</label>
+                      <input type="text" placeholder="e.g. Luxury Wedding Venue in Surat" value={form.title} onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))} className="w-full rounded-xl border border-rose-gold/20 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-rose-gold focus:ring-2 focus:ring-rose-gold/20" />
                     </div>
                     <div>
-                      <label className="form-label">CTA Link</label>
-                      <input type="text" placeholder="e.g. /contact" value={form.ctaLink} onChange={(e) => setForm((f) => ({ ...f, ctaLink: e.target.value }))} className="form-input text-sm" />
+                      <label className="mb-1.5 block text-sm font-semibold text-ink">Subtitle</label>
+                      <textarea rows={2} placeholder="Banner subtitle or description" value={form.subtitle} onChange={(e) => setForm((f) => ({ ...f, subtitle: e.target.value }))} className="w-full rounded-xl border border-rose-gold/20 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-rose-gold focus:ring-2 focus:ring-rose-gold/20" />
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="mb-1.5 block text-sm font-semibold text-ink">CTA Button Text</label>
+                        <input type="text" placeholder="e.g. Book Now" value={form.ctaText} onChange={(e) => setForm((f) => ({ ...f, ctaText: e.target.value }))} className="w-full rounded-xl border border-rose-gold/20 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-rose-gold focus:ring-2 focus:ring-rose-gold/20" />
+                      </div>
+                      <div>
+                        <label className="mb-1.5 block text-sm font-semibold text-ink">CTA Link</label>
+                        <input type="text" placeholder="e.g. /contact" value={form.ctaLink} onChange={(e) => setForm((f) => ({ ...f, ctaLink: e.target.value }))} className="w-full rounded-xl border border-rose-gold/20 bg-white px-4 py-2.5 text-sm outline-none transition focus:border-rose-gold focus:ring-2 focus:ring-rose-gold/20" />
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex gap-3">
-                  <button onClick={() => { setShowForm(false); setPreview(null); }} className="flex-1 py-2.5 rounded-xl border border-gray-200 text-gray-600 font-semibold text-sm hover:bg-gray-50 transition-colors">Cancel</button>
-                  <button onClick={handleUpload} disabled={uploading || !preview} className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#2a5245] text-white font-semibold text-sm hover:bg-[#1a332b] transition-colors disabled:opacity-50">
+                <div className="flex items-center justify-end gap-3 border-t border-rose-gold/10 bg-cream/50 px-6 py-4">
+                  <button onClick={() => { setShowForm(false); setPreview(null); }} className="rounded-xl px-4 py-2 text-sm font-semibold text-ink/70 hover:text-ink">Cancel</button>
+                  <button onClick={handleUpload} disabled={uploading || !preview} className="flex items-center gap-2 rounded-xl bg-rose-gold px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-rose-gold-deep disabled:opacity-60">
                     {uploading ? <><Loader2 size={16} className="animate-spin" />Uploading...</> : <><Upload size={16} />Upload</>}
                   </button>
                 </div>
@@ -208,73 +211,70 @@ export default function AdminBannersPage() {
 
           {/* Banners list */}
           {loading ? (
-            <div className="space-y-4">
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
               {Array.from({ length: 3 }).map((_, i) => (
-                <div key={i} className="bg-white rounded-2xl p-4 border border-gray-100 animate-pulse flex gap-4">
-                  <div className="w-32 h-20 rounded-xl bg-gray-100" />
-                  <div className="flex-1 space-y-2">
-                    <div className="h-4 bg-gray-100 rounded w-48" />
-                    <div className="h-3 bg-gray-100 rounded w-64" />
+                <div key={i} className="animate-pulse overflow-hidden rounded-2xl border border-rose-gold/10 bg-white/80">
+                  <div className="h-48 bg-blush" />
+                  <div className="p-5">
+                    <div className="mb-2 h-5 w-3/4 rounded bg-blush" />
+                    <div className="h-4 w-1/2 rounded bg-blush/70" />
                   </div>
                 </div>
               ))}
             </div>
           ) : banners.length === 0 ? (
-            <div className="text-center py-16 text-gray-400">
-              <ImageIcon size={40} className="mx-auto mb-3 opacity-30" />
-              <p>No banners yet. Add your first hero banner.</p>
+            <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-rose-gold/25 bg-white/80 py-20 text-center">
+              <ImageIcon size={48} className="text-rose-gold/40" />
+              <p className="mt-4 text-sm font-medium text-ink/60">No banners yet. Add your first hero banner.</p>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
               {banners.map((banner) => (
                 <motion.div
                   key={banner._id}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className={`bg-white rounded-2xl border shadow-sm overflow-hidden flex gap-0 transition-all ${
-                    banner.isActive ? "border-gray-100" : "border-red-100 opacity-60"
-                  }`}
+                  className={`group relative overflow-hidden rounded-2xl border bg-white shadow-sm transition hover:shadow-md ${banner.isActive ? "border-rose-gold/15" : "border-ink/10 opacity-75"}`}
                 >
                   {/* Thumbnail */}
-                  <div className="relative w-40 h-24 flex-shrink-0">
-                    <Image src={banner.imageUrl} alt={banner.title} fill className="object-cover" sizes="160px" />
+                  <div className="relative h-48 w-full bg-cream">
+                    <Image src={banner.imageUrl} alt={banner.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw" />
                     {!banner.isActive && (
-                      <div className="absolute inset-0 bg-red-500/20 flex items-center justify-center">
-                        <span className="text-red-600 text-xs font-bold bg-white/80 px-2 py-0.5 rounded">Hidden</span>
+                      <div className="absolute top-3 left-3 rounded-md bg-ink/80 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-sm">
+                        <span>Hidden</span>
                       </div>
                     )}
                   </div>
 
                   {/* Info */}
-                  <div className="flex-1 p-4 min-w-0">
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="min-w-0">
-                        <h3 className="font-semibold text-gray-900 text-sm truncate">{banner.title}</h3>
-                        {banner.subtitle && (
-                          <p className="text-gray-500 text-xs mt-0.5 line-clamp-1">{banner.subtitle}</p>
-                        )}
-                        {banner.ctaText && (
-                          <div className="mt-1.5 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#c6a94c]/10 text-[#c6a94c] text-xs font-medium">
-                            CTA: {banner.ctaText}
-                          </div>
-                        )}
-                      </div>
-                      <div className="flex items-center gap-1.5 flex-shrink-0">
-                        <button
-                          onClick={() => toggleActive(banner._id, banner.isActive)}
-                          className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-gray-100 transition-colors"
-                          title={banner.isActive ? "Hide" : "Show"}
-                        >
-                          {banner.isActive ? <EyeOff size={14} /> : <Eye size={14} />}
-                        </button>
-                        <button
-                          onClick={() => deleteBanner(banner._id)}
-                          className="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center text-red-400 hover:bg-red-100 transition-colors"
-                          title="Delete"
-                        >
-                          <Trash2 size={14} />
-                        </button>
-                      </div>
+                  <div className="flex flex-col justify-between p-5">
+                    <div className="mb-4">
+                      <h3 className="font-semibold text-ink line-clamp-1">{banner.title}</h3>
+                      {banner.subtitle && (
+                        <p className="mt-1 text-sm text-ink/60 line-clamp-2">{banner.subtitle}</p>
+                      )}
+                      {banner.ctaText && (
+                        <div className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-blush/50 px-2.5 py-1 text-xs font-medium text-rose-gold-deep">
+                          CTA: {banner.ctaText}
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-2 border-t border-rose-gold/10 pt-4">
+                      <button
+                        onClick={() => toggleActive(banner._id, banner.isActive)}
+                        title={banner.isActive ? "Hide" : "Show"}
+                        className={`flex flex-1 items-center justify-center gap-2 rounded-xl py-2 text-sm font-medium transition ${banner.isActive ? "bg-cream text-ink/70 hover:bg-blush hover:text-rose-gold-deep" : "bg-rose-gold/10 text-rose-gold hover:bg-rose-gold hover:text-white"}`}
+                      >
+                        {banner.isActive ? <EyeOff size={16} /> : <Eye size={16} />}
+                        {banner.isActive ? "Hide" : "Show"}
+                      </button>
+                      <button
+                        onClick={() => deleteBanner(banner._id)}
+                        title="Delete"
+                        className="flex h-[38px] w-[38px] items-center justify-center rounded-xl bg-red-50 text-red-600 transition hover:bg-red-100"
+                      >
+                        <Trash2 size={16} />
+                      </button>
                     </div>
                   </div>
                 </motion.div>

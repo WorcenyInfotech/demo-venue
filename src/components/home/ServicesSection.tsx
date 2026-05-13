@@ -24,27 +24,25 @@ const ICON_MAP: Record<string, React.ElementType> = {
   MapPin,
 };
 
+const easeLux = [0.4, 0, 0.2, 1] as const;
+
 const containerVariants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 60 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.4, 0, 0.2, 1] } },
+  hidden: { opacity: 0, y: 56 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: easeLux } },
 };
 
 export default function ServicesSection() {
   return (
-    <section className="section-padding relative overflow-hidden bg-white">
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 pattern-overlay opacity-50" />
+    <section className="relative overflow-hidden bg-cream py-20 md:py-28">
+      <div className="pointer-events-none absolute top-24 left-1/4 h-48 w-48 rounded-full bg-blush/80 blur-3xl" />
+      <div className="pointer-events-none absolute right-0 bottom-20 h-56 w-56 rounded-full bg-rose-gold/10 blur-3xl" />
 
-      {/* Decorative gradient orbs */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full bg-gradient-radial opacity-60" />
-      <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] rounded-full bg-gradient-radial opacity-40" />
-
-      <div className="container-custom relative z-10">
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
           badge="Our Services"
           title="Comprehensive Wedding"
@@ -53,11 +51,11 @@ export default function ServicesSection() {
         />
 
         <motion.div
+          className="grid gap-8 md:grid-cols-2"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-16"
         >
           {SERVICES.map((service) => {
             const Icon = ICON_MAP[service.icon] || Heart;
@@ -65,98 +63,67 @@ export default function ServicesSection() {
               <motion.div
                 key={service.id}
                 variants={cardVariants}
-                className="group relative rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-3"
-                style={{
-                  background: "linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(250,248,245,0.95) 100%)",
-                  backdropFilter: "blur(20px)",
-                  boxShadow: "0 4px 30px rgba(0,0,0,0.04)",
-                  border: "1px solid rgba(212, 175, 55, 0.1)",
-                }}
+                whileHover={{ y: -8 }}
+                className="group relative overflow-hidden rounded-2xl border border-rose-gold/12 bg-gradient-to-br from-white to-blush/30 p-8 shadow-luxury backdrop-blur-xl transition hover:border-rose-gold/28 hover:shadow-luxury-hover"
               >
-                {/* Top gradient accent */}
-                <div className="h-1.5 w-full bg-gradient-to-r from-[#1a2e28] via-[#2a5245] to-[#d4af37]" />
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-rose-gold/50 to-transparent opacity-70" />
 
-                <div className="p-7 md:p-8">
-                  {/* Icon with floating animation on hover */}
+                <div className="relative">
                   <motion.div
-                    className="relative w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg transition-all duration-500 group-hover:shadow-xl"
-                    style={{
-                      background: "linear-gradient(135deg, #1a2e28 0%, #2a5245 50%, #3d7a68 100%)",
-                    }}
+                    className="relative mb-6 inline-flex rounded-2xl bg-gradient-to-br from-rose-gold via-rose-gold-muted to-rose-gold-deep p-4 text-white shadow-glow-rose"
                     whileHover={{ scale: 1.05, rotate: 3 }}
                   >
-                    <Icon size={28} className="text-[#d4af37]" />
-
-                    {/* Glow effect */}
-                    <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                      style={{ boxShadow: "0 0 30px rgba(42, 82, 69, 0.4)" }}
-                    />
+                    <Icon size={28} />
+                    <div className="pointer-events-none absolute inset-0 rounded-2xl bg-white/10 opacity-0 transition group-hover:opacity-100" />
                   </motion.div>
 
-                  {/* Title */}
-                  <h3 className="font-serif font-bold text-xl md:text-[1.35rem] text-[#1a2e28] mb-3 group-hover:text-[#2a5245] transition-colors duration-300">
-                    {service.title}
-                  </h3>
+                  <h3 className="font-display text-2xl font-semibold text-ink">{service.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-ink/70">{service.description}</p>
 
-                  {/* Description */}
-                  <p className="text-[#64605a] text-sm md:text-[0.95rem] leading-relaxed mb-6">
-                    {service.description}
-                  </p>
-
-                  {/* Features list */}
-                  <ul className="space-y-2.5 mb-6">
+                  <ul className="mt-6 space-y-2.5">
                     {service.features.slice(0, 3).map((feature) => (
-                      <li
-                        key={feature}
-                        className="flex items-center gap-3 text-sm text-[#64605a]"
-                      >
-                        <span className="w-5 h-5 rounded-full bg-[#d4af37]/15 flex items-center justify-center flex-shrink-0">
-                          <Check size={12} className="text-[#d4af37]" />
+                      <li key={feature} className="flex items-start gap-2.5 text-sm text-ink/80">
+                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blush text-rose-gold">
+                          <Check size={12} strokeWidth={3} />
                         </span>
                         {feature}
                       </li>
                     ))}
                     {service.features.length > 3 && (
-                      <li className="text-xs text-[#d4af37] font-semibold pl-8 tracking-wide">
+                      <li className="text-sm font-medium text-rose-gold">
                         +{service.features.length - 3} more included
                       </li>
                     )}
                   </ul>
 
-                  {/* CTA Link */}
                   <Link
                     href="/services"
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a2e28] hover:text-[#d4af37] transition-colors duration-300 group/link"
+                    className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-rose-gold transition hover:gap-3 hover:text-rose-gold-deep"
                   >
                     <span>View Details</span>
-                    <ArrowRight
-                      size={16}
-                      className="group-hover/link:translate-x-1.5 transition-transform duration-300"
-                    />
+                    <ArrowRight size={16} />
                   </Link>
                 </div>
 
-                {/* Bottom corner decoration */}
-                <div className="absolute -bottom-12 -right-12 w-32 h-32 rounded-full bg-[#d4af37]/5 group-hover:bg-[#d4af37]/10 transition-colors duration-500" />
+                <div className="pointer-events-none absolute -right-8 -bottom-8 h-32 w-32 rounded-full bg-rose-gold/5 blur-2xl transition group-hover:bg-rose-gold/10" />
               </motion.div>
             );
           })}
         </motion.div>
 
-        {/* CTA Button */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          className="mt-14 flex justify-center"
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
+          transition={{ duration: 0.55 }}
         >
           <Link
             href="/services"
-            className="group inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 bg-gradient-to-r from-[#1a2e28] via-[#2a5245] to-[#3d7a68] text-white shadow-[0_8px_30px_rgba(42,82,69,0.3)] hover:shadow-[0_12px_40px_rgba(42,82,69,0.4)] hover:-translate-y-1"
+            className="inline-flex items-center gap-2 rounded-2xl bg-rose-gold px-8 py-4 text-sm font-semibold text-white shadow-glow-rose transition hover:bg-rose-gold-deep hover:shadow-luxury-hover"
           >
             <span>Explore All Services</span>
-            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            <ArrowRight size={18} />
           </Link>
         </motion.div>
       </div>

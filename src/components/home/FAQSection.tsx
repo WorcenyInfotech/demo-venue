@@ -12,17 +12,12 @@ export default function FAQSection() {
   const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
 
   return (
-    <section className="section-padding bg-white relative overflow-hidden">
-      {/* Decorative pattern */}
-      <div className="absolute inset-0 pattern-overlay" />
+    <section className="relative overflow-hidden bg-cream py-20 md:py-28">
+      <div className="pointer-events-none absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-blush/70 blur-3xl" />
 
-      {/* Decorative gradient */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-gradient-radial opacity-50 translate-x-1/2 -translate-y-1/2" />
-
-      <div className="container-custom relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-          {/* Left: Header + decorative */}
-          <div className="lg:sticky lg:top-32">
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+          <div>
             <SectionHeader
               badge="FAQ"
               title="Frequently Asked"
@@ -31,42 +26,36 @@ export default function FAQSection() {
               align="left"
             />
 
-            {/* Decorative card */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 0, x: -24 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="mt-10 p-8 rounded-2xl relative overflow-hidden"
-              style={{
-                background: "linear-gradient(135deg, #1a2e28 0%, #2a5245 100%)",
-              }}
+              transition={{ duration: 0.65, delay: 0.2 }}
+              className="relative mt-8 overflow-hidden rounded-2xl border border-rose-gold/20 bg-gradient-to-br from-rose-gold via-rose-gold-deep to-footer p-8 text-cream shadow-luxury md:p-10"
             >
-              {/* Pattern overlay */}
-              <div className="absolute inset-0 mandala-pattern opacity-30" />
-
+              <div className="pointer-events-none absolute inset-0 opacity-20">
+                <div className="h-full w-full bg-[radial-gradient(circle_at_30%_20%,white,transparent_55%)]" />
+              </div>
               <div className="relative">
-                <div className="flex items-center gap-2 text-[#d4af37] mb-4">
-                  <Sparkles size={20} />
-                  <span className="text-sm font-semibold tracking-wide uppercase">Need More Help?</span>
+                <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider">
+                  <Sparkles size={18} className="text-blush" />
+                  <span>Need More Help?</span>
                 </div>
-                <h3 className="font-serif text-2xl md:text-3xl font-bold text-white mb-3">
-                  Still have questions?
-                </h3>
-                <p className="text-white/60 text-sm md:text-base mb-8 leading-relaxed">
+                <h3 className="font-display text-2xl font-semibold">Still have questions?</h3>
+                <p className="mt-3 text-sm leading-relaxed text-cream/85">
                   Our team is available 7 days a week to answer all your queries and help you plan your perfect celebration.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-3">
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                   <a
                     href="tel:+919876543210"
-                    className="group flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 bg-gradient-to-r from-[#d4af37] to-[#e8c966] text-[#1a2e28] shadow-[0_4px_20px_rgba(212,175,55,0.3)] hover:shadow-[0_8px_30px_rgba(212,175,55,0.4)] hover:-translate-y-0.5"
+                    className="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl bg-cream px-4 py-3 text-sm font-semibold text-rose-gold transition hover:bg-blush"
                   >
                     <Phone size={16} />
                     <span>Call Us Now</span>
                   </a>
                   <a
                     href="/contact"
-                    className="flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white font-semibold text-sm hover:bg-white/10 hover:border-white/30 transition-all duration-300"
+                    className="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl border border-white/35 bg-white/10 px-4 py-3 text-sm font-semibold text-cream backdrop-blur-md transition hover:bg-white/20"
                   >
                     <MessageSquare size={16} />
                     <span>Send Message</span>
@@ -76,52 +65,30 @@ export default function FAQSection() {
             </motion.div>
           </div>
 
-          {/* Right: Accordion */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             {FAQS.map((faq, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.06 }}
-                className={`rounded-2xl transition-all duration-400 overflow-hidden ${
+                transition={{ duration: 0.45, delay: i * 0.05 }}
+                className={`overflow-hidden rounded-2xl border backdrop-blur-md transition ${
                   openIndex === i
-                    ? "shadow-lg"
-                    : ""
+                    ? "border-rose-gold/35 bg-white shadow-luxury-hover"
+                    : "border-rose-gold/12 bg-white/75 hover:border-rose-gold/25"
                 }`}
-                style={{
-                  background: openIndex === i
-                    ? "linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(250,248,245,0.95) 100%)"
-                    : "rgba(255, 255, 255, 0.8)",
-                  backdropFilter: "blur(12px)",
-                  border: openIndex === i
-                    ? "1px solid rgba(212, 175, 55, 0.3)"
-                    : "1px solid rgba(212, 175, 55, 0.1)",
-                }}
               >
                 <button
+                  type="button"
                   onClick={() => toggle(i)}
-                  className="w-full flex items-center justify-between gap-4 p-6 text-left"
+                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
                 >
+                  <span className="font-display text-base font-semibold text-ink sm:text-lg">{faq.question}</span>
                   <span
-                    className={`font-semibold text-base md:text-lg transition-colors duration-300 pr-4 ${
-                      openIndex === i ? "text-[#1a2e28]" : "text-[#64605a]"
+                    className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-white transition ${
+                      openIndex === i ? "bg-rose-gold shadow-glow-rose" : "bg-blush text-rose-gold"
                     }`}
-                  >
-                    {faq.question}
-                  </span>
-                  <span
-                    className={`flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-400 ${
-                      openIndex === i
-                        ? "text-[#1a2e28]"
-                        : "bg-gray-100 text-[#64605a]"
-                    }`}
-                    style={
-                      openIndex === i
-                        ? { background: "linear-gradient(135deg, #d4af37 0%, #e8c966 100%)" }
-                        : undefined
-                    }
                   >
                     {openIndex === i ? <Minus size={16} /> : <Plus size={16} />}
                   </span>
@@ -133,9 +100,9 @@ export default function FAQSection() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+                      transition={{ duration: 0.32, ease: [0.4, 0, 0.2, 1] }}
                     >
-                      <div className="px-6 pb-6 text-[#64605a] text-sm md:text-base leading-relaxed border-t border-[#d4af37]/10 pt-4">
+                      <div className="border-t border-rose-gold/10 px-5 py-4 text-sm leading-relaxed text-ink/75">
                         {faq.answer}
                       </div>
                     </motion.div>
