@@ -87,7 +87,7 @@ export default function Navbar() {
                   className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-rose-gold via-rose-gold-muted to-rose-gold-deep shadow-glow-rose ring-2 ring-white/40"
                 >
                   <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent" />
-                  <span className="relative font-display text-xl font-bold text-white">G</span>
+                  <span className="relative font-display text-xl font-bold text-white">R</span>
                 </motion.div>
                 <motion.div
                   animate={{ scale: [1, 1.15, 1] }}
