@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+/* ─── Luxury palette (strict brand colors) ─────────────────────────────────── */
+@theme {
+  --color-rose-gold: #b76e79;
+  --color-rose-gold-muted: #c98a93;
+  --color-rose-gold-deep: #955c65;
+  --color-cream: #faf7f2;
+  --color-blush: #f5e6e8;
+  --color-ink: #333333;
+  --color-footer: #2a2426;
+
+  --font-family-display: var(--font-cormorant), "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-family-sans: var(--font-dm), "DM Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-luxury: 0 22px 60px rgba(51, 51, 51, 0.08);
+  --shadow-luxury-hover: 0 28px 70px rgba(183, 110, 121, 0.18);
+  --shadow-glow-rose: 0 0 0 1px rgba(183, 110, 121, 0.12), 0 12px 40px rgba(183, 110, 121, 0.22);
+
+  --background-image-gradient-rose: linear-gradient(
+    135deg,
+    #faf7f2 0%,
+    #f5e6e8 45%,
+    #efd9dc 100%
+  );
+  --background-image-gradient-hero: linear-gradient(
+    120deg,
+    rgba(250, 247, 242, 0.92) 0%,
+    rgba(245, 230, 232, 0.55) 38%,
+    rgba(51, 51, 51, 0.35) 100%
+  );
+  --background-image-gradient-dark-rose: linear-gradient(
+    160deg,
+    #2a2426 0%,
+    #3d3436 40%,
+    #4a3e41 100%
+  );
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-ink antialiased;
+  }
+
+  ::selection {
+    @apply bg-blush text-ink;
+  }
+}
+
+@utility text-gradient-rose {
+  background-image: linear-gradient(135deg, #b76e79 0%, #d4a0a8 45%, #b76e79 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility glass-panel {
+  @apply border border-rose-gold/15 bg-white/70 backdrop-blur-xl;
+}
+
+@utility divider-rose {
+  @apply h-px w-full max-w-md bg-gradient-to-r from-transparent via-rose-gold/50 to-transparent;
+}
