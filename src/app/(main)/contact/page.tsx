@@ -38,7 +38,7 @@ const CONTACT_DETAILS = [
   {
     icon: MessageCircle,
     title: "WhatsApp",
-    lines: ["+91 98765 43210", "Available 9AM – 9PM"],
+    lines: ["+91 81403 98723", "Available 9AM – 9PM"],
     action: {
       label: "Chat Now",
       href: `https://wa.me/${SITE_CONFIG.whatsapp}?text=Hello! I'm interested in booking Ramayan Farm.`,

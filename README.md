@@ -28,6 +28,7 @@
 ## ✨ Features
 
 ### Public Website
+
 - 🏠 **Home Page** — Hero slider, highlights, services, gallery, testimonials, FAQ, map
 - 📖 **About Page** — Story, team, timeline, values, location
 - 🎯 **Services Page** — 6 wedding services with detailed descriptions
@@ -36,6 +37,7 @@
 - 📞 **Contact Page** — 2-step inquiry form + general contact form + map
 
 ### Admin Panel (`/admin`)
+
 - 🔐 **Secure Login** — JWT authentication, HTTP-only cookies
 - 📊 **Dashboard** — Live stats, recent inquiries, quick actions
 - 📬 **Inquiries** — Search, filter, paginate, update status, delete, call/email/WhatsApp
@@ -44,6 +46,7 @@
 - 🎨 **Banners** — Upload hero banners, manage visibility
 
 ### SEO & Performance
+
 - 🔍 Full JSON-LD structured data (LocalBusiness, EventVenue, FAQ, BreadcrumbList)
 - 🗺️ Auto-generated sitemap.xml
 - 🤖 robots.txt with AI bot blocking
@@ -55,19 +58,19 @@
 
 ## 🛠️ Tech Stack
 
-| Category | Technology |
-|---|---|
-| Framework | Next.js 16 (App Router) |
-| Language | TypeScript 5 |
-| Styling | Tailwind CSS 4 |
-| Animations | Framer Motion |
-| Database | MongoDB + Mongoose |
-| Auth | JWT + bcryptjs |
-| Images | Cloudinary + next/image |
-| Forms | React Hook Form + Zod |
-| Icons | Lucide React |
-| Notifications | React Hot Toast |
-| Deployment | Vercel |
+| Category      | Technology              |
+| ------------- | ----------------------- |
+| Framework     | Next.js 16 (App Router) |
+| Language      | TypeScript 5            |
+| Styling       | Tailwind CSS 4          |
+| Animations    | Framer Motion           |
+| Database      | MongoDB + Mongoose      |
+| Auth          | JWT + bcryptjs          |
+| Images        | Cloudinary + next/image |
+| Forms         | React Hook Form + Zod   |
+| Icons         | Lucide React            |
+| Notifications | React Hot Toast         |
+| Deployment    | Vercel                  |
 
 ---
 
@@ -166,23 +169,27 @@ green-land-farm/
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Node.js 18+
 - npm or yarn
 - MongoDB Atlas account
 - Cloudinary account
 
 ### 1. Install dependencies
+
 ```bash
 npm install
 ```
 
 ### 2. Configure environment variables
+
 ```bash
 cp .env.local.example .env.local
 # Edit .env.local with your values
 ```
 
 ### 3. Create admin account
+
 ```bash
 # Start dev server first
 npm run dev
@@ -192,6 +199,7 @@ curl -X POST http://localhost:3000/api/admin/seed
 ```
 
 ### 4. Run development server
+
 ```bash
 npm run dev
 ```
@@ -227,7 +235,7 @@ ADMIN_PASSWORD=YourSecurePassword123!
 # ─── Site ──────────────────────────────────────────────────
 NEXT_PUBLIC_SITE_URL=https://greenlandfarm.in
 NEXT_PUBLIC_SITE_NAME=Ramayan Farm
-NEXT_PUBLIC_WHATSAPP_NUMBER=919876543210
+NEXT_PUBLIC_WHATSAPP_NUMBER=918140398723
 NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your-maps-key
 ```
 
@@ -242,6 +250,7 @@ NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your-maps-key
 5. Replace `<password>` with your actual password
 
 ### Collections created automatically:
+
 - `inquiries` — Wedding inquiry submissions
 - `admins` — Admin users
 - `galleries` — Gallery images
@@ -264,6 +273,7 @@ NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your-maps-key
 ## 🚀 Vercel Deployment
 
 ### Step 1 — Push to GitHub
+
 ```bash
 git init
 git add .
@@ -273,32 +283,36 @@ git push -u origin main
 ```
 
 ### Step 2 — Import to Vercel
+
 1. Go to [vercel.com](https://vercel.com) → **New Project**
 2. Import your GitHub repository
 3. Framework: **Next.js** (auto-detected)
 4. Root Directory: `./` (default)
 
 ### Step 3 — Add Environment Variables
+
 In Vercel dashboard → **Settings** → **Environment Variables**, add all variables from `.env.local`:
 
-| Variable | Value |
-|---|---|
-| `MONGODB_URI` | Your Atlas connection string |
-| `JWT_SECRET` | Strong random string (32+ chars) |
-| `NEXTAUTH_SECRET` | Strong random string |
-| `NEXTAUTH_URL` | `https://yourdomain.com` |
-| `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME` | Your cloud name |
-| `CLOUDINARY_API_KEY` | Your API key |
-| `CLOUDINARY_API_SECRET` | Your API secret |
-| `NEXT_PUBLIC_SITE_URL` | `https://yourdomain.com` |
-| `NEXT_PUBLIC_WHATSAPP_NUMBER` | `919876543210` |
-| `ADMIN_EMAIL` | `admin@yourdomain.com` |
-| `ADMIN_PASSWORD` | Strong password |
+| Variable                            | Value                            |
+| ----------------------------------- | -------------------------------- |
+| `MONGODB_URI`                       | Your Atlas connection string     |
+| `JWT_SECRET`                        | Strong random string (32+ chars) |
+| `NEXTAUTH_SECRET`                   | Strong random string             |
+| `NEXTAUTH_URL`                      | `https://yourdomain.com`         |
+| `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME` | Your cloud name                  |
+| `CLOUDINARY_API_KEY`                | Your API key                     |
+| `CLOUDINARY_API_SECRET`             | Your API secret                  |
+| `NEXT_PUBLIC_SITE_URL`              | `https://yourdomain.com`         |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER`       | `918140398723`                   |
+| `ADMIN_EMAIL`                       | `admin@yourdomain.com`           |
+| `ADMIN_PASSWORD`                    | Strong password                  |
 
 ### Step 4 — Deploy
+
 Click **Deploy** — Vercel builds and deploys automatically.
 
 ### Step 5 — Custom Domain
+
 1. Vercel → **Settings** → **Domains**
 2. Add `greenlandfarm.in` and `www.greenlandfarm.in`
 3. Update DNS records at your registrar:
@@ -308,10 +322,13 @@ Click **Deploy** — Vercel builds and deploys automatically.
    ```
 
 ### Step 6 — Create Admin Account
+
 After deployment:
+
 ```bash
 curl -X POST https://yourdomain.com/api/admin/seed
 ```
+
 Or visit: `https://yourdomain.com/api/admin/seed` in browser (POST request)
 
 ---
@@ -323,25 +340,28 @@ Or visit: `https://yourdomain.com/api/admin/seed` in browser (POST request)
 > ⚠️ The admin link is **never shown** on the public website. Access it directly.
 
 **Default credentials** (after seeding):
+
 - Email: `admin@greenlandfarm.com`
 - Password: `Admin@123456`
 
 **Change password immediately after first login!**
 
 ### Admin Features:
-| Feature | Description |
-|---|---|
-| Dashboard | Live stats, recent inquiries |
-| Inquiries | View, search, filter, update status, delete |
-| Gallery | Upload images via Cloudinary, toggle visibility |
-| Testimonials | Add/edit/delete customer reviews |
-| Banners | Manage hero banner images |
+
+| Feature      | Description                                     |
+| ------------ | ----------------------------------------------- |
+| Dashboard    | Live stats, recent inquiries                    |
+| Inquiries    | View, search, filter, update status, delete     |
+| Gallery      | Upload images via Cloudinary, toggle visibility |
+| Testimonials | Add/edit/delete customer reviews                |
+| Banners      | Manage hero banner images                       |
 
 ---
 
 ## 🔍 SEO
 
 ### Implemented:
+
 - ✅ Dynamic `<title>` and `<meta description>` per page
 - ✅ Open Graph tags (Facebook, LinkedIn)
 - ✅ Twitter Card tags
@@ -354,6 +374,7 @@ Or visit: `https://yourdomain.com/api/admin/seed` in browser (POST request)
 - ✅ Dublin Core metadata
 
 ### Target Keywords:
+
 - Best Wedding Farm in Surat
 - Luxury Wedding Venue Surat
 - Wedding Lawn Surat
@@ -363,6 +384,7 @@ Or visit: `https://yourdomain.com/api/admin/seed` in browser (POST request)
 - Reception Venue Surat
 
 ### Submit to Google:
+
 1. [Google Search Console](https://search.google.com/search-console) → Add property
 2. Verify ownership via DNS TXT record
 3. Submit sitemap: `https://yourdomain.com/sitemap.xml`
@@ -372,6 +394,7 @@ Or visit: `https://yourdomain.com/api/admin/seed` in browser (POST request)
 ## ⚡ Performance
 
 ### Optimizations included:
+
 - **Images**: AVIF/WebP formats, lazy loading, `next/image` with blur placeholders
 - **Fonts**: `display: swap`, preload critical fonts
 - **Code splitting**: Dynamic imports for heavy components
@@ -381,18 +404,20 @@ Or visit: `https://yourdomain.com/api/admin/seed` in browser (POST request)
 - **Security headers**: X-Frame-Options, CSP, HSTS
 
 ### Expected Lighthouse scores:
-| Metric | Target |
-|---|---|
-| Performance | 95+ |
-| Accessibility | 95+ |
-| Best Practices | 100 |
-| SEO | 100 |
+
+| Metric         | Target |
+| -------------- | ------ |
+| Performance    | 95+    |
+| Accessibility  | 95+    |
+| Best Practices | 100    |
+| SEO            | 100    |
 
 ---
 
 ## 📱 PWA
 
 The site includes a Web App Manifest for installability:
+
 - Add to home screen on mobile
 - Offline-capable (add service worker for full PWA)
 - App shortcuts: Book Inquiry, View Gallery
@@ -413,10 +438,11 @@ The site includes a Web App Manifest for installability:
 ## 📞 Support
 
 **Ramayan Farm**
-- 📞 +91 98765 43210
+
+- 📞 +91 81403 98723
 - 📧 info@greenlandfarm.in
 - 📍 Near NH-48, Surat-Navsari Highway, Surat, Gujarat - 395009
 
 ---
 
-*Built with ❤️ for Ramayan Farm — Surat's Luxury Wedding Venue*
+_Built with ❤️ for Ramayan Farm — Surat's Luxury Wedding Venue_

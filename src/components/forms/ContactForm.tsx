@@ -97,7 +97,7 @@ export default function ContactForm() {
             <input
               {...register("mobile")}
               type="tel"
-              placeholder="98765 43210"
+              placeholder="81403 98723"
               maxLength={10}
               className={inputCls}
             />

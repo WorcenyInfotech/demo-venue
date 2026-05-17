@@ -81,7 +81,11 @@ export default function InquiryForm() {
       setIsSuccess(true);
       toast.success("Inquiry submitted successfully! We'll contact you soon.");
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Failed to submit inquiry. Please try again.");
+      toast.error(
+        err instanceof Error
+          ? err.message
+          : "Failed to submit inquiry. Please try again.",
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -102,12 +106,19 @@ export default function InquiryForm() {
         >
           <CheckCircle2 size={36} />
         </motion.div>
-        <h3 className="mt-8 font-display text-2xl font-semibold text-ink">Thank You!</h3>
-        <p className="mt-2 text-sm text-ink/75">Your inquiry has been submitted successfully.</p>
-        <p className="mt-1 text-sm text-ink/65">Our team will contact you within 24 hours to discuss your requirements.</p>
+        <h3 className="mt-8 font-display text-2xl font-semibold text-ink">
+          Thank You!
+        </h3>
+        <p className="mt-2 text-sm text-ink/75">
+          Your inquiry has been submitted successfully.
+        </p>
+        <p className="mt-1 text-sm text-ink/65">
+          Our team will contact you within 24 hours to discuss your
+          requirements.
+        </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
           <a
-            href="tel:+919876543210"
+            href="tel:+918140398723"
             className="inline-flex items-center justify-center gap-2 rounded-2xl border border-rose-gold/25 px-5 py-3 text-sm font-semibold text-rose-gold transition hover:bg-blush"
           >
             <Phone size={16} />
@@ -186,13 +197,15 @@ export default function InquiryForm() {
                 <input
                   {...step1Form.register("mobile")}
                   type="tel"
-                  placeholder="98765 43210"
+                  placeholder="81403 98723"
                   maxLength={10}
                   className={inputCls}
                 />
               </div>
               {step1Form.formState.errors.mobile && (
-                <p className={errCls}>{step1Form.formState.errors.mobile.message}</p>
+                <p className={errCls}>
+                  {step1Form.formState.errors.mobile.message}
+                </p>
               )}
             </div>
 
@@ -202,10 +215,17 @@ export default function InquiryForm() {
               </label>
               <div className={inputShell}>
                 <Mail size={18} className="shrink-0 text-rose-gold/70" />
-                <input {...step1Form.register("email")} type="email" placeholder="your@email.com" className={inputCls} />
+                <input
+                  {...step1Form.register("email")}
+                  type="email"
+                  placeholder="your@email.com"
+                  className={inputCls}
+                />
               </div>
               {step1Form.formState.errors.email && (
-                <p className={errCls}>{step1Form.formState.errors.email.message}</p>
+                <p className={errCls}>
+                  {step1Form.formState.errors.email.message}
+                </p>
               )}
             </div>
 
@@ -217,7 +237,9 @@ export default function InquiryForm() {
               <ArrowRight size={18} />
             </button>
 
-            <p className="text-center text-xs text-ink/55">Your information is secure and will never be shared.</p>
+            <p className="text-center text-xs text-ink/55">
+              Your information is secure and will never be shared.
+            </p>
           </motion.form>
         )}
 
@@ -237,10 +259,17 @@ export default function InquiryForm() {
               </label>
               <div className={inputShell}>
                 <User size={18} className="shrink-0 text-rose-gold/70" />
-                <input {...step2Form.register("name")} type="text" placeholder="Your full name" className={inputCls} />
+                <input
+                  {...step2Form.register("name")}
+                  type="text"
+                  placeholder="Your full name"
+                  className={inputCls}
+                />
               </div>
               {step2Form.formState.errors.name && (
-                <p className={errCls}>{step2Form.formState.errors.name.message}</p>
+                <p className={errCls}>
+                  {step2Form.formState.errors.name.message}
+                </p>
               )}
             </div>
 
@@ -261,7 +290,9 @@ export default function InquiryForm() {
                   ))}
                 </select>
                 {step2Form.formState.errors.eventType && (
-                  <p className={errCls}>{step2Form.formState.errors.eventType.message}</p>
+                  <p className={errCls}>
+                    {step2Form.formState.errors.eventType.message}
+                  </p>
                 )}
               </div>
 
@@ -271,7 +302,10 @@ export default function InquiryForm() {
                 </label>
                 <div className={inputShell}>
                   <Users size={18} className="shrink-0 text-rose-gold/70" />
-                  <select {...step2Form.register("guestCount")} className={`${inputCls} cursor-pointer`}>
+                  <select
+                    {...step2Form.register("guestCount")}
+                    className={`${inputCls} cursor-pointer`}
+                  >
                     <option value="">Select count</option>
                     {GUEST_COUNT_OPTIONS.map((g) => (
                       <option key={g} value={g}>
@@ -281,7 +315,9 @@ export default function InquiryForm() {
                   </select>
                 </div>
                 {step2Form.formState.errors.guestCount && (
-                  <p className={errCls}>{step2Form.formState.errors.guestCount.message}</p>
+                  <p className={errCls}>
+                    {step2Form.formState.errors.guestCount.message}
+                  </p>
                 )}
               </div>
             </div>
@@ -300,14 +336,19 @@ export default function InquiryForm() {
                 />
               </div>
               {step2Form.formState.errors.functionDate && (
-                <p className={errCls}>{step2Form.formState.errors.functionDate.message}</p>
+                <p className={errCls}>
+                  {step2Form.formState.errors.functionDate.message}
+                </p>
               )}
             </div>
 
             <div className={fieldWrap}>
               <label className={labelCls}>Message (Optional)</label>
               <div className={`${inputShell} items-start`}>
-                <MessageSquare size={18} className="mt-0.5 shrink-0 text-rose-gold/70" />
+                <MessageSquare
+                  size={18}
+                  className="mt-0.5 shrink-0 text-rose-gold/70"
+                />
                 <textarea
                   {...step2Form.register("message")}
                   rows={3}

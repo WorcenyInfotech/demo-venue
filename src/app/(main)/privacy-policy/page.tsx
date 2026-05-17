@@ -47,7 +47,7 @@ export default function PrivacyPolicyPage() {
               {
                 title: "Contact Us",
                 content:
-                  "If you have any questions about this Privacy Policy, please contact us at info@greenlandfarm.in or call +91 98765 43210.",
+                  "If you have any questions about this Privacy Policy, please contact us at info@greenlandfarm.in or call +91 81403 98723.",
               },
             ].map((section) => (
               <div

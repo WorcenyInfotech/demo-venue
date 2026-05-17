@@ -52,7 +52,7 @@ export default function TermsPage() {
               {
                 title: "Contact",
                 content:
-                  "For any queries regarding these terms, please contact us at info@greenlandfarm.in or call +91 98765 43210.",
+                  "For any queries regarding these terms, please contact us at info@greenlandfarm.in or call +91 81403 98723.",
               },
             ].map((section) => (
               <div

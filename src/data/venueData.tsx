@@ -73,10 +73,10 @@ export const VENUE_IDENTITY = {
 // ============================================================
 export const VENUE_CONTACT = {
   /** Primary phone number (display format) */
-  phone: "+91 98247 73000",
+  phone: "+91 81403 98723",
 
   /** Secondary / alternate phone number */
-  phone2: "+91 98247 73000",
+  phone2: "+91 81403 98723",
 
   /** Primary email for general inquiries */
   email: "info@ramayanfarm.in",
@@ -88,7 +88,7 @@ export const VENUE_CONTACT = {
    * WhatsApp number — country code + number, NO spaces, NO "+"
    * Used to build: https://wa.me/{whatsapp}
    */
-  whatsapp: "919824773000",
+  whatsapp: "9181403 98723",
 
   /** Full address string (used in footer, contact page, schema) */
   address: "Ramayan Farm, Puna-Valthan Canal Road,Near Nayra Petrol pump, Kosmada Gam, Surat.",
